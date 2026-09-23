@@ -1,0 +1,1188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create New Account — Northwest Safety & Health</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --nw2-navy: #183b5e;
+        --nw2-navy-dark: #102b45;
+        --nw2-navy-deep: #0c2034;
+        --nw2-teal: #2bb0ac;
+        --nw2-teal-light: #55c8c3;
+        --nw2-orange: #ee6d29;
+        --nw2-orange-light: #ff8a4d;
+        --nw2-white: #ffffff;
+        --nw2-muted: #7c8794;
+        --nw2-border: #e2e6eb;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(
+          135deg,
+          var(--nw2-navy-dark),
+          var(--nw2-navy-deep)
+        );
+        padding: 16px;
+        opacity: 0;
+        animation: fadeInPage 0.6s ease-in-out forwards;
+        transition: opacity 0.4s ease-in-out;
+      }
+      body.fade-out {
+        opacity: 0;
+      }
+
+      @keyframes fadeInPage {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ===== CARD ===== */
+      .register-card {
+        width: 100%;
+        max-width: 980px;
+        max-height: calc(100vh - 32px);
+        background-color: var(--nw2-white);
+        border-radius: 16px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ===== HEADER (dark) — stacked layout ===== */
+      .card-header {
+        background: linear-gradient(
+          135deg,
+          var(--nw2-navy) 0%,
+          var(--nw2-navy-dark) 100%
+        );
+        padding: 20px 32px 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 14px;
+        flex-shrink: 0;
+      }
+
+      /* ✅ Brand box — WHITE bg, on TOP */
+      .brand-box {
+        background-color: var(--nw2-white);
+        border-radius: 500px;
+        padding: 30px 3%;
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      }
+
+      .brand-box img {
+        height: 100px;
+        width: auto;
+        object-fit: cover;
+      }
+
+      .brand-box span {
+        color: var(--nw2-navy);
+        font-size: 21px;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        white-space: nowrap;
+      }
+
+      /* Heading row (avatar + text) — BELOW brand */
+      .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        color: var(--nw2-white);
+      }
+
+      .avatar {
+        flex-shrink: 0;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.12);
+        border: 1.5px solid rgba(255, 255, 255, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--nw2-white);
+      }
+      .avatar svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .header-text {
+        text-align: left;
+        color: var(--nw2-white);
+      }
+      .header-text h1 {
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        margin-bottom: 1px;
+      }
+      .header-text p {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* ===== BODY ===== */
+      .card-body {
+        padding: 24px 32px 12px;
+        overflow: hidden;
+        flex: 1;
+      }
+
+      .columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-size: 15.5px;
+        font-weight: 600;
+        color: var(--nw2-navy);
+        padding-bottom: 9px;
+        margin-bottom: 15px;
+        border-bottom: 1.5px solid var(--nw2-border);
+      }
+      .section-title svg {
+        width: 18px;
+        height: 18px;
+        color: var(--nw2-navy);
+        flex-shrink: 0;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 12px;
+      }
+
+      label {
+        font-size: 12.5px;
+        font-weight: 500;
+        color: var(--nw2-navy);
+        margin-bottom: 5px;
+      }
+      label .required {
+        color: #e74c3c;
+        margin-left: 2px;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px 13px;
+        border: 1.5px solid var(--nw2-border);
+        border-radius: 7px;
+        font-size: 13.5px;
+        font-family: "Poppins", sans-serif;
+        color: #333;
+        background-color: #fbfcfd;
+        transition: all 0.25s ease;
+        height: 42px;
+      }
+      input::placeholder,
+      textarea::placeholder {
+        color: #a3acb6;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--nw2-teal);
+        background-color: #fff;
+        box-shadow: 0 0 0 3px rgba(43, 176, 172, 0.12);
+      }
+
+      textarea {
+        resize: none;
+        height: 42px;
+        min-height: 42px;
+        max-height: 42px;
+        padding-top: 10px;
+        line-height: 1.3;
+      }
+
+      .password-wrap {
+        position: relative;
+      }
+      .password-wrap input {
+        padding-right: 42px;
+      }
+      .password-wrap .eye-btn {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #8a95a3;
+        transition: color 0.2s ease;
+        height: auto;
+      }
+      .password-wrap .eye-btn:hover {
+        color: var(--nw2-navy);
+      }
+      .password-wrap .eye-btn svg {
+        width: 17px;
+        height: 17px;
+      }
+
+      .form-row-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .form-row-2 .form-group {
+        margin-bottom: 12px;
+      }
+
+      .error {
+        color: #e74c3c;
+        font-size: 10.5px;
+        margin-top: 3px;
+        min-height: 11px;
+        display: none;
+      }
+
+      select {
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='%23183b5e' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+        background-repeat: no-repeat;
+        background-position: right 13px center;
+        padding-right: 36px;
+        cursor: pointer;
+      }
+
+      /* ===== FOOTER ===== */
+      .card-footer {
+        padding: 8px 32px 20px;
+        flex-shrink: 0;
+      }
+
+      .btn-create {
+        width: 100%;
+        padding: 12px;
+        background-color: var(--nw2-navy);
+        color: var(--nw2-white);
+        border: none;
+        border-radius: 8px;
+        font-size: 14.5px;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        cursor: pointer;
+        transition: background-color 0.25s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        height: 46px;
+      }
+      .btn-create:hover {
+        background-color: var(--nw2-navy-dark);
+      }
+      .btn-create svg {
+        width: 17px;
+        height: 17px;
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 15px 0 12px;
+      }
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        height: 1.5px;
+        background-color: var(--nw2-border);
+      }
+      .divider span {
+        color: var(--nw2-muted);
+        font-size: 12.5px;
+        font-weight: 500;
+      }
+
+      .social-btns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .btn-social {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        padding: 10px;
+        border: 1.5px solid var(--nw2-border);
+        border-radius: 8px;
+        background-color: var(--nw2-white);
+        font-family: "Poppins", sans-serif;
+        font-size: 13.5px;
+        font-weight: 500;
+        color: #333;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        height: 42px;
+      }
+      .btn-social:hover {
+        border-color: var(--nw2-navy);
+        background-color: #f9fafc;
+      }
+      .btn-social svg {
+        width: 17px;
+        height: 17px;
+      }
+      .btn-social.google svg {
+        color: #ea4335;
+      }
+      .btn-social.linkedin svg {
+        color: #0a66c2;
+      }
+
+      .signin-text {
+        text-align: center;
+        margin-top: 14px;
+        font-size: 13px;
+        color: #555;
+        padding-top: 12px;
+        border-top: 1.5px solid var(--nw2-border);
+      }
+      .signin-text a {
+        color: var(--nw2-navy);
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        margin-left: 4px;
+      }
+      .signin-text a:hover {
+        color: var(--nw2-orange);
+        text-decoration: underline;
+      }
+
+      /* ===== MOBILE ===== */
+      @media (max-width: 800px) {
+        html,
+        body {
+          overflow: auto;
+        }
+        .register-card {
+          max-height: none;
+        }
+        .card-header {
+          padding: 16px 20px 14px;
+          gap: 12px;
+        }
+        .brand-box {
+          padding: 8px 16px;
+          gap: 10px;
+        }
+        .brand-box img {
+          height: 36px;
+        }
+        .brand-box span {
+          font-size: 17px;
+        }
+        .avatar {
+          width: 40px;
+          height: 40px;
+        }
+        .header-text h1 {
+          font-size: 17px;
+        }
+        .header-text p {
+          font-size: 11px;
+        }
+        .card-body {
+          padding: 18px 20px 8px;
+        }
+        .columns {
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+        .card-footer {
+          padding: 6px 20px 16px;
+        }
+      }
+
+      @media (max-width: 440px) {
+        .form-row-2 {
+          grid-template-columns: 1fr;
+        }
+        .social-btns {
+          grid-template-columns: 1fr;
+        }
+        .section-title {
+          font-size: 14px;
+        }
+        .brand-box {
+          flex-direction: column;
+          gap: 6px;
+          padding: 8px 14px;
+        }
+        .brand-box img {
+          height: 32px;
+        }
+        .brand-box span {
+          font-size: 14px;
+          text-align: center;
+          white-space: normal;
+        }
+        .header-content {
+          flex-direction: column;
+          gap: 8px;
+        }
+        .header-text {
+          text-align: center;
+        }
+      }
+
+      @media (max-height: 700px) and (min-width: 801px) {
+        .card-body {
+          overflow-y: auto;
+        }
+        .card-body::-webkit-scrollbar {
+          width: 5px;
+        }
+        .card-body::-webkit-scrollbar-thumb {
+          background: var(--nw2-teal);
+          border-radius: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="register-card">
+      <!-- ===== HEADER: Brand box UPAR, Heading NEECHE ===== -->
+      <div class="card-header">
+        <!-- ✅ Brand Box (WHITE) — TOP -->
+        <div class="brand-box">
+          <a href="index.html">
+            <img
+              src="assets/Logo/NSH Logo 01.png"
+              alt="Northwest Safety & Health Logo"
+            />
+          </a>
+          <!-- <span>Northwest Safety &amp; Health</span> -->
+        </div>
+
+        <!-- ✅ Heading — BELOW brand box -->
+        <div class="header-content">
+          <div class="avatar">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <line x1="19" y1="8" x2="19" y2="14"></line>
+              <line x1="22" y1="11" x2="16" y2="11"></line>
+            </svg>
+          </div>
+          <div class="header-text">
+            <h1>Create New Account</h1>
+            <p>Join Northwest Safety &amp; Health today</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== BODY ===== -->
+      <div class="card-body">
+        <form id="registrationForm" onsubmit="return validateForm();">
+          <div class="columns">
+            <!-- LEFT -->
+            <div>
+              <div class="section-title">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Personal Information
+              </div>
+
+              <div class="form-group">
+                <label for="fullName"
+                  >Full Name<span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  id="fullName"
+                  placeholder="Enter your full name"
+                  oninput="clearError('fullNameError')"
+                />
+                <div id="fullNameError" class="error"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="email"
+                  >Email Address<span class="required">*</span></label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Enter your email"
+                  oninput="clearError('emailError')"
+                />
+                <div id="emailError" class="error"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="dob"
+                  >Date of Birth<span class="required">*</span></label
+                >
+                <input type="date" id="dob" onchange="clearError('dobError')" />
+                <div id="dobError" class="error"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  placeholder="Enter phone number"
+                  oninput="clearError('phoneError')"
+                />
+                <div id="phoneError" class="error"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="gender"
+                  >Gender<span class="required">*</span></label
+                >
+                <select id="gender" onchange="clearError('genderError')">
+                  <option value="">Select Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+                <div id="genderError" class="error"></div>
+              </div>
+            </div>
+
+            <!-- RIGHT -->
+            <div>
+              <div class="section-title">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect
+                    x="3"
+                    y="11"
+                    width="18"
+                    height="11"
+                    rx="2"
+                    ry="2"
+                  ></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                Security & Location
+              </div>
+
+              <div class="form-group">
+                <label for="password"
+                  >Password<span class="required">*</span></label
+                >
+                <div class="password-wrap">
+                  <input
+                    type="password"
+                    id="password"
+                    placeholder="••••••••"
+                    oninput="clearError('passwordError')"
+                  />
+                  <button
+                    type="button"
+                    class="eye-btn"
+                    onclick="togglePassword('password', this)"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                      ></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                  </button>
+                </div>
+                <div id="passwordError" class="error"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="confirmPassword"
+                  >Confirm Password<span class="required">*</span></label
+                >
+                <div class="password-wrap">
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm password"
+                    oninput="clearError('confirmPasswordError')"
+                  />
+                  <button
+                    type="button"
+                    class="eye-btn"
+                    onclick="togglePassword('confirmPassword', this)"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                      ></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                  </button>
+                </div>
+                <div id="confirmPasswordError" class="error"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="address">Address</label>
+                <textarea
+                  id="address"
+                  placeholder="Enter your address"
+                  oninput="clearError('addressError')"
+                ></textarea>
+                <div id="addressError" class="error"></div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="country">Country</label>
+                  <select id="country" onchange="clearError('countryError')">
+                    <option value="">Your country</option>
+                  </select>
+                  <div id="countryError" class="error"></div>
+                </div>
+                <div class="form-group">
+                  <label for="city">City<span class="required">*</span></label>
+                  <input
+                    type="text"
+                    id="city"
+                    placeholder="Your city"
+                    oninput="clearError('cityError')"
+                  />
+                  <div id="cityError" class="error"></div>
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="state"
+                    >State<span class="required">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="state"
+                    placeholder="Your state"
+                    oninput="clearError('stateError')"
+                  />
+                  <div id="stateError" class="error"></div>
+                </div>
+                <div class="form-group">
+                  <label for="zipCode">ZIP Code</label>
+                  <input
+                    type="text"
+                    id="zipCode"
+                    placeholder="ZIP code"
+                    maxlength="10"
+                    oninput="clearError('zipCodeError')"
+                  />
+                  <div id="zipCodeError" class="error"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- ===== FOOTER ===== -->
+      <div class="card-footer">
+        <button type="submit" form="registrationForm" class="btn-create">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <line x1="19" y1="8" x2="19" y2="14"></line>
+            <line x1="22" y1="11" x2="16" y2="11"></line>
+          </svg>
+          Create Your Account
+        </button>
+
+        <div class="divider">
+          <span>or continue with</span>
+        </div>
+
+        <div class="social-btns">
+          <button
+            type="button"
+            class="btn-social google"
+            onclick="socialLogin('Google')"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M21.35 11.1h-9.18v2.9h5.29c-.23 1.28-.94 2.36-2 3.09v2.56h3.24c1.9-1.75 3-4.32 3-7.39 0-.72-.06-1.42-.19-2.09z"
+              />
+              <path
+                d="M12.17 22c2.7 0 4.96-.89 6.62-2.42l-3.24-2.56c-.9.6-2.04.95-3.38.95-2.6 0-4.8-1.75-5.59-4.11H3.23v2.65A9.99 9.99 0 0 0 12.17 22z"
+                fill="#34a853"
+              />
+              <path
+                d="M6.58 13.86a6.02 6.02 0 0 1 0-3.81V7.39H3.23a10.02 10.02 0 0 0 0 8.87l3.35-2.4z"
+                fill="#fbbc05"
+              />
+              <path
+                d="M12.17 5.96c1.47 0 2.79.51 3.83 1.5l2.87-2.87A9.95 9.95 0 0 0 12.17 2 9.99 9.99 0 0 0 3.23 7.39l3.35 2.66c.79-2.36 2.99-4.09 5.59-4.09z"
+                fill="#ea4335"
+              />
+            </svg>
+            Google
+          </button>
+          <button
+            type="button"
+            class="btn-social linkedin"
+            onclick="socialLogin('LinkedIn')"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"
+              />
+            </svg>
+            LinkedIn
+          </button>
+        </div>
+
+        <div class="signin-text">
+          Already have an account?
+          <a id="backToLoginLink">Sign In here</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const countries = [
+        "Afghanistan",
+        "Albania",
+        "Algeria",
+        "Andorra",
+        "Angola",
+        "Antigua & Deps",
+        "Argentina",
+        "Armenia",
+        "Australia",
+        "Austria",
+        "Azerbaijan",
+        "Bahamas",
+        "Bahrain",
+        "Bangladesh",
+        "Barbados",
+        "Belarus",
+        "Belgium",
+        "Belize",
+        "Benin",
+        "Bhutan",
+        "Bolivia",
+        "Bosnia Herzegovina",
+        "Botswana",
+        "Brazil",
+        "Brunei",
+        "Bulgaria",
+        "Burkina",
+        "Burundi",
+        "Cambodia",
+        "Cameroon",
+        "Canada",
+        "Cape Verde",
+        "Central African Rep",
+        "Chad",
+        "Chile",
+        "China",
+        "Colombia",
+        "Comoros",
+        "Congo",
+        "Congo {Democratic Rep}",
+        "Costa Rica",
+        "Croatia",
+        "Cuba",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Djibouti",
+        "Dominica",
+        "Dominican Republic",
+        "East Timor",
+        "Ecuador",
+        "Egypt",
+        "El Salvador",
+        "Equatorial Guinea",
+        "Eritrea",
+        "Estonia",
+        "Ethiopia",
+        "Fiji",
+        "Finland",
+        "France",
+        "Gabon",
+        "Gambia",
+        "Georgia",
+        "Germany",
+        "Ghana",
+        "Greece",
+        "Grenada",
+        "Guatemala",
+        "Guinea",
+        "Guinea-Bissau",
+        "Guyana",
+        "Haiti",
+        "Honduras",
+        "Hungary",
+        "Iceland",
+        "India",
+        "Indonesia",
+        "Iran",
+        "Iraq",
+        "Ireland {Republic}",
+        "Israel",
+        "Italy",
+        "Ivory Coast",
+        "Jamaica",
+        "Japan",
+        "Jordan",
+        "Kazakhstan",
+        "Kenya",
+        "Kiribati",
+        "Korea North",
+        "Korea South",
+        "Kosovo",
+        "Kuwait",
+        "Kyrgyzstan",
+        "Laos",
+        "Latvia",
+        "Lebanon",
+        "Lesotho",
+        "Liberia",
+        "Libya",
+        "Liechtenstein",
+        "Lithuania",
+        "Luxembourg",
+        "Macedonia",
+        "Madagascar",
+        "Malawi",
+        "Malaysia",
+        "Maldives",
+        "Mali",
+        "Malta",
+        "Marshall Islands",
+        "Mauritania",
+        "Mauritius",
+        "Mexico",
+        "Micronesia",
+        "Moldova",
+        "Monaco",
+        "Mongolia",
+        "Montenegro",
+        "Morocco",
+        "Mozambique",
+        "Myanmar, {Burma}",
+        "Namibia",
+        "Nauru",
+        "Nepal",
+        "Netherlands",
+        "New Zealand",
+        "Nicaragua",
+        "Niger",
+        "Nigeria",
+        "Norway",
+        "Oman",
+        "Pakistan",
+        "Palau",
+        "Panama",
+        "Papua New Guinea",
+        "Paraguay",
+        "Peru",
+        "Philippines",
+        "Poland",
+        "Portugal",
+        "Qatar",
+        "Romania",
+        "Russian Federation",
+        "Rwanda",
+        "St Kitts & Nevis",
+        "St Lucia",
+        "Saint Vincent & the Grenadines",
+        "Samoa",
+        "San Marino",
+        "Sao Tome & Principe",
+        "Saudi Arabia",
+        "Senegal",
+        "Serbia",
+        "Seychelles",
+        "Sierra Leone",
+        "Singapore",
+        "Slovakia",
+        "Slovenia",
+        "Solomon Islands",
+        "Somalia",
+        "South Africa",
+        "South Sudan",
+        "Spain",
+        "Sri Lanka",
+        "Sudan",
+        "Suriname",
+        "Swaziland",
+        "Sweden",
+        "Switzerland",
+        "Syria",
+        "Taiwan",
+        "Tajikistan",
+        "Tanzania",
+        "Thailand",
+        "Togo",
+        "Tonga",
+        "Trinidad & Tobago",
+        "Tunisia",
+        "Turkey",
+        "Turkmenistan",
+        "Tuvalu",
+        "Uganda",
+        "Ukraine",
+        "United Arab Emirates",
+        "United Kingdom",
+        "United States",
+        "Uruguay",
+        "Uzbekistan",
+        "Vanuatu",
+        "Vatican City",
+        "Venezuela",
+        "Vietnam",
+        "Yemen",
+        "Zambia",
+        "Zimbabwe",
+      ];
+
+      const countrySelect = document.getElementById("country");
+      countries.forEach((c) => {
+        const opt = document.createElement("option");
+        opt.value = c;
+        opt.text = c;
+        countrySelect.add(opt);
+      });
+
+      function clearError(id) {
+        document.getElementById(id).style.display = "none";
+      }
+      function setError(id, msg) {
+        const el = document.getElementById(id);
+        el.innerText = msg;
+        el.style.display = "block";
+      }
+
+      function togglePassword(inputId, btn) {
+        const input = document.getElementById(inputId);
+        const isPassword = input.type === "password";
+        input.type = isPassword ? "text" : "password";
+        btn.style.color = isPassword ? "#183b5e" : "#8a95a3";
+      }
+
+      function navigateWithFade(url) {
+        document.body.classList.add("fade-out");
+        setTimeout(() => {
+          window.location.href = url;
+        }, 400);
+      }
+
+      function socialLogin(provider) {
+        alert(provider + " sign-up clicked (Demo)");
+      }
+
+      function validateForm() {
+        let isValid = true;
+        const fullName = document.getElementById("fullName").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const dob = document.getElementById("dob").value;
+        const phone = document.getElementById("phone").value.trim();
+        const gender = document.getElementById("gender").value;
+        const password = document.getElementById("password").value.trim();
+        const confirmPassword = document
+          .getElementById("confirmPassword")
+          .value.trim();
+        const city = document.getElementById("city").value.trim();
+        const state = document.getElementById("state").value.trim();
+        const zipCode = document.getElementById("zipCode").value.trim();
+
+        const namePattern = /^[A-Za-z ]{3,}$/;
+        if (!namePattern.test(fullName)) {
+          setError("fullNameError", "Please enter a valid full name.");
+          isValid = false;
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          setError("emailError", "Valid email address required.");
+          isValid = false;
+        }
+
+        if (!dob) {
+          setError("dobError", "Select date of birth.");
+          isValid = false;
+        } else {
+          const dobDate = new Date(dob);
+          if (dobDate > new Date()) {
+            setError("dobError", "DOB can't be in future.");
+            isValid = false;
+          }
+        }
+
+        if (phone) {
+          const phonePattern = /^\d{10,15}$/;
+          if (!phonePattern.test(phone.replace(/[\s\-()]/g, ""))) {
+            setError("phoneError", "Enter a valid phone number.");
+            isValid = false;
+          }
+        }
+
+        if (!gender) {
+          setError("genderError", "Please select gender.");
+          isValid = false;
+        }
+
+        const passPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+        if (!passPattern.test(password)) {
+          setError("passwordError", "Min 8 chars, 1 Upper & 1 Number.");
+          isValid = false;
+        }
+        if (password !== confirmPassword) {
+          setError("confirmPasswordError", "Passwords do not match.");
+          isValid = false;
+        }
+
+        if (city.length < 2) {
+          setError("cityError", "Valid city required.");
+          isValid = false;
+        }
+        if (state.length < 2) {
+          setError("stateError", "Valid state required.");
+          isValid = false;
+        }
+
+        if (zipCode) {
+          const zipPattern = /^[A-Za-z0-9\- ]{4,10}$/;
+          if (!zipPattern.test(zipCode)) {
+            setError("zipCodeError", "Valid ZIP code required.");
+            isValid = false;
+          }
+        }
+
+        if (isValid) {
+          alert("Account Created Successfully!");
+          navigateWithFade("login.html");
+        }
+        return false;
+      }
+
+      document
+        .getElementById("backToLoginLink")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          navigateWithFade("login.html");
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login — Northwest Safety & Health</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --nw2-navy: #183b5e;
+        --nw2-navy-dark: #102b45;
+        --nw2-navy-deep: #0c2034;
+        --nw2-teal: #2bb0ac;
+        --nw2-orange: #ee6d29;
+        --nw2-orange-light: #ff8a4d;
+        --nw2-white: #ffffff;
+        --nw2-muted: #7c8794;
+        --nw2-border: #e2e6eb;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(
+          135deg,
+          var(--nw2-navy-dark),
+          var(--nw2-navy-deep)
+        );
+        padding: 20px;
+        opacity: 0;
+        animation: fadeInPage 0.6s ease-in-out forwards;
+        transition: opacity 0.4s ease-in-out;
+      }
+      body.fade-out {
+        opacity: 0;
+      }
+
+      @keyframes fadeInPage {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ===== CARD ===== */
+      .login-card {
+        width: 100%;
+        max-width: 480px;
+        background-color: var(--nw2-white);
+        border-radius: 16px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ===== HEADER (dark) with brand box top ===== */
+      .card-header {
+        background: linear-gradient(
+          135deg,
+          var(--nw2-navy) 0%,
+          var(--nw2-navy-dark) 100%
+        );
+        padding: 22px 32px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 14px;
+      }
+
+      /* ✅ Brand Box — WHITE background, TOP */
+      .brand-box {
+        background-color: var(--nw2-white);
+        border-radius: 500px;
+        padding: 30px 7%;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      }
+
+      .brand-box img {
+        height: 100px;
+        width: auto;
+        object-fit: cover;
+      }
+
+      .brand-box span {
+        color: var(--nw2-navy);
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        white-space: nowrap;
+      }
+
+      /* Heading — BELOW brand box */
+      .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        color: var(--nw2-white);
+      }
+
+      .avatar {
+        flex-shrink: 0;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.12);
+        border: 1.5px solid rgba(255, 255, 255, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--nw2-white);
+      }
+      .avatar svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .header-text {
+        text-align: left;
+        color: var(--nw2-white);
+      }
+      .header-text h1 {
+        font-size: 19px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        margin-bottom: 1px;
+      }
+      .header-text p {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* ===== BODY (form) ===== */
+      .card-body {
+        padding: 26px 32px 28px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 16px;
+      }
+
+      label {
+        color: var(--nw2-navy);
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 6px;
+      }
+
+      .input-group {
+        position: relative;
+      }
+
+      input {
+        width: 100%;
+        padding: 11px 13px;
+        border: 1.5px solid var(--nw2-border);
+        border-radius: 7px;
+        font-size: 13.5px;
+        font-family: "Poppins", sans-serif;
+        color: #333;
+        background-color: #fbfcfd;
+        transition: all 0.25s ease;
+        height: 44px;
+      }
+      input::placeholder {
+        color: #a3acb6;
+      }
+      input:focus {
+        outline: none;
+        border-color: var(--nw2-teal);
+        background-color: #fff;
+        box-shadow: 0 0 0 3px rgba(43, 176, 172, 0.12);
+      }
+
+      /* Password field with eye toggle */
+      .password-wrap {
+        position: relative;
+      }
+      .password-wrap input {
+        padding-right: 42px;
+      }
+      .password-wrap .eye-btn {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #8a95a3;
+        transition: color 0.2s ease;
+      }
+      .password-wrap .eye-btn:hover {
+        color: var(--nw2-navy);
+      }
+      .password-wrap .eye-btn svg {
+        width: 17px;
+        height: 17px;
+      }
+
+      .error {
+        color: #e74c3c;
+        font-size: 11px;
+        margin-top: 4px;
+        min-height: 12px;
+        display: none;
+      }
+
+      .form-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 18px;
+        font-size: 12.5px;
+      }
+      .remember-me {
+        display: flex;
+        align-items: center;
+        color: #555;
+        cursor: pointer;
+      }
+      .remember-me input {
+        width: auto;
+        margin-right: 6px;
+        accent-color: var(--nw2-navy);
+        cursor: pointer;
+        height: auto;
+        padding: 0;
+      }
+
+      .forgot-link {
+        color: var(--nw2-teal);
+        text-decoration: none;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      .forgot-link:hover {
+        color: var(--nw2-navy);
+      }
+
+      .btn-login {
+        width: 100%;
+        padding: 12px;
+        background-color: var(--nw2-navy);
+        color: var(--nw2-white);
+        border: none;
+        border-radius: 8px;
+        font-size: 14.5px;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        cursor: pointer;
+        transition: background-color 0.25s ease;
+        height: 46px;
+      }
+      .btn-login:hover {
+        background-color: var(--nw2-navy-dark);
+      }
+
+      /* ✅ Divider "or continue with" */
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 18px 0 14px;
+      }
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        height: 1.5px;
+        background-color: var(--nw2-border);
+      }
+      .divider span {
+        color: var(--nw2-muted);
+        font-size: 12px;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      /* ✅ Social buttons */
+      .social-btns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .btn-social {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        padding: 10px;
+        border: 1.5px solid var(--nw2-border);
+        border-radius: 8px;
+        background-color: var(--nw2-white);
+        font-family: "Poppins", sans-serif;
+        font-size: 13.5px;
+        font-weight: 500;
+        color: #333;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        height: 44px;
+      }
+      .btn-social:hover {
+        border-color: var(--nw2-navy);
+        background-color: #f9fafc;
+        transform: translateY(-1px);
+      }
+      .btn-social svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+      }
+      .btn-social.google svg {
+        color: #ea4335;
+      }
+      .btn-social.linkedin svg {
+        color: #0a66c2;
+      }
+
+      /* Signup link */
+      .signup-link {
+        text-align: center;
+        margin-top: 18px;
+        font-size: 13px;
+        color: #555;
+        padding-top: 14px;
+        border-top: 1.5px solid var(--nw2-border);
+      }
+      .signup-link a {
+        color: var(--nw2-navy);
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        margin-left: 4px;
+      }
+      .signup-link a:hover {
+        color: var(--nw2-orange);
+        text-decoration: underline;
+      }
+
+      /* ===== MOBILE ===== */
+      @media (max-width: 500px) {
+        body {
+          align-items: flex-start;
+          padding: 16px;
+        }
+        .card-header {
+          padding: 18px 20px 16px;
+          gap: 12px;
+        }
+        .brand-box {
+          padding: 8px 14px;
+          gap: 10px;
+        }
+        .brand-box img {
+          height: 42px;
+        }
+        .brand-box span {
+          font-size: 14px;
+        }
+        .header-text h1 {
+          font-size: 17px;
+        }
+        .header-text p {
+          font-size: 11px;
+        }
+        .card-body {
+          padding: 22px 20px 24px;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .brand-box {
+          flex-direction: column;
+          gap: 6px;
+          padding: 8px 14px;
+        }
+        .brand-box img {
+          height: 38px;
+        }
+        .brand-box span {
+          font-size: 13px;
+          text-align: center;
+          white-space: normal;
+        }
+        .header-content {
+          flex-direction: column;
+          gap: 8px;
+        }
+        .header-text {
+          text-align: center;
+        }
+        .social-btns {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-card">
+      <!-- ===== HEADER: Brand box UPAR, Heading NEECHE ===== -->
+      <div class="card-header">
+        <!-- ✅ Brand Box (WHITE) — TOP -->
+        <div class="brand-box">
+          <a href="index.html">
+            <img
+              src="assets/Logo/NSH Logo 01.png"
+              alt="Northwest Safety & Health Logo"
+            />
+          </a>
+          <!-- <span>Northwest Safety &amp; Health</span> -->
+        </div>
+
+        <!-- ✅ Heading — BELOW brand box -->
+        <div class="header-content">
+          <div class="avatar">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+              <polyline points="10 17 15 12 10 7"></polyline>
+              <line x1="15" y1="12" x2="3" y2="12"></line>
+            </svg>
+          </div>
+          <div class="header-text">
+            <h1>Welcome Back</h1>
+            <p>Please login to your account to continue.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== BODY ===== -->
+      <div class="card-body">
+        <form id="loginForm" onsubmit="return validateLogin();">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <div class="input-group">
+              <input
+                type="email"
+                id="email"
+                placeholder="you@example.com"
+                oninput="clearError('emailError')"
+              />
+            </div>
+            <div id="emailError" class="error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-wrap">
+              <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                oninput="clearError('passwordError')"
+              />
+              <button
+                type="button"
+                class="eye-btn"
+                onclick="togglePassword('password', this)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+            <div id="passwordError" class="error"></div>
+          </div>
+
+          <div class="form-row">
+            <label class="remember-me">
+              <input type="checkbox" id="rememberMe" /> Remember me
+            </label>
+            <a class="forgot-link" id="forgotLink">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="btn-login">Login</button>
+
+          <!-- ✅ Social login divider -->
+          <div class="divider">
+            <span>or continue with</span>
+          </div>
+
+          <!-- ✅ Google + LinkedIn buttons -->
+          <div class="social-btns">
+            <button
+              type="button"
+              class="btn-social google"
+              onclick="socialLogin('Google')"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M21.35 11.1h-9.18v2.9h5.29c-.23 1.28-.94 2.36-2 3.09v2.56h3.24c1.9-1.75 3-4.32 3-7.39 0-.72-.06-1.42-.19-2.09z"
+                />
+                <path
+                  d="M12.17 22c2.7 0 4.96-.89 6.62-2.42l-3.24-2.56c-.9.6-2.04.95-3.38.95-2.6 0-4.8-1.75-5.59-4.11H3.23v2.65A9.99 9.99 0 0 0 12.17 22z"
+                  fill="#34a853"
+                />
+                <path
+                  d="M6.58 13.86a6.02 6.02 0 0 1 0-3.81V7.39H3.23a10.02 10.02 0 0 0 0 8.87l3.35-2.4z"
+                  fill="#fbbc05"
+                />
+                <path
+                  d="M12.17 5.96c1.47 0 2.79.51 3.83 1.5l2.87-2.87A9.95 9.95 0 0 0 12.17 2 9.99 9.99 0 0 0 3.23 7.39l3.35 2.66c.79-2.36 2.99-4.09 5.59-4.09z"
+                  fill="#ea4335"
+                />
+              </svg>
+              Google
+            </button>
+            <button
+              type="button"
+              class="btn-social linkedin"
+              onclick="socialLogin('LinkedIn')"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"
+                />
+              </svg>
+              LinkedIn
+            </button>
+          </div>
+
+          <div class="signup-link">
+            Don't have an account? <a id="registerLink">Register Now</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function clearError(id) {
+        document.getElementById(id).style.display = "none";
+      }
+      function setError(id, msg) {
+        const el = document.getElementById(id);
+        el.innerText = msg;
+        el.style.display = "block";
+      }
+
+      function togglePassword(inputId, btn) {
+        const input = document.getElementById(inputId);
+        const isPassword = input.type === "password";
+        input.type = isPassword ? "text" : "password";
+        btn.style.color = isPassword ? "#183b5e" : "#8a95a3";
+      }
+
+      function navigateWithFade(url) {
+        document.body.classList.add("fade-out");
+        setTimeout(() => {
+          window.location.href = url;
+        }, 400);
+      }
+
+      function validateLogin() {
+        let isValid = true;
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          setError("emailError", "Please enter a valid email address.");
+          isValid = false;
+        }
+
+        if (password.length < 1) {
+          setError("passwordError", "Password cannot be empty.");
+          isValid = false;
+        }
+
+        if (isValid) {
+          alert("Login Successful!");
+          // navigateWithFade("dashboard.html");
+        }
+        return false;
+      }
+
+      // ✅ Social Login (Demo)
+      function socialLogin(provider) {
+        if (provider === "Google") {
+          // Real Google OAuth example:
+          // window.location.href = "https://accounts.google.com/o/oauth2/v2/auth?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=token&scope=email profile";
+          alert("Continue with Google (Demo)");
+        } else if (provider === "LinkedIn") {
+          // Real LinkedIn OAuth example:
+          // window.location.href = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&scope=r_liteprofile r_emailaddress";
+          alert("Continue with LinkedIn (Demo)");
+        }
+      }
+
+      document
+        .getElementById("registerLink")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          navigateWithFade("register.html");
+        });
+
+      document
+        .getElementById("forgotLink")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          navigateWithFade("ForgotPassword.html");
+        });
+    </script>
+  </body>
+</html>
