@@ -1,2308 +1,2364 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Service Details | Northwest Safety & Health</title>
-    <meta
-      name="description"
-      content="Explore Northwest Safety & Health training programs with course-specific badges and details."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --primary: #183b5e;
-        --primary-dark: #102b45;
-        --navy: #0a2540;
-        --accent: #ee6d29;
-        --accent-light: #ff8a4d;
-        --teal: #0d9488;
-        --teal-dark: #0f766e;
-        --teal-light: #55c8c3;
-        --text: #17212b;
-        --muted: #667085;
-        --light: #f4f6f9;
-        --white: #ffffff;
-        --border: #e4e9ef;
-        --red: #e11d48;
-        --success: #1f8f55;
-        --container: 1200px;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: "Manrope", Arial, Helvetica, sans-serif;
-        color: var(--text);
-        background: var(--light);
-        line-height: 1.6;
-        -webkit-font-smoothing: antialiased;
-      }
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-      img {
-        max-width: 100%;
-        display: block;
-      }
-      button {
-        font: inherit;
-        cursor: pointer;
-      }
-      .container {
-        width: min(92%, var(--container));
-        margin: auto;
-      }
 
-      /* =========================================================
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Service Details | Northwest Safety & Health</title>
+  <meta name="description"
+    content="Explore Northwest Safety & Health training programs with course-specific badges and details." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #183b5e;
+      --primary-dark: #102b45;
+      --navy: #0a2540;
+      --accent: #ee6d29;
+      --accent-light: #ff8a4d;
+      --teal: #0d9488;
+      --teal-dark: #0f766e;
+      --teal-light: #55c8c3;
+      --text: #17212b;
+      --muted: #667085;
+      --light: #f4f6f9;
+      --white: #ffffff;
+      --border: #e4e9ef;
+      --red: #e11d48;
+      --success: #1f8f55;
+      --container: 1200px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Manrope", Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--light);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(92%, var(--container));
+      margin: auto;
+    }
+
+    /* =========================================================
        NAVBAR
     ========================================================= */
-      .nw-navbar {
-        width: 100%;
-        height: 96px;
-        background-color: #ffffff;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 5%;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-      }
-      .nw-nav-logo {
-        display: flex;
-        align-items: center;
-        flex-shrink: 0;
-      }
-      .nw-nav-logo img {
-        height: 85px;
-        width: auto;
-        display: block;
-      }
+    .nw-navbar {
+      width: 100%;
+      height: 96px;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nw-nav-logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .nw-nav-logo img {
+      height: 85px;
+      width: auto;
+      display: block;
+    }
+
+    .nw-nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      list-style: none;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nw-nav-menu li a {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1a1a1a;
+      letter-spacing: -0.2px;
+      transition: color 0.3s ease;
+    }
+
+    .nw-nav-menu li a.active,
+    .nw-nav-menu li a:hover {
+      color: #ee6d29;
+    }
+
+    .nw-nav-btn-wrap {
+      flex-shrink: 0;
+    }
+
+    .nw-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 32px;
+      height: 52px;
+      background-color: #183b5e;
+      color: #ffffff;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(24, 59, 94, 0.15);
+      white-space: nowrap;
+    }
+
+    .nw-nav-btn:hover {
+      background-color: #102b45;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(24, 59, 94, 0.25);
+    }
+
+    .nw-mobile-menu {
+      display: none;
+      border: 0;
+      background: transparent;
+      font-size: 28px;
+      color: #183b5e;
+    }
+
+    @media (max-width: 1024px) {
       .nw-nav-menu {
-        display: flex;
-        align-items: center;
-        gap: 48px;
-        list-style: none;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
+        gap: 28px;
       }
+
       .nw-nav-menu li a {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 16px;
-        font-weight: 600;
-        color: #1a1a1a;
-        letter-spacing: -0.2px;
-        transition: color 0.3s ease;
-      }
-      .nw-nav-menu li a.active,
-      .nw-nav-menu li a:hover {
-        color: #ee6d29;
-      }
-      .nw-nav-btn-wrap {
-        flex-shrink: 0;
-      }
-      .nw-nav-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 32px;
-        height: 52px;
-        background-color: #183b5e;
-        color: #ffffff;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 15px;
-        font-weight: 600;
-        border-radius: 12px;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(24, 59, 94, 0.15);
-        white-space: nowrap;
-      }
-      .nw-nav-btn:hover {
-        background-color: #102b45;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 18px rgba(24, 59, 94, 0.25);
-      }
-      .nw-mobile-menu {
-        display: none;
-        border: 0;
-        background: transparent;
-        font-size: 28px;
-        color: #183b5e;
-      }
-      @media (max-width: 1024px) {
-        .nw-nav-menu {
-          gap: 28px;
-        }
-        .nw-nav-menu li a {
-          font-size: 14px;
-        }
-        .nw-nav-btn {
-          padding: 0 24px;
-          height: 48px;
-          font-size: 14px;
-        }
-      }
-      @media (max-width: 850px) {
-        .nw-nav-menu {
-          display: none;
-        }
-        .nw-navbar {
-          padding: 0 24px;
-        }
-        .nw-nav-logo img {
-          height: 70px;
-        }
-        .nw-mobile-menu {
-          display: block;
-        }
-      }
-      @media (max-width: 480px) {
-        .nw-navbar {
-          height: 80px;
-          padding: 0 16px;
-        }
-        .nw-nav-logo img {
-          height: 60px;
-        }
-        .nw-nav-btn {
-          padding: 0 18px;
-          height: 42px;
-          font-size: 13px;
-        }
-      }
-
-      .nw-mobile-nav {
-        display: none;
-        position: absolute;
-        top: 96px;
-        left: 0;
-        right: 0;
-        background: #fff;
-        border-bottom: 1px solid var(--border);
-        padding: 20px;
-        flex-direction: column;
-        gap: 16px;
-        z-index: 999;
-      }
-      .nw-mobile-nav.open {
-        display: flex;
-      }
-      .nw-mobile-nav a {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 16px;
-        font-weight: 600;
-        color: #183b5e;
-        padding: 8px 0;
-      }
-
-      .breadcrumb-wrap {
-        background: transparent;
-        border-bottom: 1px solid var(--border);
-      }
-      .breadcrumb {
-        padding: 20px 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 9px;
-        color: #fff;
         font-size: 14px;
       }
-      .breadcrumb a:hover {
-        color: #fff;
+
+      .nw-nav-btn {
+        padding: 0 24px;
+        height: 48px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 850px) {
+      .nw-nav-menu {
+        display: none;
       }
 
-      /* =========================================================
+      .nw-navbar {
+        padding: 0 24px;
+      }
+
+      .nw-nav-logo img {
+        height: 70px;
+      }
+
+      .nw-mobile-menu {
+        display: block;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nw-navbar {
+        height: 80px;
+        padding: 0 16px;
+      }
+
+      .nw-nav-logo img {
+        height: 60px;
+      }
+
+      .nw-nav-btn {
+        padding: 0 18px;
+        height: 42px;
+        font-size: 13px;
+      }
+    }
+
+    .nw-mobile-nav {
+      display: none;
+      position: absolute;
+      top: 96px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 20px;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 999;
+    }
+
+    .nw-mobile-nav.open {
+      display: flex;
+    }
+
+    .nw-mobile-nav a {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #183b5e;
+      padding: 8px 0;
+    }
+
+    .breadcrumb-wrap {
+      background: transparent;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .breadcrumb {
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .breadcrumb a:hover {
+      color: #fff;
+    }
+
+    /* =========================================================
        HERO — Dark Navy Card Layout
     ========================================================= */
-      .course-hero {
-        background: var(--navy);
-        padding: 55px 0 65px;
-        position: relative;
-        overflow: hidden;
-      }
-      .course-hero::before {
-        content: "";
-        position: absolute;
-        width: 620px;
-        height: 620px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
+    .course-hero {
+      background: var(--navy);
+      padding: 55px 0 65px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .course-hero::before {
+      content: "";
+      position: absolute;
+      width: 620px;
+      height: 620px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
           rgba(13, 148, 136, 0.1),
-          transparent 70%
-        );
-        top: -310px;
-        right: -200px;
-        pointer-events: none;
-      }
-      .course-hero::after {
-        content: "";
-        position: absolute;
-        width: 460px;
-        height: 460px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
+          transparent 70%);
+      top: -310px;
+      right: -200px;
+      pointer-events: none;
+    }
+
+    .course-hero::after {
+      content: "";
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
           rgba(238, 109, 41, 0.06),
-          transparent 70%
-        );
-        bottom: -230px;
-        left: -150px;
-        pointer-events: none;
-      }
-      .course-hero-inner {
-        position: relative;
-        z-index: 2;
-        text-align: center;
-        max-width: 920px;
-        margin: 0 auto;
+          transparent 70%);
+      bottom: -230px;
+      left: -150px;
+      pointer-events: none;
+    }
+
+    .course-hero-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 66px;
+      height: 66px;
+      background: #fff;
+      border-radius: 15px;
+      margin-bottom: 26px;
+      padding: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+    }
+
+    .hero-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .course-hero h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(28px, 4.2vw, 46px);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -1.2px;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .course-price {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(30px, 4vw, 44px);
+      font-weight: 700;
+      color: #ee6d29;
+      letter-spacing: -1px;
+      margin-bottom: 28px;
+    }
+
+    .course-price .price-from {
+      display: block;
+      font-size: 12px;
+      color: #2bb0ac;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.88);
+      font-family: "Space Grotesk", sans-serif;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .hero-tag::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal-light);
+    }
+
+    @media (max-width: 600px) {
+      .course-hero {
+        padding: 42px 0 50px;
       }
 
       .hero-badge {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 66px;
-        height: 66px;
-        background: #fff;
-        border-radius: 15px;
-        margin-bottom: 26px;
-        padding: 8px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
-      }
-      .hero-badge img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+        width: 54px;
+        height: 54px;
       }
 
-      .course-hero h1 {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: clamp(28px, 4.2vw, 46px);
-        font-weight: 700;
-        color: #fff;
-        letter-spacing: -1.2px;
-        line-height: 1.15;
-        margin-bottom: 18px;
-      }
-
-      .course-price {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: clamp(30px, 4vw, 44px);
-        font-weight: 700;
-        color: #ee6d29;
-        letter-spacing: -1px;
-        margin-bottom: 28px;
-      }
-      .course-price .price-from {
-        display: block;
-        font-size: 12px;
-        color: #2bb0ac;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        margin-bottom: 4px;
-        font-weight: 600;
-      }
-
-      .hero-tags {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-      }
       .hero-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 18px;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 50px;
-        font-size: 12px;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.88);
-        font-family: "Space Grotesk", sans-serif;
-        letter-spacing: 0.4px;
-        text-transform: uppercase;
+        font-size: 10.5px;
+        padding: 6px 13px;
       }
-      .hero-tag::before {
-        content: "";
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--teal-light);
-      }
+    }
 
-      @media (max-width: 600px) {
-        .course-hero {
-          padding: 42px 0 50px;
-        }
-        .hero-badge {
-          width: 54px;
-          height: 54px;
-        }
-        .hero-tag {
-          font-size: 10.5px;
-          padding: 6px 13px;
-        }
-      }
-
-      /* =========================================================
+    /* =========================================================
        MAIN BODY — Two-column layout
     ========================================================= */
-      .course-body {
-        padding: 50px 0 80px;
-      }
+    .course-body {
+      padding: 50px 0 80px;
+    }
 
-      .course-layout {
-        display: grid;
-        grid-template-columns: 1fr 350px;
-        gap: 30px;
-        align-items: start;
-      }
+    .course-layout {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 30px;
+      align-items: start;
+    }
 
-      /* =========================================================
+    /* =========================================================
        LEFT — Content Card
     ========================================================= */
+    .course-main {
+      background: #fff;
+      border-radius: 22px;
+      padding: 42px 44px;
+      box-shadow: 0 6px 32px rgba(15, 41, 66, 0.06);
+      border: 1px solid #eef1f5;
+    }
+
+    .content-block+.content-block {
+      margin-top: 44px;
+      padding-top: 44px;
+      border-top: 1px solid #eef1f5;
+    }
+
+    .content-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 22px;
+      letter-spacing: -0.4px;
+      padding-left: 16px;
+      border-left: 4px solid var(--teal);
+      line-height: 1.3;
+    }
+
+    .content-text p {
+      color: #475467;
+      font-size: 15.5px;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    .content-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .check-list {
+      list-style: none;
+      display: grid;
+      gap: 13px;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      color: #475467;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 7px;
+      background: rgba(13, 148, 136, 0.12);
+      color: var(--teal);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 900;
+      margin-top: 2px;
+    }
+
+    .req-box {
+      background: #f8fafc;
+      border: 1px solid #eef1f5;
+      border-radius: 14px;
+      padding: 22px 24px;
+    }
+
+    .req-box p {
+      color: #475467;
+      font-size: 15px;
+      line-height: 1.75;
+      margin-bottom: 10px;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .req-box p::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-weight: 900;
+    }
+
+    .req-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .learning-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .learning-card {
+      position: relative;
+      background: #f8fafc;
+      border: 1px solid #eef1f5;
+      border-radius: 14px;
+      padding: 22px 22px;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .learning-card:hover {
+      background: #fff;
+      border-color: rgba(13, 148, 136, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(13, 148, 136, 0.08);
+    }
+
+    .learning-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      background: rgba(13, 148, 136, 0.12);
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 800;
+      font-family: "Space Grotesk", sans-serif;
+      margin-bottom: 14px;
+    }
+
+    .learning-card h3 {
+      color: var(--navy);
+      font-size: 15.5px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+      line-height: 1.3;
+    }
+
+    .learning-card p {
+      color: #64748b;
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 992px) {
+      .course-layout {
+        grid-template-columns: 1fr;
+      }
+
       .course-main {
-        background: #fff;
-        border-radius: 22px;
-        padding: 42px 44px;
-        box-shadow: 0 6px 32px rgba(15, 41, 66, 0.06);
-        border: 1px solid #eef1f5;
+        padding: 30px 24px;
       }
+    }
 
-      .content-block + .content-block {
-        margin-top: 44px;
-        padding-top: 44px;
-        border-top: 1px solid #eef1f5;
-      }
-
-      .content-heading {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 20px;
-        font-weight: 700;
-        color: var(--navy);
-        margin-bottom: 22px;
-        letter-spacing: -0.4px;
-        padding-left: 16px;
-        border-left: 4px solid var(--teal);
-        line-height: 1.3;
-      }
-
-      .content-text p {
-        color: #475467;
-        font-size: 15.5px;
-        line-height: 1.8;
-        margin-bottom: 14px;
-      }
-      .content-text p:last-child {
-        margin-bottom: 0;
-      }
-
-      .check-list {
-        list-style: none;
-        display: grid;
-        gap: 13px;
-      }
-      .check-list li {
-        display: flex;
-        align-items: flex-start;
-        gap: 13px;
-        color: #475467;
-        font-size: 15px;
-        line-height: 1.65;
-      }
-      .check-list li::before {
-        content: "✓";
-        flex-shrink: 0;
-        width: 24px;
-        height: 24px;
-        border-radius: 7px;
-        background: rgba(13, 148, 136, 0.12);
-        color: var(--teal);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
-        font-weight: 900;
-        margin-top: 2px;
-      }
-
-      .req-box {
-        background: #f8fafc;
-        border: 1px solid #eef1f5;
-        border-radius: 14px;
-        padding: 22px 24px;
-      }
-      .req-box p {
-        color: #475467;
-        font-size: 15px;
-        line-height: 1.75;
-        margin-bottom: 10px;
-        padding-left: 14px;
-        position: relative;
-      }
-      .req-box p::before {
-        content: "•";
-        position: absolute;
-        left: 0;
-        color: var(--teal);
-        font-weight: 900;
-      }
-      .req-box p:last-child {
-        margin-bottom: 0;
-      }
-
+    @media (max-width: 600px) {
       .learning-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
+        grid-template-columns: 1fr;
       }
-      .learning-card {
-        position: relative;
-        background: #f8fafc;
-        border: 1px solid #eef1f5;
-        border-radius: 14px;
-        padding: 22px 22px;
-        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .learning-card:hover {
-        background: #fff;
-        border-color: rgba(13, 148, 136, 0.3);
-        transform: translateY(-4px);
-        box-shadow: 0 15px 40px rgba(13, 148, 136, 0.08);
-      }
-      .learning-number {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 38px;
-        height: 38px;
-        border-radius: 11px;
-        background: rgba(13, 148, 136, 0.12);
-        color: var(--teal);
-        font-size: 13px;
-        font-weight: 800;
-        font-family: "Space Grotesk", sans-serif;
-        margin-bottom: 14px;
-      }
-      .learning-card h3 {
-        color: var(--navy);
-        font-size: 15.5px;
-        font-family: "Space Grotesk", sans-serif;
-        font-weight: 700;
-        margin-bottom: 8px;
-        letter-spacing: -0.2px;
-        line-height: 1.3;
-      }
-      .learning-card p {
-        color: #64748b;
-        font-size: 13.5px;
-        line-height: 1.6;
-      }
+    }
 
-      @media (max-width: 992px) {
-        .course-layout {
-          grid-template-columns: 1fr;
-        }
-        .course-main {
-          padding: 30px 24px;
-        }
-      }
-      @media (max-width: 600px) {
-        .learning-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      /* =========================================================
+    /* =========================================================
        RIGHT — Sidebar
     ========================================================= */
+    .course-sidebar {
+      position: sticky;
+      top: 120px;
+      background: #183b5e;
+      border-radius: 22px;
+      padding: 30px 28px;
+      box-shadow: 0 6px 32px rgba(15, 41, 66, 0.06);
+      border: 1px solid #eef1f5;
+    }
+
+    .sidebar-heading {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #eef1f5;
+      letter-spacing: -0.3px;
+    }
+
+    .sidebar-heading::before {
+      content: "";
+      width: 4px;
+      height: 20px;
+      background: var(--teal);
+      border-radius: 3px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 13px 0;
+      border-bottom: 1px solid #f1f4f8;
+    }
+
+    .info-row:last-of-type {
+      border-bottom: none;
+    }
+
+    .info-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(13, 148, 136, 0.1);
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .info-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .info-text {
+      flex: 1;
+    }
+
+    .info-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.9px;
+      color: #fff;
+      font-family: "Space Grotesk", sans-serif;
+      margin-bottom: 3px;
+    }
+
+    .info-value {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.45;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 14px;
+      background: rgba(13, 148, 136, 0.12);
+      color: #fff;
+      border-radius: 50px;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .sidebar-actions {
+      margin-top: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn-enroll {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 17px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      color: #fff;
+      border-radius: 50px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 26px rgba(13, 148, 136, 0.28);
+    }
+
+    .btn-enroll:hover {
+      background: linear-gradient(135deg, var(--teal-dark), #0b5e57);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(13, 148, 136, 0.38);
+    }
+
+    .btn-enroll svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .btn-appointment {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 15px;
+      background: transparent;
+      color: var(--navy);
+      border: 2px solid #e2e8f0;
+      border-radius: 50px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      background: #fff;
+    }
+
+    .btn-appointment:hover {
+      border-color: var(--navy);
+      background: #f8fafc;
+      transform: translateY(-2px);
+    }
+
+    .btn-appointment svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    @media (max-width: 992px) {
       .course-sidebar {
-        position: sticky;
-        top: 120px;
-        background: #183b5e;
-        border-radius: 22px;
-        padding: 30px 28px;
-        box-shadow: 0 6px 32px rgba(15, 41, 66, 0.06);
-        border: 1px solid #eef1f5;
-      }
-
-      .sidebar-heading {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 17px;
-        font-weight: 700;
-        color: #fff;
-        margin-bottom: 22px;
-        padding-bottom: 16px;
-        border-bottom: 1px solid #eef1f5;
-        letter-spacing: -0.3px;
-      }
-      .sidebar-heading::before {
-        content: "";
-        width: 4px;
-        height: 20px;
-        background: var(--teal);
-        border-radius: 3px;
-      }
-
-      .info-row {
-        display: flex;
-        align-items: flex-start;
-        gap: 14px;
-        padding: 13px 0;
-        border-bottom: 1px solid #f1f4f8;
-      }
-      .info-row:last-of-type {
-        border-bottom: none;
-      }
-
-      .info-icon {
-        flex-shrink: 0;
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
-        background: rgba(13, 148, 136, 0.1);
-        color: var(--teal);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .info-icon svg {
-        width: 18px;
-        height: 18px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-
-      .info-text {
-        flex: 1;
-      }
-      .info-label {
-        font-size: 11px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.9px;
-        color: #fff;
-        font-family: "Space Grotesk", sans-serif;
-        margin-bottom: 3px;
-      }
-      .info-value {
-        font-size: 14.5px;
-        font-weight: 600;
-        color: #fff;
-        line-height: 1.45;
-      }
-      .status-badge {
-        display: inline-flex;
-        align-items: center;
-        padding: 4px 14px;
-        background: rgba(13, 148, 136, 0.12);
-        color: #fff;
-        border-radius: 50px;
-        font-size: 11.5px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.6px;
-      }
-
-      .sidebar-actions {
-        margin-top: 26px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .btn-enroll {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        width: 100%;
-        padding: 17px;
-        background: linear-gradient(135deg, var(--teal), var(--teal-dark));
-        color: #fff;
-        border-radius: 50px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 15px;
-        font-weight: 700;
-        letter-spacing: 0.4px;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 26px rgba(13, 148, 136, 0.28);
-      }
-      .btn-enroll:hover {
-        background: linear-gradient(135deg, var(--teal-dark), #0b5e57);
-        transform: translateY(-2px);
-        box-shadow: 0 14px 34px rgba(13, 148, 136, 0.38);
-      }
-      .btn-enroll svg {
-        width: 18px;
-        height: 18px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-
-      .btn-appointment {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        width: 100%;
-        padding: 15px;
-        background: transparent;
-        color: var(--navy);
-        border: 2px solid #e2e8f0;
-        border-radius: 50px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 13.5px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        background: #fff;
-      }
-      .btn-appointment:hover {
-        border-color: var(--navy);
-        background: #f8fafc;
-        transform: translateY(-2px);
-      }
-      .btn-appointment svg {
-        width: 16px;
-        height: 16px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-
-      @media (max-width: 992px) {
-        .course-sidebar {
-          position: static;
-          max-width: 520px;
-          margin: 0 auto;
-        }
-      }
-
-      /* =========================================================
-       RELATED SERVICES
-    ========================================================= */
-      .section {
-        padding: 70px 0;
-      }
-      .section-light {
-        background: var(--light);
-      }
-
-      .section-heading.center {
-        text-align: center;
-        margin: 0 auto 44px;
-        max-width: 720px;
-      }
-      .section-heading .small-title {
-        color: var(--accent);
-        font-size: 13px;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 1.4px;
-        margin-bottom: 10px;
-        font-family: "Space Grotesk", sans-serif;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .section-heading .small-title::before,
-      .section-heading.center .small-title::after {
-        content: "";
-        width: 24px;
-        height: 2px;
-        background: linear-gradient(90deg, var(--teal), var(--accent));
-        border-radius: 5px;
-      }
-      .section-heading h2 {
-        color: var(--primary);
-        font-size: clamp(28px, 3.6vw, 42px);
-        font-family: "Space Grotesk", sans-serif;
-        font-weight: 700;
-        letter-spacing: -1.3px;
-        margin-bottom: 12px;
-      }
-      .section-heading p {
-        color: var(--muted);
-        font-size: 16px;
-      }
-
-      .related-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 22px;
-      }
-      .related-card {
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        overflow: hidden;
-        background: #fff;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        display: flex;
-        flex-direction: column;
-      }
-      .related-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 25px 55px rgba(24, 59, 94, 0.12);
-        border-color: rgba(13, 148, 136, 0.35);
-      }
-      .related-image {
-        height: 170px;
-        background: #dfe8ef center / cover;
-        position: relative;
-      }
-      .related-image::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          to top,
-          rgba(10, 37, 64, 0.65),
-          rgba(10, 37, 64, 0.05)
-        );
-      }
-      .related-content {
-        padding: 22px 22px 26px;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-      }
-      .related-content h3 {
-        color: var(--primary);
-        font-size: 17px;
-        font-family: "Space Grotesk", sans-serif;
-        font-weight: 600;
-        margin-bottom: 8px;
-        line-height: 1.3;
-      }
-      .related-content p {
-        color: var(--muted);
-        font-size: 13.5px;
-        line-height: 1.6;
-        margin-bottom: 16px;
-        flex: 1;
-      }
-      .learn-more {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        color: var(--accent);
-        font-weight: 700;
-        font-size: 13px;
-        font-family: "Space Grotesk", sans-serif;
-        align-self: flex-start;
-        transition: 0.3s;
-      }
-      .learn-more::after {
-        content: "→";
-        transition: transform 0.3s;
-      }
-      .learn-more:hover::after {
-        transform: translateX(5px);
-      }
-
-      @media (max-width: 900px) {
-        .related-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      @media (max-width: 600px) {
-        .related-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      /* =========================================================
-       CTA
-    ========================================================= */
-      .cta {
-        background:
-          linear-gradient(
-            90deg,
-            rgba(12, 32, 52, 0.96),
-            rgba(24, 59, 94, 0.92)
-          ),
-          url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1800&q=80")
-            center / cover;
-        color: #fff;
-        padding: 90px 0;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-      }
-      .cta::before {
-        content: "";
-        position: absolute;
-        width: 600px;
-        height: 600px;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        border: 1px solid rgba(13, 148, 136, 0.12);
-        box-shadow: 0 0 0 80px rgba(13, 148, 136, 0.025);
-        pointer-events: none;
-      }
-      .cta h2 {
-        font-size: clamp(28px, 3.8vw, 44px);
-        margin-bottom: 15px;
-        font-family: "Space Grotesk", sans-serif;
-        position: relative;
-        z-index: 2;
-        letter-spacing: -1.3px;
-      }
-      .cta p {
-        max-width: 700px;
-        margin: 0 auto 30px;
-        color: rgba(255, 255, 255, 0.82);
-        font-size: 16.5px;
-        position: relative;
-        z-index: 2;
-      }
-      .cta-buttons {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 14px;
-        position: relative;
-        z-index: 2;
-      }
-      .cta-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 52px;
-        padding: 0 30px;
-        border-radius: 50px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 14.5px;
-        font-weight: 700;
-        letter-spacing: 0.4px;
-        transition: all 0.3s ease;
-        gap: 8px;
-      }
-      .cta-btn-primary {
-        background: linear-gradient(135deg, var(--teal), var(--teal-dark));
-        color: #fff;
-        box-shadow: 0 12px 30px rgba(13, 148, 136, 0.35);
-      }
-      .cta-btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 18px 40px rgba(13, 148, 136, 0.45);
-      }
-      .cta-btn-primary::after {
-        content: "↗";
-        font-size: 15px;
-      }
-      .cta-btn-outline {
-        border: 2px solid rgba(255, 255, 255, 0.4);
-        color: #fff;
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-      }
-      .cta-btn-outline:hover {
-        background: rgba(13, 148, 136, 0.18);
-        border-color: var(--teal-light);
-        transform: translateY(-3px);
-      }
-      @media (max-width: 480px) {
-        .cta-buttons {
-          flex-direction: column;
-        }
-        .cta-btn {
-          width: 100%;
-        }
-      }
-
-      /* =========================================================
-       FOOTER
-    ========================================================= */
-      .nw-footer {
-        width: 100%;
-        padding: 60px 5% 30px;
-        background-color: #ffffff;
-        border-top: 1px solid rgba(0, 0, 0, 0.06);
-      }
-      .nw-footer-grid {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr 1.2fr 1.3fr;
-        gap: 40px;
-        max-width: 1400px;
+        position: static;
+        max-width: 520px;
         margin: 0 auto;
       }
-      .nw-footer-brand {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
+    }
+
+    /* =========================================================
+       RELATED SERVICES
+    ========================================================= */
+    .section {
+      padding: 70px 0;
+    }
+
+    .section-light {
+      background: var(--light);
+    }
+
+    .section-heading.center {
+      text-align: center;
+      margin: 0 auto 44px;
+      max-width: 720px;
+    }
+
+    .section-heading .small-title {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      margin-bottom: 10px;
+      font-family: "Space Grotesk", sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-heading .small-title::before,
+    .section-heading.center .small-title::after {
+      content: "";
+      width: 24px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--accent));
+      border-radius: 5px;
+    }
+
+    .section-heading h2 {
+      color: var(--primary);
+      font-size: clamp(28px, 3.6vw, 42px);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      letter-spacing: -1.3px;
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .related-card {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      background: #fff;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .related-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 55px rgba(24, 59, 94, 0.12);
+      border-color: rgba(13, 148, 136, 0.35);
+    }
+
+    .related-image {
+      height: 170px;
+      background: #dfe8ef center / cover;
+      position: relative;
+    }
+
+    .related-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
+          rgba(10, 37, 64, 0.65),
+          rgba(10, 37, 64, 0.05));
+    }
+
+    .related-content {
+      padding: 22px 22px 26px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .related-content h3 {
+      color: var(--primary);
+      font-size: 17px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .related-content p {
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .learn-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 13px;
+      font-family: "Space Grotesk", sans-serif;
+      align-self: flex-start;
+      transition: 0.3s;
+    }
+
+    .learn-more::after {
+      content: "→";
+      transition: transform 0.3s;
+    }
+
+    .learn-more:hover::after {
+      transform: translateX(5px);
+    }
+
+    @media (max-width: 900px) {
+      .related-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
-      .nw-footer-logo {
-        display: flex;
+    }
+
+    @media (max-width: 600px) {
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* =========================================================
+       CTA
+    ========================================================= */
+    .cta {
+      background:
+        linear-gradient(90deg,
+          rgba(12, 32, 52, 0.96),
+          rgba(24, 59, 94, 0.92)),
+        url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1800&q=80") center / cover;
+      color: #fff;
+      padding: 90px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 1px solid rgba(13, 148, 136, 0.12);
+      box-shadow: 0 0 0 80px rgba(13, 148, 136, 0.025);
+      pointer-events: none;
+    }
+
+    .cta h2 {
+      font-size: clamp(28px, 3.8vw, 44px);
+      margin-bottom: 15px;
+      font-family: "Space Grotesk", sans-serif;
+      position: relative;
+      z-index: 2;
+      letter-spacing: -1.3px;
+    }
+
+    .cta p {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 16.5px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 30px;
+      border-radius: 50px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 14.5px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      transition: all 0.3s ease;
+      gap: 8px;
+    }
+
+    .cta-btn-primary {
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(13, 148, 136, 0.35);
+    }
+
+    .cta-btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(13, 148, 136, 0.45);
+    }
+
+    .cta-btn-primary::after {
+      content: "↗";
+      font-size: 15px;
+    }
+
+    .cta-btn-outline {
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+    }
+
+    .cta-btn-outline:hover {
+      background: rgba(13, 148, 136, 0.18);
+      border-color: var(--teal-light);
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 480px) {
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .cta-btn {
+        width: 100%;
+      }
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    .nw-footer {
+      width: 100%;
+      padding: 60px 5% 30px;
+      background-color: #ffffff;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .nw-footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 1.2fr 1.3fr;
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .nw-footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .nw-footer-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .nw-footer-logo img {
+      height: 85px;
+      width: auto;
+      margin-bottom: 12px;
+    }
+
+    .nw-footer-tagline {
+      font-size: 15px;
+      font-weight: 700;
+      color: #183b5e;
+      line-height: 1.4;
+      max-width: 220px;
+    }
+
+    .nw-social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 5px;
+    }
+
+    .nw-social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background-color: #183b5e;
+      color: #ffffff;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .nw-social-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .nw-social-icon:hover {
+      background-color: #ee6d29;
+      transform: translateY(-2px);
+    }
+
+    .nw-footer-col h4 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 24px;
+    }
+
+    .nw-footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .nw-footer-links li a {
+      font-size: 15px;
+      font-weight: 500;
+      color: #333333;
+      transition: color 0.2s ease;
+    }
+
+    .nw-footer-links li a:hover {
+      color: #ee6d29;
+    }
+
+    .nw-footer-newsletter p {
+      font-size: 15px;
+      font-weight: 500;
+      color: #333333;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .nw-newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .nw-newsletter-input {
+      width: 100%;
+      min-height: 100px;
+      padding: 14px 16px;
+      font-family: "Manrope", sans-serif;
+      font-size: 14px;
+      color: #333;
+      background-color: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      outline: none;
+      resize: vertical;
+    }
+
+    .nw-newsletter-input:focus {
+      border-color: #183b5e;
+      box-shadow: 0 0 0 3px rgba(24, 59, 94, 0.1);
+    }
+
+    .nw-newsletter-btn {
+      align-self: flex-end;
+      padding: 12px 32px;
+      background-color: #183b5e;
+      color: #ffffff;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .nw-newsletter-btn:hover {
+      background-color: #ee6d29;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(238, 109, 41, 0.25);
+    }
+
+    .nw-footer-bottom {
+      margin-top: 50px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      text-align: center;
+    }
+
+    .nw-footer-bottom p {
+      font-size: 14px;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    @media (max-width: 1024px) {
+      .nw-footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+      }
+
+      .nw-footer-brand {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        align-items: center;
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nw-footer {
+        padding: 40px 5% 24px;
+      }
+
+      .nw-footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .nw-footer-brand {
         flex-direction: column;
         align-items: flex-start;
-      }
-      .nw-footer-logo img {
-        height: 85px;
-        width: auto;
-        margin-bottom: 12px;
-      }
-      .nw-footer-tagline {
-        font-size: 15px;
-        font-weight: 700;
-        color: #183b5e;
-        line-height: 1.4;
-        max-width: 220px;
-      }
-      .nw-social-links {
-        display: flex;
-        gap: 12px;
-        margin-top: 5px;
-      }
-      .nw-social-icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 38px;
-        height: 38px;
-        background-color: #183b5e;
-        color: #ffffff;
-        border-radius: 50%;
-        transition: all 0.3s ease;
-      }
-      .nw-social-icon svg {
-        width: 18px;
-        height: 18px;
-        fill: currentColor;
-      }
-      .nw-social-icon:hover {
-        background-color: #ee6d29;
-        transform: translateY(-2px);
-      }
-      .nw-footer-col h4 {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 16px;
-        font-weight: 700;
-        color: #1a1a1a;
-        margin-bottom: 24px;
-      }
-      .nw-footer-links {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
         gap: 16px;
       }
-      .nw-footer-links li a {
-        font-size: 15px;
-        font-weight: 500;
-        color: #333333;
-        transition: color 0.2s ease;
-      }
-      .nw-footer-links li a:hover {
-        color: #ee6d29;
-      }
-      .nw-footer-newsletter p {
-        font-size: 15px;
-        font-weight: 500;
-        color: #333333;
-        line-height: 1.6;
-        margin-bottom: 20px;
-      }
-      .nw-newsletter-form {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        width: 100%;
-      }
-      .nw-newsletter-input {
-        width: 100%;
-        min-height: 100px;
-        padding: 14px 16px;
-        font-family: "Manrope", sans-serif;
-        font-size: 14px;
-        color: #333;
-        background-color: #ffffff;
-        border: 1px solid #d1d5db;
-        border-radius: 8px;
-        outline: none;
-        resize: vertical;
-      }
-      .nw-newsletter-input:focus {
-        border-color: #183b5e;
-        box-shadow: 0 0 0 3px rgba(24, 59, 94, 0.1);
-      }
-      .nw-newsletter-btn {
-        align-self: flex-end;
-        padding: 12px 32px;
-        background-color: #183b5e;
-        color: #ffffff;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        border: none;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-      }
-      .nw-newsletter-btn:hover {
-        background-color: #ee6d29;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 15px rgba(238, 109, 41, 0.25);
-      }
-      .nw-footer-bottom {
-        margin-top: 50px;
-        padding-top: 24px;
-        border-top: 1px solid rgba(0, 0, 0, 0.06);
-        text-align: center;
-      }
-      .nw-footer-bottom p {
-        font-size: 14px;
-        font-weight: 500;
-        color: #1a1a1a;
-      }
-      @media (max-width: 1024px) {
-        .nw-footer-grid {
-          grid-template-columns: 1fr 1fr;
-          gap: 50px;
-        }
-        .nw-footer-brand {
-          grid-column: 1 / -1;
-          flex-direction: row;
-          align-items: center;
-          gap: 30px;
-        }
-      }
-      @media (max-width: 768px) {
-        .nw-footer {
-          padding: 40px 5% 24px;
-        }
-        .nw-footer-grid {
-          grid-template-columns: 1fr;
-          gap: 40px;
-        }
-        .nw-footer-brand {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 16px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- NAVBAR -->
-    <header class="nw-navbar">
-      <a href="index.html" class="nw-nav-logo">
-        <img
-          src="assets/Logo/NSH Logo 01.png"
-          alt="Northwest Safety & Health"
-        />
-      </a>
-      <button class="nw-mobile-menu" id="mobileMenu" aria-label="Open menu">
-        ☰
-      </button>
-      <ul class="nw-nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html" class="active">Services</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <div class="nw-nav-btn-wrap">
-        <a href="login.html" class="nw-nav-btn" id="navCtaBtn">Book Training</a>
-      </div>
-    </header>
+    }
+  </style>
+</head>
 
-    <div class="nw-mobile-nav" id="mobileNav">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-      <a href="login.html" id="mobileNavCtaLink" style="color: #ee6d29"
-        >Book Training</a
-      >
+<body>
+  <!-- NAVBAR -->
+  <header class="nw-navbar">
+    <a href="index.html" class="nw-nav-logo">
+      <img src="assets/Logo/NSH Logo 01.png" alt="Northwest Safety & Health" />
+    </a>
+    <button class="nw-mobile-menu" id="mobileMenu" aria-label="Open menu">
+      ☰
+    </button>
+    <ul class="nw-nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nw-nav-btn-wrap">
+      <a href="login.html" class="nw-nav-btn" id="navCtaBtn">Book Training</a>
     </div>
+  </header>
 
-    <!-- HERO -->
-    <section class="course-hero">
-      <div class="container course-hero-inner">
-        <div class="hero-badge" id="heroBadge">
-          <img
-            src="assets/Certifications/Fall Protection Training-badge.jpg"
-            alt="Course Badge"
-            id="badgeImg"
-          />
-        </div>
-        <h1 id="serviceTitle">Fall Protection Training</h1>
-        <div class="course-price">
-          <span class="price-from">Starting from</span>
-          <span id="coursePrice">$1,295.00</span>
-        </div>
-        <div class="hero-tags" id="heroTags"></div>
+  <div class="nw-mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html" id="mobileNavCtaLink" style="color: #ee6d29">Book Training</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="course-hero">
+    <div class="container course-hero-inner">
+      <div class="hero-badge" id="heroBadge">
+        <img src="assets/Certifications/Fall Protection Training-badge.jpg" alt="Course Badge" id="badgeImg" />
       </div>
-      <div class="breadcrumb-wrap">
-        <div class="container breadcrumb">
-          <a href="index.html">Home</a>
-          <span>›</span>
-          <a href="services.html">Training Services</a>
-          <span>›</span>
-          <strong id="breadcrumbTitle">Training Details</strong>
-        </div>
+      <h1 id="serviceTitle">Fall Protection Training</h1>
+      <div class="course-price">
+        <span class="price-from">Starting from</span>
+        <span id="coursePrice">$1,295.00</span>
       </div>
-    </section>
-
-    <!-- MAIN TWO-COLUMN BODY -->
-    <section class="course-body">
-      <div class="container course-layout">
-        <!-- LEFT CONTENT -->
-        <main class="course-main">
-          <div class="content-block">
-            <h2 class="content-heading">Course Description</h2>
-            <div class="content-text" id="courseDescription"></div>
-          </div>
-          <div class="content-block">
-            <h2 class="content-heading">Learning Outcomes</h2>
-            <ul class="check-list" id="overviewPoints"></ul>
-          </div>
-          <div class="content-block">
-            <h2 class="content-heading">Course Content</h2>
-            <div class="learning-grid" id="learningGrid"></div>
-          </div>
-          <div class="content-block">
-            <h2 class="content-heading">Who Should Attend</h2>
-            <ul class="check-list" id="audienceGrid"></ul>
-          </div>
-          <div class="content-block">
-            <h2 class="content-heading">Requirements</h2>
-            <div class="req-box" id="courseRequirements"></div>
-          </div>
-        </main>
-
-        <!-- RIGHT SIDEBAR -->
-        <aside class="course-sidebar" id="enroll">
-          <h3 class="sidebar-heading">Course Information</h3>
-          <div class="info-row">
-            <div class="info-icon">
-              <svg viewBox="0 0 24 24">
-                <path d="M20 6L9 17l-5-5" />
-              </svg>
-            </div>
-            <div class="info-text">
-              <div class="info-label">Course Fee</div>
-              <div class="info-value">
-                <span class="status-badge" id="feeBadge">Free</span>
-              </div>
-            </div>
-          </div>
-          <div class="info-row">
-            <div class="info-icon">
-              <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10" />
-                <polyline points="12 6 12 12 16 14" />
-              </svg>
-            </div>
-            <div class="info-text">
-              <div class="info-label">Duration</div>
-              <div class="info-value" id="sideDuration">Contact Us</div>
-            </div>
-          </div>
-          <div class="info-row">
-            <div class="info-icon">
-              <svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                <line x1="3" y1="9" x2="21" y2="9" />
-                <line x1="9" y1="21" x2="9" y2="9" />
-              </svg>
-            </div>
-            <div class="info-text">
-              <div class="info-label">Course Type</div>
-              <div class="info-value" id="sideType">Safety Training</div>
-            </div>
-          </div>
-          <div class="info-row">
-            <div class="info-icon">
-              <svg viewBox="0 0 24 24">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                <line x1="8" y1="21" x2="16" y2="21" />
-                <line x1="12" y1="17" x2="12" y2="21" />
-              </svg>
-            </div>
-            <div class="info-text">
-              <div class="info-label">Delivery</div>
-              <div class="info-value" id="sideDelivery">
-                On-site / Training Facility
-              </div>
-            </div>
-          </div>
-          <div class="info-row">
-            <div class="info-icon">
-              <svg viewBox="0 0 24 24">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
-            </div>
-            <div class="info-text">
-              <div class="info-label">Audience</div>
-              <div class="info-value" id="sideAudience">
-                Workers & Supervisors
-              </div>
-            </div>
-          </div>
-          <div class="info-row">
-            <div class="info-icon">
-              <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="2" y1="12" x2="22" y2="12" />
-                <path
-                  d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
-                />
-              </svg>
-            </div>
-            <div class="info-text">
-              <div class="info-label">Language</div>
-              <div class="info-value" id="sideLanguage">English</div>
-            </div>
-          </div>
-          <div class="sidebar-actions">
-            <a
-              href="https://buy.stripe.com/test_00g5kQ0dX2qE4ve8ww"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-enroll"
-            >
-              <svg viewBox="0 0 24 24">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-              </svg>
-              Buy Now - <span id="enrollPrice">$1,295.00</span>
-            </a>
-            <a href="#book-appointment" class="btn-appointment">
-              <svg viewBox="0 0 24 24">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-              </svg>
-              Book an Appointment
-            </a>
-          </div>
-        </aside>
+      <div class="hero-tags" id="heroTags"></div>
+    </div>
+    <div class="breadcrumb-wrap">
+      <div class="container breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <a href="services.html">Training Services</a>
+        <span>›</span>
+        <strong id="breadcrumbTitle">Training Details</strong>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- RELATED SERVICES -->
-    <section class="section section-light">
-      <div class="container">
-        <div class="section-heading center">
-          <div class="small-title">Explore More</div>
-          <h2>Related Training Services</h2>
+  <!-- MAIN TWO-COLUMN BODY -->
+  <section class="course-body">
+    <div class="container course-layout">
+      <!-- LEFT CONTENT -->
+      <main class="course-main">
+        <div class="content-block">
+          <h2 class="content-heading">Course Description</h2>
+          <div class="content-text" id="courseDescription"></div>
         </div>
-        <div class="related-grid" id="relatedGrid"></div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta">
-      <div class="container">
-        <h2>Ready to Train Your Team?</h2>
-        <p>
-          Build a stronger safety culture with practical training designed
-          around your workforce and project requirements.
-        </p>
-        <div class="cta-buttons">
-          <a
-            href="https://buy.stripe.com/test_00g5kQ0dX2qE4ve8ww"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="cta-btn cta-btn-primary"
-            >Buy Now</a
-          >
-          <a href="#contact" class="cta-btn cta-btn-outline">Contact Us</a>
+        <div class="content-block">
+          <h2 class="content-heading">Learning Outcomes</h2>
+          <ul class="check-list" id="overviewPoints"></ul>
         </div>
-      </div>
-    </section>
+        <div class="content-block">
+          <h2 class="content-heading">Course Content</h2>
+          <div class="learning-grid" id="learningGrid"></div>
+        </div>
+        <div class="content-block">
+          <h2 class="content-heading">Who Should Attend</h2>
+          <ul class="check-list" id="audienceGrid"></ul>
+        </div>
+        <div class="content-block">
+          <h2 class="content-heading">Requirements</h2>
+          <div class="req-box" id="courseRequirements"></div>
+        </div>
+      </main>
 
-    <!-- FOOTER -->
-    <footer class="nw-footer">
-      <div class="nw-footer-grid">
-        <div class="nw-footer-brand">
-          <div class="nw-footer-logo">
-            <img
-              src="assets/Logo/NSH Logo 01.png"
-              alt="Northwest Safety & Health"
-            />
-            <p class="nw-footer-tagline">
-              Safety Training Built for Construction &amp; Government
-              Contractors.
-            </p>
+      <!-- RIGHT SIDEBAR -->
+      <aside class="course-sidebar" id="enroll">
+        <h3 class="sidebar-heading">Course Information</h3>
+        <div class="info-row">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M20 6L9 17l-5-5" />
+            </svg>
           </div>
-          <div class="nw-social-links">
-            <a href="#" class="nw-social-icon" aria-label="Facebook"
-              ><svg viewBox="0 0 24 24">
-                <path
-                  d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8v-6.93H7.9V12h2.1V9.8c0-2.07 1.23-3.22 3.12-3.22.9 0 1.85.16 1.85.16v2.04h-1.04c-1.03 0-1.35.64-1.35 1.3V12h2.3l-.37 2.87h-1.93v6.93c4.56-.93 8-4.96 8-9.8z"
-                /></svg
-            ></a>
-            <a href="#" class="nw-social-icon" aria-label="X"
-              ><svg viewBox="0 0 24 24">
-                <path
-                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                /></svg
-            ></a>
-            <a href="#" class="nw-social-icon" aria-label="LinkedIn"
-              ><svg viewBox="0 0 24 24">
-                <path
-                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                /></svg
-            ></a>
+          <div class="info-text">
+            <div class="info-label">Course Fee</div>
+            <div class="info-value">
+              <span class="status-badge" id="feeBadge">Free</span>
+            </div>
           </div>
         </div>
-        <div class="nw-footer-col">
-          <h4>Quick Links</h4>
-          <ul class="nw-footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
+        <div class="info-row">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+          </div>
+          <div class="info-text">
+            <div class="info-label">Duration</div>
+            <div class="info-value" id="sideDuration">Contact Us</div>
+          </div>
         </div>
-        <div class="nw-footer-col">
-          <h4>Training</h4>
-          <ul class="nw-footer-links">
-            <li>
-              <a href="services-details.html?service=osha"
-                >OSHA Safety Training</a
-              >
-            </li>
-            <li>
-              <a href="services-details.html?service=Construction"
-                >Construction Safety</a
-              >
-            </li>
-            <li>
-              <a href="services-details.html?service=Government"
-                >Government Contractor Training</a
-              >
-            </li>
-            <li>
-              <a href="services-details.html?service=Workplace"
-                >Workplace Safety</a
-              >
-            </li>
-            <li>
-              <a href="services-details.html?service=FirstAid"
-                >First Aid &amp; CPR</a
-              >
-            </li>
-            <li>
-              <a href="services-details.html?service=Customized"
-                >Customized Safety Programs</a
-              >
-            </li>
-          </ul>
+        <div class="info-row">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+              <line x1="3" y1="9" x2="21" y2="9" />
+              <line x1="9" y1="21" x2="9" y2="9" />
+            </svg>
+          </div>
+          <div class="info-text">
+            <div class="info-label">Course Type</div>
+            <div class="info-value" id="sideType">Safety Training</div>
+          </div>
         </div>
-        <div class="nw-footer-newsletter">
-          <h4>Newsletter</h4>
-          <p>
-            Stay informed with the latest safety compliance updates, government
-            contract news, and expert training tips.
+        <div class="info-row">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+              <line x1="8" y1="21" x2="16" y2="21" />
+              <line x1="12" y1="17" x2="12" y2="21" />
+            </svg>
+          </div>
+          <div class="info-text">
+            <div class="info-label">Delivery</div>
+            <div class="info-value" id="sideDelivery">
+              On-site / Training Facility
+            </div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <div class="info-text">
+            <div class="info-label">Audience</div>
+            <div class="info-value" id="sideAudience">
+              Workers & Supervisors
+            </div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="2" y1="12" x2="22" y2="12" />
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+            </svg>
+          </div>
+          <div class="info-text">
+            <div class="info-label">Language</div>
+            <div class="info-value" id="sideLanguage">English</div>
+          </div>
+        </div>
+        <div class="sidebar-actions">
+          <a href="https://buy.stripe.com/test_00g5kQ0dX2qE4ve8ww" target="_blank" rel="noopener noreferrer"
+            class="btn-enroll">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            Buy Now - <span id="enrollPrice">$1,295.00</span>
+          </a>
+          <a href="./contact.html" class="btn-appointment">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" />
+            </svg>
+            Contact
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- RELATED SERVICES -->
+  <section class="section section-light">
+    <div class="container">
+      <div class="section-heading center">
+        <div class="small-title">Explore More</div>
+        <h2>Related Training Services</h2>
+      </div>
+      <div class="related-grid" id="relatedGrid"></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Train Your Team?</h2>
+      <p>
+        Build a stronger safety culture with practical training designed
+        around your workforce and project requirements.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://buy.stripe.com/test_00g5kQ0dX2qE4ve8ww" target="_blank" rel="noopener noreferrer"
+          class="cta-btn cta-btn-primary">Buy Now</a>
+        <a href="#contact" class="cta-btn cta-btn-outline">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="nw-footer">
+    <div class="nw-footer-grid">
+      <div class="nw-footer-brand">
+        <div class="nw-footer-logo">
+          <img src="assets/Logo/NSH Logo 01.png" alt="Northwest Safety & Health" />
+          <p class="nw-footer-tagline">
+            Safety Training Built for Construction &amp; Government
+            Contractors.
           </p>
-          <form
-            class="nw-newsletter-form"
-            onsubmit="
+        </div>
+        <div class="nw-social-links">
+          <a href="#" class="nw-social-icon" aria-label="Facebook"><svg viewBox="0 0 24 24">
+              <path
+                d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8v-6.93H7.9V12h2.1V9.8c0-2.07 1.23-3.22 3.12-3.22.9 0 1.85.16 1.85.16v2.04h-1.04c-1.03 0-1.35.64-1.35 1.3V12h2.3l-.37 2.87h-1.93v6.93c4.56-.93 8-4.96 8-9.8z" />
+            </svg></a>
+          <a href="#" class="nw-social-icon" aria-label="X"><svg viewBox="0 0 24 24">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg></a>
+          <a href="#" class="nw-social-icon" aria-label="LinkedIn"><svg viewBox="0 0 24 24">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg></a>
+        </div>
+      </div>
+      <div class="nw-footer-col">
+        <h4>Quick Links</h4>
+        <ul class="nw-footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="nw-footer-col">
+        <h4>Training</h4>
+        <ul class="nw-footer-links">
+          <li>
+            <a href="services-details.html?service=osha">OSHA Safety Training</a>
+          </li>
+          <li>
+            <a href="services-details.html?service=Construction">Construction Safety</a>
+          </li>
+          <li>
+            <a href="services-details.html?service=Government">Government Contractor Training</a>
+          </li>
+          <li>
+            <a href="services-details.html?service=Workplace">Workplace Safety</a>
+          </li>
+          <li>
+            <a href="services-details.html?service=FirstAid">First Aid &amp; CPR</a>
+          </li>
+          <li>
+            <a href="services-details.html?service=Customized">Customized Safety Programs</a>
+          </li>
+        </ul>
+      </div>
+      <div class="nw-footer-newsletter">
+        <h4>Newsletter</h4>
+        <p>
+          Stay informed with the latest safety compliance updates, government
+          contract news, and expert training tips.
+        </p>
+        <form class="nw-newsletter-form" onsubmit="
               event.preventDefault();
               alert('Subscribed!');
-            "
-          >
-            <textarea
-              class="nw-newsletter-input"
-              placeholder="Message"
-              required
-            ></textarea>
-            <button type="submit" class="nw-newsletter-btn">Subscribe</button>
-          </form>
-        </div>
+            ">
+          <textarea class="nw-newsletter-input" placeholder="Message" required></textarea>
+          <button type="submit" class="nw-newsletter-btn">Subscribe</button>
+        </form>
       </div>
-      <div class="nw-footer-bottom">
-        <p>&copy; 2026 Northwest Safety &amp; Health. All Rights Reserved.</p>
-      </div>
-    </footer>
+    </div>
+    <div class="nw-footer-bottom">
+      <p>&copy; 2026 Northwest Safety &amp; Health. All Rights Reserved.</p>
+    </div>
+  </footer>
 
-    <script>
-      // SERVICES DATA WITH BADGE PATHS
-      const services = {
-        "fall-protection": {
-          title: "Fall Protection Training",
-          badge: "assets/Certifications/Fall Protection Training-badge.jpg",
-          shortDescription:
-            "Practical training designed to help workers recognize fall hazards and understand safe fall protection practices on the jobsite.",
-          type: "Safety Training",
-          duration: "Contact Us",
-          delivery: "On-site / Training Facility",
-          audience: "Workers & Supervisors",
-          price: "$1,295.00",
-          overview:
-            "Fall Protection Training focuses on recognizing fall hazards, understanding appropriate protection systems, and applying safe work practices when working at heights.",
-          overviewPoints: [
-            "Recognize common fall hazards",
-            "Understand fall protection systems",
-            "Learn proper equipment practices",
-            "Improve jobsite safety awareness",
+  <script>
+    // SERVICES DATA WITH BADGE PATHS
+    const services = {
+      "fall-protection": {
+        title: "Fall Protection Training",
+        badge: "assets/Certifications/Fall Protection Training-badge.jpg",
+        shortDescription:
+          "Practical training designed to help workers recognize fall hazards and understand safe fall protection practices on the jobsite.",
+        type: "Safety Training",
+        duration: "Contact Us",
+        delivery: "On-site / Training Facility",
+        audience: "Workers & Supervisors",
+        price: "$1,295.00",
+        overview:
+          "Fall Protection Training focuses on recognizing fall hazards, understanding appropriate protection systems, and applying safe work practices when working at heights.",
+        overviewPoints: [
+          "Recognize common fall hazards",
+          "Understand fall protection systems",
+          "Learn proper equipment practices",
+          "Improve jobsite safety awareness",
+        ],
+        learn: [
+          [
+            "01",
+            "Fall Hazard Recognition",
+            "Identify common hazards associated with elevated work.",
           ],
-          learn: [
-            [
-              "01",
-              "Fall Hazard Recognition",
-              "Identify common hazards associated with elevated work.",
-            ],
-            [
-              "02",
-              "Fall Protection Systems",
-              "Understand different approaches to protecting workers from falls.",
-            ],
-            [
-              "03",
-              "Equipment Practices",
-              "Learn important practices for inspecting and using fall protection equipment.",
-            ],
-            [
-              "04",
-              "Safe Work Practices",
-              "Understand practical procedures for working safely at heights.",
-            ],
-            [
-              "05",
-              "Jobsite Awareness",
-              "Improve awareness of changing jobsite conditions and hazards.",
-            ],
-            [
-              "06",
-              "Emergency Considerations",
-              "Understand important considerations related to fall incidents and response.",
-            ],
+          [
+            "02",
+            "Fall Protection Systems",
+            "Understand different approaches to protecting workers from falls.",
           ],
-          audienceList: [
-            [
-              "Construction Workers",
-              "Employees who perform work at elevated locations.",
-            ],
-            [
-              "Supervisors",
-              "Supervisors responsible for worker safety and jobsite operations.",
-            ],
-            [
-              "Contractors",
-              "Contractors working on construction and industrial projects.",
-            ],
-            [
-              "Safety Professionals",
-              "Professionals involved in workplace safety programs.",
-            ],
-            [
-              "Project Managers",
-              "Personnel responsible for project planning and execution.",
-            ],
-            [
-              "Field Teams",
-              "Workers operating in safety-sensitive field environments.",
-            ],
+          [
+            "03",
+            "Equipment Practices",
+            "Learn important practices for inspecting and using fall protection equipment.",
           ],
-          requirements: [
-            "Must be at least 18 years of age.",
-            "Prior experience with work at height is recommended.",
-            "Ability to read, write, and understand English.",
-            "Physical ability to participate in practical exercises.",
+          [
+            "04",
+            "Safe Work Practices",
+            "Understand practical procedures for working safely at heights.",
           ],
-        },
-        "competent-person": {
-          title: "24-Hour Competent Person – Regular Fall Protection",
-          badge: "assets/Certifications/Fall Protection Competent Person.png",
-          shortDescription:
-            "Advanced fall protection training for personnel responsible for recognizing hazards, implementing controls, and supporting safe work practices.",
-          type: "Advanced Training",
-          duration: "24 Hours",
-          delivery: "Classroom + Practical",
-          audience: "Competent Persons & Supervisors",
-          price: "$895.00",
-          overview:
-            "The 24-Hour Competent Person – Regular Fall Protection program is designed for personnel responsible for fall-protection activities, hazard recognition, workplace controls, inspections, and oversight of fall-protection practices.",
-          overviewPoints: [
-            "Develop advanced fall protection knowledge",
-            "Understand hazard recognition and controls",
-            "Learn responsibilities associated with competent-person duties",
-            "Strengthen jobsite safety oversight",
+          [
+            "05",
+            "Jobsite Awareness",
+            "Improve awareness of changing jobsite conditions and hazards.",
           ],
-          learn: [
-            [
-              "01",
-              "Introduction to Fall Protection",
-              "Fundamentals, common causes of falls, responsibilities, and key concepts.",
-            ],
-            [
-              "02",
-              "Fall-Hazard Recognition",
-              "Identifying fall hazards in the workplace, unprotected edges, openings, and site-specific hazards.",
-            ],
-            [
-              "03",
-              "Fall-Protection Systems and Controls",
-              "Hierarchy of controls, guardrails, personal fall arrest, restraint, positioning, and safety nets.",
-            ],
-            [
-              "04",
-              "Personal Fall Protection Equipment",
-              "Full-body harnesses, lanyards, energy absorbers, self-retracting lifelines, and proper use.",
-            ],
-            [
-              "05",
-              "Anchorage and Structural Considerations",
-              "Anchorage principles, structural requirements, lifeline considerations, and fall clearance.",
-            ],
-            [
-              "06",
-              "Fall-Arrest Calculations",
-              "Total fall distance, required clearance, deceleration distance, and swing-fall hazards.",
-            ],
-            [
-              "07",
-              "Inspection and Maintenance",
-              "Pre-use inspections, periodic inspections, identifying damage, and documentation.",
-            ],
-            [
-              "08",
-              "Work-at-Height Planning",
-              "Job hazard analysis, fall-protection plans, control selection, and safe work procedures.",
-            ],
-            [
-              "09",
-              "Rescue Planning",
-              "Pre-planned rescue, rescue methods, suspension trauma awareness, and emergency response.",
-            ],
-            [
-              "10",
-              "Practical Training",
-              "Harness inspection, fitting, anchorage identification, and rescue scenarios.",
-            ],
-            [
-              "11",
-              "Competent Person Responsibilities",
-              "Recognizing hazards, selecting corrective measures, and conducting inspections.",
-            ],
-            [
-              "12",
-              "Assessment and Completion",
-              "Written and practical assessments and course completion documentation.",
-            ],
+          [
+            "06",
+            "Emergency Considerations",
+            "Understand important considerations related to fall incidents and response.",
           ],
-          audienceList: [
-            [
-              "Competent Persons",
-              "Personnel assigned competent-person responsibilities.",
-            ],
-            [
-              "Supervisors & Foremen",
-              "Supervisors overseeing elevated work and field operations.",
-            ],
-            [
-              "Safety Professionals",
-              "Professionals responsible for safety programs and compliance.",
-            ],
-            ["Site Managers", "Personnel managing site safety and operations."],
-            [
-              "Construction Personnel",
-              "Workers and teams on construction and industrial projects.",
-            ],
-            [
-              "Contractors & Subcontractors",
-              "Contractors managing fall protection requirements.",
-            ],
+        ],
+        audienceList: [
+          [
+            "Construction Workers",
+            "Employees who perform work at elevated locations.",
           ],
-          requirements: [
-            "Must be at least 18 years of age.",
-            "Prior experience with work at height is recommended.",
-            "Ability to read, write, and understand English.",
-            "Physical ability to participate in practical exercises.",
+          [
+            "Supervisors",
+            "Supervisors responsible for worker safety and jobsite operations.",
           ],
-        },
-        "self-rescue": {
-          title: "Self Rescue for Fall Protection",
-          badge: "assets/Certifications/Self Rescue for Fall Protection.png",
-          shortDescription:
-            "Focused training covering important concepts and practices related to fall protection rescue and emergency response.",
-          type: "Rescue Training",
-          duration: "Contact Us",
-          delivery: "Classroom + Practical",
-          audience: "Workers & Rescue Teams",
-          price: "$595.00",
-          overview:
-            "Self Rescue training focuses on emergency preparedness and practical considerations for personnel working in environments where fall incidents may occur.",
-          overviewPoints: [
-            "Understand fall rescue considerations",
-            "Improve emergency preparedness",
-            "Review self-rescue concepts",
-            "Support safer fall protection planning",
+          [
+            "Contractors",
+            "Contractors working on construction and industrial projects.",
           ],
-          learn: [
-            [
-              "01",
-              "Rescue Planning",
-              "Understand the importance of planning for potential fall incidents.",
-            ],
-            [
-              "02",
-              "Emergency Response",
-              "Review important considerations for responding to incidents.",
-            ],
-            [
-              "03",
-              "Self Rescue Concepts",
-              "Learn concepts related to self-rescue following a fall.",
-            ],
-            [
-              "04",
-              "Equipment Awareness",
-              "Understand relevant equipment considerations.",
-            ],
-            [
-              "05",
-              "Communication",
-              "Recognize the importance of communication during emergencies.",
-            ],
-            [
-              "06",
-              "Jobsite Preparedness",
-              "Improve readiness for potential fall-related incidents.",
-            ],
+          [
+            "Safety Professionals",
+            "Professionals involved in workplace safety programs.",
           ],
-          audienceList: [
-            ["Workers at Height", "Personnel performing elevated work."],
-            ["Supervisors", "Personnel responsible for field operations."],
-            [
-              "Safety Teams",
-              "Safety professionals supporting emergency planning.",
-            ],
-            ["Contractors", "Contractors managing elevated work activities."],
-            [
-              "Rescue Personnel",
-              "Personnel involved in workplace rescue planning.",
-            ],
-            ["Project Leaders", "Leaders responsible for project safety."],
+          [
+            "Project Managers",
+            "Personnel responsible for project planning and execution.",
           ],
-          requirements: [
-            "Must be at least 18 years of age.",
-            "Prior experience with work at height is recommended.",
-            "Ability to read, write, and understand English.",
+          [
+            "Field Teams",
+            "Workers operating in safety-sensitive field environments.",
           ],
-        },
-        "fall-refresher": {
-          title: "24-Hour Fall Protection Refresher",
-          badge: "assets/Certifications/24-Hour Fall Protection Refresher.jpg",
-          shortDescription:
-            "Refresher training designed to reinforce essential fall protection knowledge, practices, and workplace awareness.",
-          type: "Refresher Training",
-          duration: "24 Hours",
-          delivery: "Classroom + Practical",
-          audience: "Previously Trained Personnel",
-          price: "$695.00",
-          overview:
-            "This refresher program helps participants review key fall protection concepts and reinforce safe workplace practices.",
-          overviewPoints: [
-            "Refresh important fall protection concepts",
-            "Review hazard recognition",
-            "Reinforce safe work practices",
-            "Update workplace awareness",
+        ],
+        requirements: [
+          "Must be at least 18 years of age.",
+          "Prior experience with work at height is recommended.",
+          "Ability to read, write, and understand English.",
+          "Physical ability to participate in practical exercises.",
+        ],
+      },
+      "competent-person": {
+        title: "24-Hour Competent Person – Regular Fall Protection",
+        badge: "assets/Certifications/Fall Protection Competent Person.png",
+        shortDescription:
+          "Advanced fall protection training for personnel responsible for recognizing hazards, implementing controls, and supporting safe work practices.",
+        type: "Advanced Training",
+        duration: "24 Hours",
+        delivery: "Classroom + Practical",
+        audience: "Competent Persons & Supervisors",
+        price: "$895.00",
+        overview:
+          "The 24-Hour Competent Person – Regular Fall Protection program is designed for personnel responsible for fall-protection activities, hazard recognition, workplace controls, inspections, and oversight of fall-protection practices.",
+        overviewPoints: [
+          "Develop advanced fall protection knowledge",
+          "Understand hazard recognition and controls",
+          "Learn responsibilities associated with competent-person duties",
+          "Strengthen jobsite safety oversight",
+        ],
+        learn: [
+          [
+            "01",
+            "Introduction to Fall Protection",
+            "Fundamentals, common causes of falls, responsibilities, and key concepts.",
           ],
-          learn: [
-            [
-              "01",
-              "Knowledge Review",
-              "Review essential fall protection principles.",
-            ],
-            [
-              "02",
-              "Hazard Recognition",
-              "Refresh recognition of common workplace hazards.",
-            ],
-            [
-              "03",
-              "Equipment Review",
-              "Reinforce important equipment practices.",
-            ],
-            [
-              "04",
-              "Safe Practices",
-              "Review practical workplace safety procedures.",
-            ],
-            [
-              "05",
-              "Incident Awareness",
-              "Discuss lessons and considerations related to workplace incidents.",
-            ],
-            [
-              "06",
-              "Workplace Application",
-              "Connect training concepts to practical jobsite conditions.",
-            ],
+          [
+            "02",
+            "Fall-Hazard Recognition",
+            "Identifying fall hazards in the workplace, unprotected edges, openings, and site-specific hazards.",
           ],
-          audienceList: [
-            [
-              "Previously Trained Workers",
-              "Personnel who need refresher instruction.",
-            ],
-            ["Supervisors", "Supervisors overseeing elevated work."],
-            ["Contractors", "Contractors maintaining safety training."],
-            ["Safety Professionals", "Personnel supporting safety programs."],
-            [
-              "Field Leaders",
-              "Leaders working in active jobsite environments.",
-            ],
-            [
-              "Construction Teams",
-              "Teams requiring refreshed fall protection knowledge.",
-            ],
+          [
+            "03",
+            "Fall-Protection Systems and Controls",
+            "Hierarchy of controls, guardrails, personal fall arrest, restraint, positioning, and safety nets.",
           ],
-          requirements: [
-            "Must be at least 18 years of age.",
-            "Prior fall protection training is recommended.",
-            "Ability to read and understand English.",
+          [
+            "04",
+            "Personal Fall Protection Equipment",
+            "Full-body harnesses, lanyards, energy absorbers, self-retracting lifelines, and proper use.",
           ],
-        },
-        osha: {
-          title: "OSHA Safety Training",
-          badge: "assets/Certifications/OSHA (2).png",
-          shortDescription:
-            "Workplace safety training focused on important OSHA-related safety concepts and practical jobsite awareness.",
-          type: "OSHA Safety Training",
-          duration: "Contact Us",
-          delivery: "Classroom / On-site",
-          audience: "Workers & Supervisors",
-          price: "$495.00",
-          overview:
-            "OSHA Safety Training helps workers and supervisors build awareness of workplace hazards, safety responsibilities, and safe work practices.",
-          overviewPoints: [
-            "Improve workplace hazard awareness",
-            "Understand key safety practices",
-            "Support safer work environments",
-            "Strengthen employee safety knowledge",
+          [
+            "05",
+            "Anchorage and Structural Considerations",
+            "Anchorage principles, structural requirements, lifeline considerations, and fall clearance.",
           ],
-          learn: [
-            [
-              "01",
-              "Workplace Hazards",
-              "Recognize common hazards found in workplace environments.",
-            ],
-            [
-              "02",
-              "Safety Responsibilities",
-              "Understand important employee and supervisor responsibilities.",
-            ],
-            [
-              "03",
-              "Safe Work Practices",
-              "Review practical approaches to safer work.",
-            ],
-            [
-              "04",
-              "PPE Awareness",
-              "Understand appropriate personal protective equipment practices.",
-            ],
-            [
-              "05",
-              "Incident Prevention",
-              "Focus on reducing exposure to preventable hazards.",
-            ],
-            [
-              "06",
-              "Jobsite Awareness",
-              "Build stronger day-to-day safety awareness.",
-            ],
+          [
+            "06",
+            "Fall-Arrest Calculations",
+            "Total fall distance, required clearance, deceleration distance, and swing-fall hazards.",
           ],
-          audienceList: [
-            ["Employees", "Workers who need workplace safety awareness."],
-            ["Supervisors", "Supervisors responsible for workplace safety."],
-            ["Construction Teams", "Construction workers and field personnel."],
-            [
-              "Contractors",
-              "Contractors working on safety-sensitive projects.",
-            ],
-            ["Managers", "Managers supporting workplace safety programs."],
-            ["New Workers", "Personnel needing foundational safety training."],
+          [
+            "07",
+            "Inspection and Maintenance",
+            "Pre-use inspections, periodic inspections, identifying damage, and documentation.",
           ],
-          requirements: [
-            "Must be at least 18 years of age.",
-            "No prior safety training required.",
-            "Ability to read and understand English.",
+          [
+            "08",
+            "Work-at-Height Planning",
+            "Job hazard analysis, fall-protection plans, control selection, and safe work procedures.",
           ],
-        },
-        "construction-safety": {
-          title: "Construction Safety",
-          badge: "assets/Certifications/Construction Safety.jpg",
-          shortDescription:
-            "Practical construction safety training designed around common jobsite hazards and safer work practices.",
-          type: "Construction Safety",
-          duration: "Contact Us",
-          delivery: "Classroom / On-site",
-          audience: "Construction Teams",
-          price: "$595.00",
-          overview:
-            "Construction Safety training focuses on common hazards encountered in construction environments and practical ways to improve workplace safety.",
-          overviewPoints: [
-            "Recognize construction hazards",
-            "Improve jobsite awareness",
-            "Review safe work practices",
-            "Support stronger safety culture",
+          [
+            "09",
+            "Rescue Planning",
+            "Pre-planned rescue, rescue methods, suspension trauma awareness, and emergency response.",
           ],
-          learn: [
-            ["01", "Jobsite Hazards", "Recognize common construction hazards."],
-            [
-              "02",
-              "PPE",
-              "Review appropriate personal protective equipment practices.",
-            ],
-            [
-              "03",
-              "Work Practices",
-              "Understand practical methods for safer work.",
-            ],
-            [
-              "04",
-              "Site Awareness",
-              "Improve awareness of changing jobsite conditions.",
-            ],
-            [
-              "05",
-              "Incident Prevention",
-              "Focus on practical hazard prevention.",
-            ],
-            [
-              "06",
-              "Safety Culture",
-              "Support stronger safety practices across the team.",
-            ],
+          [
+            "10",
+            "Practical Training",
+            "Harness inspection, fitting, anchorage identification, and rescue scenarios.",
           ],
-          audienceList: [
-            [
-              "Construction Workers",
-              "Employees working on active construction sites.",
-            ],
-            ["Supervisors", "Construction supervisors and field leaders."],
-            ["Contractors", "General and specialty contractors."],
-            [
-              "Project Managers",
-              "Personnel responsible for project execution.",
-            ],
-            ["Safety Professionals", "Professionals managing safety programs."],
-            ["Field Teams", "Personnel working in construction environments."],
+          [
+            "11",
+            "Competent Person Responsibilities",
+            "Recognizing hazards, selecting corrective measures, and conducting inspections.",
           ],
-          requirements: [
-            "Must be at least 18 years of age.",
-            "Prior construction experience is recommended.",
-            "Ability to read and understand English.",
+          [
+            "12",
+            "Assessment and Completion",
+            "Written and practical assessments and course completion documentation.",
           ],
-        },
-        "government-contractor": {
-          title: "Government Contractor Training",
-          badge: "assets/Certifications/Government Contractor-badge.jpg",
-          shortDescription:
-            "Safety training designed to help government contractors prepare their teams for safety-sensitive project requirements.",
-          type: "Contractor Training",
-          duration: "Contact Us",
-          delivery: "On-site / Training Facility",
-          audience: "Government Contractors",
-          price: "$795.00",
-          overview:
-            "Government Contractor Training supports contractors and project teams that need structured safety training aligned with their workforce and project requirements.",
-          overviewPoints: [
-            "Prepare teams for safety-sensitive projects",
-            "Strengthen workplace safety practices",
-            "Support project readiness",
-            "Develop workforce safety awareness",
+        ],
+        audienceList: [
+          [
+            "Competent Persons",
+            "Personnel assigned competent-person responsibilities.",
           ],
-          learn: [
-            [
-              "01",
-              "Project Safety",
-              "Understand important safety considerations for contractor projects.",
-            ],
-            [
-              "02",
-              "Workforce Readiness",
-              "Prepare workers for project-specific safety expectations.",
-            ],
-            [
-              "03",
-              "Hazard Awareness",
-              "Recognize common hazards and prevention strategies.",
-            ],
-            [
-              "04",
-              "Documentation",
-              "Understand the importance of maintaining training records.",
-            ],
-            [
-              "05",
-              "Field Practices",
-              "Apply practical safety concepts in the workplace.",
-            ],
-            [
-              "06",
-              "Team Coordination",
-              "Support communication between project and safety teams.",
-            ],
+          [
+            "Supervisors & Foremen",
+            "Supervisors overseeing elevated work and field operations.",
           ],
-          audienceList: [
-            [
-              "Government Contractors",
-              "Organizations performing government project work.",
-            ],
-            [
-              "Subcontractors",
-              "Subcontractors supporting government projects.",
-            ],
-            ["Project Managers", "Personnel managing project requirements."],
-            [
-              "Safety Managers",
-              "Professionals responsible for contractor safety.",
-            ],
-            ["Supervisors", "Personnel overseeing field operations."],
-            ["Field Workers", "Workers performing project-related tasks."],
+          [
+            "Safety Professionals",
+            "Professionals responsible for safety programs and compliance.",
           ],
-          requirements: [
-            "Must be at least 18 years of age.",
-            "Prior safety training is recommended.",
-            "Ability to read and understand English.",
+          ["Site Managers", "Personnel managing site safety and operations."],
+          [
+            "Construction Personnel",
+            "Workers and teams on construction and industrial projects.",
           ],
-        },
-        "workplace-safety": {
-          title: "Workplace Safety",
-          badge: "assets/Certifications/Workplace Safety badge.webp",
-          shortDescription:
-            "General workplace safety training designed to improve hazard awareness, safe work practices, and employee preparedness.",
-          type: "Workplace Safety",
-          duration: "Contact Us",
-          delivery: "Classroom / On-site",
-          audience: "Employees & Supervisors",
-          price: "$395.00",
-          overview:
-            "Workplace Safety training provides employees and supervisors with practical knowledge to recognize hazards and support safer day-to-day operations.",
-          overviewPoints: [
-            "Improve employee safety awareness",
-            "Recognize common workplace hazards",
-            "Reinforce safe work practices",
-            "Support a stronger safety culture",
+          [
+            "Contractors & Subcontractors",
+            "Contractors managing fall protection requirements.",
           ],
-          learn: [
-            ["01", "Hazard Awareness", "Recognize common workplace hazards."],
-            [
-              "02",
-              "Safe Practices",
-              "Understand practical workplace safety procedures.",
-            ],
-            ["03", "PPE", "Review appropriate PPE awareness and use."],
-            [
-              "04",
-              "Emergency Awareness",
-              "Improve general emergency preparedness.",
-            ],
-            [
-              "05",
-              "Incident Prevention",
-              "Focus on reducing preventable workplace incidents.",
-            ],
-            [
-              "06",
-              "Safety Culture",
-              "Support a proactive approach to workplace safety.",
-            ],
+        ],
+        requirements: [
+          "Must be at least 18 years of age.",
+          "Prior experience with work at height is recommended.",
+          "Ability to read, write, and understand English.",
+          "Physical ability to participate in practical exercises.",
+        ],
+      },
+      "self-rescue": {
+        title: "Self Rescue for Fall Protection",
+        badge: "assets/Certifications/Self Rescue for Fall Protection.png",
+        shortDescription:
+          "Focused training covering important concepts and practices related to fall protection rescue and emergency response.",
+        type: "Rescue Training",
+        duration: "Contact Us",
+        delivery: "Classroom + Practical",
+        audience: "Workers & Rescue Teams",
+        price: "$595.00",
+        overview:
+          "Self Rescue training focuses on emergency preparedness and practical considerations for personnel working in environments where fall incidents may occur.",
+        overviewPoints: [
+          "Understand fall rescue considerations",
+          "Improve emergency preparedness",
+          "Review self-rescue concepts",
+          "Support safer fall protection planning",
+        ],
+        learn: [
+          [
+            "01",
+            "Rescue Planning",
+            "Understand the importance of planning for potential fall incidents.",
           ],
-          audienceList: [
-            [
-              "Employees",
-              "Workers across a variety of workplace environments.",
-            ],
-            ["Supervisors", "Personnel responsible for daily operations."],
-            ["Managers", "Managers supporting workplace safety."],
-            [
-              "Contractors",
-              "Contractors working within workplace environments.",
-            ],
-            ["Safety Teams", "Safety professionals and coordinators."],
-            [
-              "New Employees",
-              "New personnel requiring workplace safety orientation.",
-            ],
+          [
+            "02",
+            "Emergency Response",
+            "Review important considerations for responding to incidents.",
           ],
-          requirements: [
-            "Must be at least 18 years of age.",
-            "No prior safety training required.",
-            "Ability to read and understand English.",
+          [
+            "03",
+            "Self Rescue Concepts",
+            "Learn concepts related to self-rescue following a fall.",
           ],
-        },
-        "first-aid-cpr": {
-          title: "First Aid & CPR",
-          badge: "assets/Certifications/First Aid & CPR.jpg",
-          shortDescription:
-            "First Aid and CPR training designed to help participants build essential emergency response knowledge and skills.",
-          type: "Emergency Response Training",
-          duration: "Contact Us",
-          delivery: "Classroom + Practical",
-          audience: "Workers & Workplace Teams",
-          price: "$295.00",
-          overview:
-            "First Aid & CPR training focuses on essential emergency response concepts and practical skills appropriate for workplace teams.",
-          overviewPoints: [
-            "Learn essential emergency response concepts",
-            "Develop practical response awareness",
-            "Support workplace preparedness",
-            "Build confidence during emergencies",
+          [
+            "04",
+            "Equipment Awareness",
+            "Understand relevant equipment considerations.",
           ],
-          learn: [
-            [
-              "01",
-              "Emergency Response",
-              "Understand basic principles of responding to emergencies.",
-            ],
-            [
-              "02",
-              "CPR Concepts",
-              "Review important CPR concepts and response procedures.",
-            ],
-            [
-              "03",
-              "First Aid",
-              "Learn essential first-aid response considerations.",
-            ],
-            [
-              "04",
-              "Emergency Assessment",
-              "Understand basic assessment and response priorities.",
-            ],
-            [
-              "05",
-              "Team Communication",
-              "Recognize the importance of clear communication.",
-            ],
-            [
-              "06",
-              "Workplace Preparedness",
-              "Support a more prepared workplace response.",
-            ],
+          [
+            "05",
+            "Communication",
+            "Recognize the importance of communication during emergencies.",
           ],
-          audienceList: [
-            [
-              "Employees",
-              "Workplace personnel who may need emergency response skills.",
-            ],
-            ["Supervisors", "Supervisors responsible for workplace teams."],
-            [
-              "Safety Teams",
-              "Personnel involved in workplace safety programs.",
-            ],
-            ["Contractors", "Contractors and field workers."],
-            [
-              "Managers",
-              "Managers supporting workplace emergency preparedness.",
-            ],
-            [
-              "Workplace Teams",
-              "Teams seeking structured emergency response training.",
-            ],
+          [
+            "06",
+            "Jobsite Preparedness",
+            "Improve readiness for potential fall-related incidents.",
           ],
-          requirements: [
-            "Must be at least 18 years of age.",
-            "No prior training required.",
-            "Ability to participate in practical CPR exercises.",
+        ],
+        audienceList: [
+          ["Workers at Height", "Personnel performing elevated work."],
+          ["Supervisors", "Personnel responsible for field operations."],
+          [
+            "Safety Teams",
+            "Safety professionals supporting emergency planning.",
           ],
-        },
-        "customized-safety": {
-          title: "Customized Safety Programs",
-          badge: "assets/Certifications/Customized Safety Programs.jpg",
-          shortDescription:
-            "Customized safety training designed around your organization's workforce, project hazards, and specific training requirements.",
-          type: "Customized Training",
-          duration: "Based on Program",
-          delivery: "On-site / Training Facility",
-          audience: "Organizations & Project Teams",
-          price: "$1899.00",
-          overview:
-            "Every workplace has different hazards and operational needs. Customized Safety Programs allow training to be structured around your workforce, project environment, and specific safety objectives.",
-          overviewPoints: [
-            "Training tailored to your organization",
-            "Address project-specific hazards",
-            "Support workforce development",
-            "Build a focused safety program",
+          ["Contractors", "Contractors managing elevated work activities."],
+          [
+            "Rescue Personnel",
+            "Personnel involved in workplace rescue planning.",
           ],
-          learn: [
-            [
-              "01",
-              "Needs Assessment",
-              "Identify your organization's specific training requirements.",
-            ],
-            [
-              "02",
-              "Hazard Review",
-              "Consider relevant workplace and project hazards.",
-            ],
-            [
-              "03",
-              "Program Development",
-              "Build training around identified requirements.",
-            ],
-            ["04", "Practical Training", "Focus on workplace application."],
-            [
-              "05",
-              "Team Engagement",
-              "Deliver training appropriate for your workforce.",
-            ],
-            [
-              "06",
-              "Program Support",
-              "Discuss ongoing training and safety needs.",
-            ],
+          ["Project Leaders", "Leaders responsible for project safety."],
+        ],
+        requirements: [
+          "Must be at least 18 years of age.",
+          "Prior experience with work at height is recommended.",
+          "Ability to read, write, and understand English.",
+        ],
+      },
+      "fall-refresher": {
+        title: "24-Hour Fall Protection Refresher",
+        badge: "assets/Certifications/24-Hour Fall Protection Refresher.jpg",
+        shortDescription:
+          "Refresher training designed to reinforce essential fall protection knowledge, practices, and workplace awareness.",
+        type: "Refresher Training",
+        duration: "24 Hours",
+        delivery: "Classroom + Practical",
+        audience: "Previously Trained Personnel",
+        price: "$695.00",
+        overview:
+          "This refresher program helps participants review key fall protection concepts and reinforce safe workplace practices.",
+        overviewPoints: [
+          "Refresh important fall protection concepts",
+          "Review hazard recognition",
+          "Reinforce safe work practices",
+          "Update workplace awareness",
+        ],
+        learn: [
+          [
+            "01",
+            "Knowledge Review",
+            "Review essential fall protection principles.",
           ],
-          audienceList: [
-            [
-              "Construction Companies",
-              "Organizations with project-specific safety needs.",
-            ],
-            [
-              "Government Contractors",
-              "Contractors requiring customized project training.",
-            ],
-            [
-              "Employers",
-              "Organizations developing workforce safety programs.",
-            ],
-            ["Safety Departments", "Teams seeking targeted training support."],
-            ["Project Teams", "Teams with specific project hazards."],
-            [
-              "Field Operations",
-              "Field teams requiring practical safety instruction.",
-            ],
+          [
+            "02",
+            "Hazard Recognition",
+            "Refresh recognition of common workplace hazards.",
           ],
-          requirements: [
-            "Must be at least 18 years of age.",
-            "Training requirements vary by program.",
-            "Ability to read and understand English (or applicable local language).",
+          [
+            "03",
+            "Equipment Review",
+            "Reinforce important equipment practices.",
           ],
-        },
-      };
+          [
+            "04",
+            "Safe Practices",
+            "Review practical workplace safety procedures.",
+          ],
+          [
+            "05",
+            "Incident Awareness",
+            "Discuss lessons and considerations related to workplace incidents.",
+          ],
+          [
+            "06",
+            "Workplace Application",
+            "Connect training concepts to practical jobsite conditions.",
+          ],
+        ],
+        audienceList: [
+          [
+            "Previously Trained Workers",
+            "Personnel who need refresher instruction.",
+          ],
+          ["Supervisors", "Supervisors overseeing elevated work."],
+          ["Contractors", "Contractors maintaining safety training."],
+          ["Safety Professionals", "Personnel supporting safety programs."],
+          [
+            "Field Leaders",
+            "Leaders working in active jobsite environments.",
+          ],
+          [
+            "Construction Teams",
+            "Teams requiring refreshed fall protection knowledge.",
+          ],
+        ],
+        requirements: [
+          "Must be at least 18 years of age.",
+          "Prior fall protection training is recommended.",
+          "Ability to read and understand English.",
+        ],
+      },
+      osha: {
+        title: "OSHA Safety Training",
+        badge: "assets/Certifications/OSHA (2).png",
+        shortDescription:
+          "Workplace safety training focused on important OSHA-related safety concepts and practical jobsite awareness.",
+        type: "OSHA Safety Training",
+        duration: "Contact Us",
+        delivery: "Classroom / On-site",
+        audience: "Workers & Supervisors",
+        price: "$495.00",
+        overview:
+          "OSHA Safety Training helps workers and supervisors build awareness of workplace hazards, safety responsibilities, and safe work practices.",
+        overviewPoints: [
+          "Improve workplace hazard awareness",
+          "Understand key safety practices",
+          "Support safer work environments",
+          "Strengthen employee safety knowledge",
+        ],
+        learn: [
+          [
+            "01",
+            "Workplace Hazards",
+            "Recognize common hazards found in workplace environments.",
+          ],
+          [
+            "02",
+            "Safety Responsibilities",
+            "Understand important employee and supervisor responsibilities.",
+          ],
+          [
+            "03",
+            "Safe Work Practices",
+            "Review practical approaches to safer work.",
+          ],
+          [
+            "04",
+            "PPE Awareness",
+            "Understand appropriate personal protective equipment practices.",
+          ],
+          [
+            "05",
+            "Incident Prevention",
+            "Focus on reducing exposure to preventable hazards.",
+          ],
+          [
+            "06",
+            "Jobsite Awareness",
+            "Build stronger day-to-day safety awareness.",
+          ],
+        ],
+        audienceList: [
+          ["Employees", "Workers who need workplace safety awareness."],
+          ["Supervisors", "Supervisors responsible for workplace safety."],
+          ["Construction Teams", "Construction workers and field personnel."],
+          [
+            "Contractors",
+            "Contractors working on safety-sensitive projects.",
+          ],
+          ["Managers", "Managers supporting workplace safety programs."],
+          ["New Workers", "Personnel needing foundational safety training."],
+        ],
+        requirements: [
+          "Must be at least 18 years of age.",
+          "No prior safety training required.",
+          "Ability to read and understand English.",
+        ],
+      },
+      "construction-safety": {
+        title: "Construction Safety",
+        badge: "assets/Certifications/Construction Safety.jpg",
+        shortDescription:
+          "Practical construction safety training designed around common jobsite hazards and safer work practices.",
+        type: "Construction Safety",
+        duration: "Contact Us",
+        delivery: "Classroom / On-site",
+        audience: "Construction Teams",
+        price: "$595.00",
+        overview:
+          "Construction Safety training focuses on common hazards encountered in construction environments and practical ways to improve workplace safety.",
+        overviewPoints: [
+          "Recognize construction hazards",
+          "Improve jobsite awareness",
+          "Review safe work practices",
+          "Support stronger safety culture",
+        ],
+        learn: [
+          ["01", "Jobsite Hazards", "Recognize common construction hazards."],
+          [
+            "02",
+            "PPE",
+            "Review appropriate personal protective equipment practices.",
+          ],
+          [
+            "03",
+            "Work Practices",
+            "Understand practical methods for safer work.",
+          ],
+          [
+            "04",
+            "Site Awareness",
+            "Improve awareness of changing jobsite conditions.",
+          ],
+          [
+            "05",
+            "Incident Prevention",
+            "Focus on practical hazard prevention.",
+          ],
+          [
+            "06",
+            "Safety Culture",
+            "Support stronger safety practices across the team.",
+          ],
+        ],
+        audienceList: [
+          [
+            "Construction Workers",
+            "Employees working on active construction sites.",
+          ],
+          ["Supervisors", "Construction supervisors and field leaders."],
+          ["Contractors", "General and specialty contractors."],
+          [
+            "Project Managers",
+            "Personnel responsible for project execution.",
+          ],
+          ["Safety Professionals", "Professionals managing safety programs."],
+          ["Field Teams", "Personnel working in construction environments."],
+        ],
+        requirements: [
+          "Must be at least 18 years of age.",
+          "Prior construction experience is recommended.",
+          "Ability to read and understand English.",
+        ],
+      },
+      "government-contractor": {
+        title: "Government Contractor Training",
+        badge: "assets/Certifications/Government Contractor-badge.jpg",
+        shortDescription:
+          "Safety training designed to help government contractors prepare their teams for safety-sensitive project requirements.",
+        type: "Contractor Training",
+        duration: "Contact Us",
+        delivery: "On-site / Training Facility",
+        audience: "Government Contractors",
+        price: "$795.00",
+        overview:
+          "Government Contractor Training supports contractors and project teams that need structured safety training aligned with their workforce and project requirements.",
+        overviewPoints: [
+          "Prepare teams for safety-sensitive projects",
+          "Strengthen workplace safety practices",
+          "Support project readiness",
+          "Develop workforce safety awareness",
+        ],
+        learn: [
+          [
+            "01",
+            "Project Safety",
+            "Understand important safety considerations for contractor projects.",
+          ],
+          [
+            "02",
+            "Workforce Readiness",
+            "Prepare workers for project-specific safety expectations.",
+          ],
+          [
+            "03",
+            "Hazard Awareness",
+            "Recognize common hazards and prevention strategies.",
+          ],
+          [
+            "04",
+            "Documentation",
+            "Understand the importance of maintaining training records.",
+          ],
+          [
+            "05",
+            "Field Practices",
+            "Apply practical safety concepts in the workplace.",
+          ],
+          [
+            "06",
+            "Team Coordination",
+            "Support communication between project and safety teams.",
+          ],
+        ],
+        audienceList: [
+          [
+            "Government Contractors",
+            "Organizations performing government project work.",
+          ],
+          [
+            "Subcontractors",
+            "Subcontractors supporting government projects.",
+          ],
+          ["Project Managers", "Personnel managing project requirements."],
+          [
+            "Safety Managers",
+            "Professionals responsible for contractor safety.",
+          ],
+          ["Supervisors", "Personnel overseeing field operations."],
+          ["Field Workers", "Workers performing project-related tasks."],
+        ],
+        requirements: [
+          "Must be at least 18 years of age.",
+          "Prior safety training is recommended.",
+          "Ability to read and understand English.",
+        ],
+      },
+      "workplace-safety": {
+        title: "Workplace Safety",
+        badge: "assets/Certifications/Workplace Safety badge.webp",
+        shortDescription:
+          "General workplace safety training designed to improve hazard awareness, safe work practices, and employee preparedness.",
+        type: "Workplace Safety",
+        duration: "Contact Us",
+        delivery: "Classroom / On-site",
+        audience: "Employees & Supervisors",
+        price: "$395.00",
+        overview:
+          "Workplace Safety training provides employees and supervisors with practical knowledge to recognize hazards and support safer day-to-day operations.",
+        overviewPoints: [
+          "Improve employee safety awareness",
+          "Recognize common workplace hazards",
+          "Reinforce safe work practices",
+          "Support a stronger safety culture",
+        ],
+        learn: [
+          ["01", "Hazard Awareness", "Recognize common workplace hazards."],
+          [
+            "02",
+            "Safe Practices",
+            "Understand practical workplace safety procedures.",
+          ],
+          ["03", "PPE", "Review appropriate PPE awareness and use."],
+          [
+            "04",
+            "Emergency Awareness",
+            "Improve general emergency preparedness.",
+          ],
+          [
+            "05",
+            "Incident Prevention",
+            "Focus on reducing preventable workplace incidents.",
+          ],
+          [
+            "06",
+            "Safety Culture",
+            "Support a proactive approach to workplace safety.",
+          ],
+        ],
+        audienceList: [
+          [
+            "Employees",
+            "Workers across a variety of workplace environments.",
+          ],
+          ["Supervisors", "Personnel responsible for daily operations."],
+          ["Managers", "Managers supporting workplace safety."],
+          [
+            "Contractors",
+            "Contractors working within workplace environments.",
+          ],
+          ["Safety Teams", "Safety professionals and coordinators."],
+          [
+            "New Employees",
+            "New personnel requiring workplace safety orientation.",
+          ],
+        ],
+        requirements: [
+          "Must be at least 18 years of age.",
+          "No prior safety training required.",
+          "Ability to read and understand English.",
+        ],
+      },
+      "first-aid-cpr": {
+        title: "First Aid & CPR",
+        badge: "assets/Certifications/First Aid & CPR.jpg",
+        shortDescription:
+          "First Aid and CPR training designed to help participants build essential emergency response knowledge and skills.",
+        type: "Emergency Response Training",
+        duration: "Contact Us",
+        delivery: "Classroom + Practical",
+        audience: "Workers & Workplace Teams",
+        price: "$295.00",
+        overview:
+          "First Aid & CPR training focuses on essential emergency response concepts and practical skills appropriate for workplace teams.",
+        overviewPoints: [
+          "Learn essential emergency response concepts",
+          "Develop practical response awareness",
+          "Support workplace preparedness",
+          "Build confidence during emergencies",
+        ],
+        learn: [
+          [
+            "01",
+            "Emergency Response",
+            "Understand basic principles of responding to emergencies.",
+          ],
+          [
+            "02",
+            "CPR Concepts",
+            "Review important CPR concepts and response procedures.",
+          ],
+          [
+            "03",
+            "First Aid",
+            "Learn essential first-aid response considerations.",
+          ],
+          [
+            "04",
+            "Emergency Assessment",
+            "Understand basic assessment and response priorities.",
+          ],
+          [
+            "05",
+            "Team Communication",
+            "Recognize the importance of clear communication.",
+          ],
+          [
+            "06",
+            "Workplace Preparedness",
+            "Support a more prepared workplace response.",
+          ],
+        ],
+        audienceList: [
+          [
+            "Employees",
+            "Workplace personnel who may need emergency response skills.",
+          ],
+          ["Supervisors", "Supervisors responsible for workplace teams."],
+          [
+            "Safety Teams",
+            "Personnel involved in workplace safety programs.",
+          ],
+          ["Contractors", "Contractors and field workers."],
+          [
+            "Managers",
+            "Managers supporting workplace emergency preparedness.",
+          ],
+          [
+            "Workplace Teams",
+            "Teams seeking structured emergency response training.",
+          ],
+        ],
+        requirements: [
+          "Must be at least 18 years of age.",
+          "No prior training required.",
+          "Ability to participate in practical CPR exercises.",
+        ],
+      },
+      "customized-safety": {
+        title: "Customized Safety Programs",
+        badge: "assets/Certifications/Customized Safety Programs.jpg",
+        shortDescription:
+          "Customized safety training designed around your organization's workforce, project hazards, and specific training requirements.",
+        type: "Customized Training",
+        duration: "Based on Program",
+        delivery: "On-site / Training Facility",
+        audience: "Organizations & Project Teams",
+        price: "$1899.00",
+        overview:
+          "Every workplace has different hazards and operational needs. Customized Safety Programs allow training to be structured around your workforce, project environment, and specific safety objectives.",
+        overviewPoints: [
+          "Training tailored to your organization",
+          "Address project-specific hazards",
+          "Support workforce development",
+          "Build a focused safety program",
+        ],
+        learn: [
+          [
+            "01",
+            "Needs Assessment",
+            "Identify your organization's specific training requirements.",
+          ],
+          [
+            "02",
+            "Hazard Review",
+            "Consider relevant workplace and project hazards.",
+          ],
+          [
+            "03",
+            "Program Development",
+            "Build training around identified requirements.",
+          ],
+          ["04", "Practical Training", "Focus on workplace application."],
+          [
+            "05",
+            "Team Engagement",
+            "Deliver training appropriate for your workforce.",
+          ],
+          [
+            "06",
+            "Program Support",
+            "Discuss ongoing training and safety needs.",
+          ],
+        ],
+        audienceList: [
+          [
+            "Construction Companies",
+            "Organizations with project-specific safety needs.",
+          ],
+          [
+            "Government Contractors",
+            "Contractors requiring customized project training.",
+          ],
+          [
+            "Employers",
+            "Organizations developing workforce safety programs.",
+          ],
+          ["Safety Departments", "Teams seeking targeted training support."],
+          ["Project Teams", "Teams with specific project hazards."],
+          [
+            "Field Operations",
+            "Field teams requiring practical safety instruction.",
+          ],
+        ],
+        requirements: [
+          "Must be at least 18 years of age.",
+          "Training requirements vary by program.",
+          "Ability to read and understand English (or applicable local language).",
+        ],
+      },
+    };
 
-      // GET CURRENT SERVICE
-      const params = new URLSearchParams(window.location.search);
-      const serviceKey = params.get("service") || "fall-protection";
-      const service = services[serviceKey] || services["fall-protection"];
+    // GET CURRENT SERVICE
+    const params = new URLSearchParams(window.location.search);
+    const serviceKey = params.get("service") || "fall-protection";
+    const service = services[serviceKey] || services["fall-protection"];
 
-      // BASIC CONTENT
-      document.title = service.title + " | Northwest Safety & Health";
-      document.getElementById("breadcrumbTitle").textContent = service.title;
-      document.getElementById("serviceTitle").textContent = service.title;
+    // BASIC CONTENT
+    document.title = service.title + " | Northwest Safety & Health";
+    document.getElementById("breadcrumbTitle").textContent = service.title;
+    document.getElementById("serviceTitle").textContent = service.title;
 
-      // HERO BADGE (unique per course)
-      const badgeImg = document.getElementById("badgeImg");
-      badgeImg.src = service.badge;
-      badgeImg.alt = service.title + " badge";
+    // HERO BADGE (unique per course)
+    const badgeImg = document.getElementById("badgeImg");
+    badgeImg.src = service.badge;
+    badgeImg.alt = service.title + " badge";
 
-      // HERO PRICE + TAGS
-      document.getElementById("coursePrice").textContent =
-        service.price || "Contact Us";
-      document.getElementById("enrollPrice").textContent =
-        service.price || "Contact Us";
-      const heroTags = document.getElementById("heroTags");
-      heroTags.innerHTML = `
+    // HERO PRICE + TAGS
+    document.getElementById("coursePrice").textContent =
+      service.price || "Contact Us";
+    document.getElementById("enrollPrice").textContent =
+      service.price || "Contact Us";
+    const heroTags = document.getElementById("heroTags");
+    heroTags.innerHTML = `
       <span class="hero-tag">Level: ${service.type || "Training"}</span>
       <span class="hero-tag">Type: ${service.type || "Training"}</span>
       <span class="hero-tag">Duration: ${service.duration || "Contact Us"}</span>
       <span class="hero-tag">Delivery: ${service.delivery || "On-site"}</span>
     `;
 
-      // COURSE DESCRIPTION
-      document.getElementById("courseDescription").innerHTML = `
+    // COURSE DESCRIPTION
+    document.getElementById("courseDescription").innerHTML = `
       <p>${service.overview}</p>
       <p>The program can be delivered for individual workers, supervisors, contractors, or teams depending on your project and workforce requirements.</p>
     `;
 
-      // LEARNING OUTCOMES
-      document.getElementById("overviewPoints").innerHTML =
-        service.overviewPoints.map((p) => `<li>${p}</li>`).join("");
+    // LEARNING OUTCOMES
+    document.getElementById("overviewPoints").innerHTML =
+      service.overviewPoints.map((p) => `<li>${p}</li>`).join("");
 
-      // COURSE CONTENT (Learning Cards)
-      document.getElementById("learningGrid").innerHTML = service.learn
-        .map(
-          (item) => `
+    // COURSE CONTENT (Learning Cards)
+    document.getElementById("learningGrid").innerHTML = service.learn
+      .map(
+        (item) => `
       <article class="learning-card">
         <div class="learning-number">${item[0]}</div>
         <h3>${item[1]}</h3>
         <p>${item[2]}</p>
       </article>
     `,
-        )
-        .join("");
+      )
+      .join("");
 
-      // AUDIENCE
-      document.getElementById("audienceGrid").innerHTML = service.audienceList
-        .map((item) => `<li>${item[0]} — ${item[1]}</li>`)
-        .join("");
+    // AUDIENCE
+    document.getElementById("audienceGrid").innerHTML = service.audienceList
+      .map((item) => `<li>${item[0]} — ${item[1]}</li>`)
+      .join("");
 
-      // REQUIREMENTS
-      const reqs = service.requirements || [
-        "Must be at least 18 years of age.",
-        "Prior experience in a safety-sensitive environment is recommended.",
-        "Ability to read, write, and understand English.",
-        "Access to appropriate workplace or practice environment for hands-on components.",
-      ];
-      document.getElementById("courseRequirements").innerHTML = reqs
-        .map((r) => `<p>${r}</p>`)
-        .join("");
+    // REQUIREMENTS
+    const reqs = service.requirements || [
+      "Must be at least 18 years of age.",
+      "Prior experience in a safety-sensitive environment is recommended.",
+      "Ability to read, write, and understand English.",
+      "Access to appropriate workplace or practice environment for hands-on components.",
+    ];
+    document.getElementById("courseRequirements").innerHTML = reqs
+      .map((r) => `<p>${r}</p>`)
+      .join("");
 
-      // SIDEBAR INFO
-      document.getElementById("feeBadge").textContent = service.price || "Free";
-      document.getElementById("sideDuration").textContent =
-        service.duration || "Contact Us";
-      document.getElementById("sideType").textContent =
-        service.type || "Training";
-      document.getElementById("sideDelivery").textContent =
-        service.delivery || "On-site";
-      document.getElementById("sideAudience").textContent =
-        service.audience || "Workers & Supervisors";
-      document.getElementById("sideLanguage").textContent = "English";
+    // SIDEBAR INFO
+    document.getElementById("feeBadge").textContent = service.price || "Free";
+    document.getElementById("sideDuration").textContent =
+      service.duration || "Contact Us";
+    document.getElementById("sideType").textContent =
+      service.type || "Training";
+    document.getElementById("sideDelivery").textContent =
+      service.delivery || "On-site";
+    document.getElementById("sideAudience").textContent =
+      service.audience || "Workers & Supervisors";
+    document.getElementById("sideLanguage").textContent = "English";
 
-      // RELATED SERVICES (with unique badge thumbnails)
-      const relatedGrid = document.getElementById("relatedGrid");
-      const relatedServices = Object.entries(services)
-        .filter(([key]) => key !== serviceKey)
-        .slice(0, 3);
-      relatedGrid.innerHTML = relatedServices
-        .map(
-          ([key, item]) => `
+    // RELATED SERVICES (with unique badge thumbnails)
+    const relatedGrid = document.getElementById("relatedGrid");
+    const relatedServices = Object.entries(services)
+      .filter(([key]) => key !== serviceKey)
+      .slice(0, 3);
+    relatedGrid.innerHTML = relatedServices
+      .map(
+        ([key, item]) => `
       <article class="related-card">
         <div class="related-image" style="background-image: url('${item.badge}'); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #0a2540; padding: 20px;"></div>
         <div class="related-content">
@@ -2312,21 +2368,39 @@
         </div>
       </article>
     `,
-        )
-        .join("");
+      )
+      .join("");
 
-      // MOBILE MENU
-      const mobileMenu = document.getElementById("mobileMenu");
-      const mobileNav = document.getElementById("mobileNav");
-      mobileMenu.addEventListener("click", () =>
-        mobileNav.classList.toggle("open"),
-      );
+    // MOBILE MENU
+    const mobileMenu = document.getElementById("mobileMenu");
+    const mobileNav = document.getElementById("mobileNav");
+    mobileMenu.addEventListener("click", () =>
+      mobileNav.classList.toggle("open"),
+    );
 
-      // YEAR
-      document.getElementById("year").textContent = new Date().getFullYear();
+    // YEAR
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-      // DYNAMIC NAV CTA
-      (function updateNavCTA() {
+    // DYNAMIC NAV CTA
+    (function updateNavCTA() {
+      const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+      const navBtn = document.getElementById("navCtaBtn");
+      const mobileCta = document.getElementById("mobileNavCtaLink");
+      if (isLoggedIn) {
+        navBtn.textContent = "Dashboard";
+        navBtn.href = "dashboard.html";
+        mobileCta.textContent = "Dashboard";
+        mobileCta.href = "dashboard.html";
+      } else {
+        navBtn.textContent = "Book Training";
+        navBtn.href = "services.html#book-appointment";
+        mobileCta.textContent = "Book Training";
+        mobileCta.href = "services.html#book-appointment";
+      }
+    })();
+
+    window.addEventListener("storage", function (e) {
+      if (e.key === "isLoggedIn") {
         const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
         const navBtn = document.getElementById("navCtaBtn");
         const mobileCta = document.getElementById("mobileNavCtaLink");
@@ -2341,26 +2415,9 @@
           mobileCta.textContent = "Book Training";
           mobileCta.href = "services.html#book-appointment";
         }
-      })();
+      }
+    });
+  </script>
+</body>
 
-      window.addEventListener("storage", function (e) {
-        if (e.key === "isLoggedIn") {
-          const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-          const navBtn = document.getElementById("navCtaBtn");
-          const mobileCta = document.getElementById("mobileNavCtaLink");
-          if (isLoggedIn) {
-            navBtn.textContent = "Dashboard";
-            navBtn.href = "dashboard.html";
-            mobileCta.textContent = "Dashboard";
-            mobileCta.href = "dashboard.html";
-          } else {
-            navBtn.textContent = "Book Training";
-            navBtn.href = "services.html#book-appointment";
-            mobileCta.textContent = "Book Training";
-            mobileCta.href = "services.html#book-appointment";
-          }
-        }
-      });
-    </script>
-  </body>
 </html>
