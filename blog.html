@@ -1,1806 +1,2087 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog — Northwest Safety & Health</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Northwest Safety & Health</title>
 
-    <style>
-      /* =========================================================
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    /* =========================================================
+   NAV DROPDOWN — COURSES & TRAINING
+========================================================= */
+    .nw-nav-menu li.nw-has-dropdown {
+      position: relative;
+    }
+
+    /* Small caret next to the label */
+    .nw-nav-menu li.nw-has-dropdown>a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nw-nav-menu li.nw-has-dropdown>a .nw-caret {
+      width: 9px;
+      height: 9px;
+      display: block;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      fill: none;
+      transition: transform 0.3s ease;
+    }
+
+    .nw-nav-menu li.nw-has-dropdown:hover>a .nw-caret,
+    .nw-nav-menu li.nw-has-dropdown:focus-within>a .nw-caret {
+      transform: rotate(180deg);
+    }
+
+    /* Dropdown panel */
+    .nw-dropdown {
+      position: absolute;
+      top: calc(100% + 18px);
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      min-width: 260px;
+      padding: 10px;
+      list-style: none;
+      background: #ffffff;
+      border: 1px solid rgba(24, 59, 94, 0.08);
+      border-radius: 14px;
+      box-shadow: 0 22px 50px rgba(12, 32, 52, 0.14);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition:
+        opacity 0.28s ease,
+        transform 0.28s ease,
+        visibility 0.28s ease;
+      z-index: 1200;
+    }
+
+    /* Invisible bridge so the menu doesn't close on the gap */
+    .nw-dropdown::before {
+      content: "";
+      position: absolute;
+      top: -18px;
+      left: 0;
+      right: 0;
+      height: 18px;
+    }
+
+    /* Small pointer */
+    .nw-dropdown::after {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      width: 12px;
+      height: 12px;
+      background: #ffffff;
+      border-left: 1px solid rgba(24, 59, 94, 0.08);
+      border-top: 1px solid rgba(24, 59, 94, 0.08);
+      transform: translateX(-50%) rotate(45deg);
+      border-radius: 2px 0 0 0;
+    }
+
+    .nw-nav-menu li.nw-has-dropdown:hover .nw-dropdown,
+    .nw-nav-menu li.nw-has-dropdown:focus-within .nw-dropdown {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Dropdown items */
+    .nw-dropdown li a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 14px;
+      border-radius: 9px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a1a;
+      letter-spacing: -0.2px;
+      transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        padding-left 0.25s ease;
+    }
+
+    .nw-dropdown li a::before {
+      content: "";
+      width: 3px;
+      height: 14px;
+      border-radius: 3px;
+      background: rgba(24, 59, 94, 0.18);
+      transition: background 0.25s ease, height 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .nw-dropdown li a:hover::before {
+      background: #ee6d29;
+      height: 20px;
+    }
+
+    /* All Services item — highlighted */
+    .nw-dropdown li.nw-dropdown-all a {
+      color: #183b5e;
+      font-weight: 700;
+    }
+
+    .nw-dropdown li.nw-dropdown-all a::before {
+      background: #183b5e;
+      height: 18px;
+    }
+
+    .nw-dropdown li.nw-dropdown-all a:hover::before {
+      background: #ee6d29;
+    }
+
+    /* Divider */
+    .nw-dropdown li.nw-dropdown-divider {
+      height: 1px;
+      margin: 8px 12px;
+      background: rgba(24, 59, 94, 0.08);
+      list-style: none;
+    }
+
+    /* Responsive: hide dropdown when the menu itself is hidden */
+    @media (max-width: 850px) {
+      .nw-dropdown {
+        display: none;
+      }
+    }
+
+    /* =========================================================
            RESET & GLOBAL
         ========================================================= */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: "Manrope", sans-serif;
-        background: #0c2034;
-        -webkit-font-smoothing: antialiased;
-        overflow-x: hidden;
-      }
-      img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-      }
-      a {
-        text-decoration: none;
-      }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      /* =========================================================
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      background: #0c2034;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* =========================================================
            NAVBAR
         ========================================================= */
-      .nw-navbar {
-        width: 100%;
-        height: 96px;
-        background-color: #ffffff;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 5%;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        position: relative;
-        z-index: 1000;
-      }
-      .nw-nav-logo {
-        display: flex;
-        align-items: center;
-        flex-shrink: 0;
-      }
-      .nw-nav-logo img {
-        height: 85px;
-        width: auto;
-        display: block;
-      }
+    .nw-navbar {
+      width: 100%;
+      height: 96px;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      position: relative;
+      z-index: 1000;
+    }
+
+    .nw-nav-logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .nw-nav-logo img {
+      height: 85px;
+      width: auto;
+      display: block;
+    }
+
+    .nw-nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      list-style: none;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nw-nav-menu li a {
+      text-decoration: none;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1a1a1a;
+      letter-spacing: -0.2px;
+      transition: color 0.3s ease;
+    }
+
+    .nw-nav-menu li a.active {
+      color: #ee6d29;
+    }
+
+    .nw-nav-menu li a:hover {
+      color: #ee6d29;
+    }
+
+    .nw-nav-btn-wrap {
+      flex-shrink: 0;
+    }
+
+    .nw-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 32px;
+      height: 52px;
+      background-color: #183b5e;
+      color: #ffffff;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 12px;
+      letter-spacing: 0.2px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(24, 59, 94, 0.15);
+    }
+
+    .nw-nav-btn:hover {
+      background-color: #102b45;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(24, 59, 94, 0.25);
+    }
+
+    @media (max-width: 1024px) {
       .nw-nav-menu {
-        display: flex;
-        align-items: center;
-        gap: 48px;
-        list-style: none;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-      .nw-nav-menu li a {
-        text-decoration: none;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 16px;
-        font-weight: 600;
-        color: #1a1a1a;
-        letter-spacing: -0.2px;
-        transition: color 0.3s ease;
-      }
-      .nw-nav-menu li a.active {
-        color: #ee6d29;
-      }
-      .nw-nav-menu li a:hover {
-        color: #ee6d29;
-      }
-      .nw-nav-btn-wrap {
-        flex-shrink: 0;
-      }
-      .nw-nav-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 32px;
-        height: 52px;
-        background-color: #183b5e;
-        color: #ffffff;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 15px;
-        font-weight: 600;
-        text-decoration: none;
-        border-radius: 12px;
-        letter-spacing: 0.2px;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(24, 59, 94, 0.15);
-      }
-      .nw-nav-btn:hover {
-        background-color: #102b45;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 18px rgba(24, 59, 94, 0.25);
-      }
-      @media (max-width: 1024px) {
-        .nw-nav-menu {
-          gap: 28px;
-        }
-        .nw-nav-menu li a {
-          font-size: 14px;
-        }
-        .nw-nav-btn {
-          padding: 0 24px;
-          height: 48px;
-          font-size: 14px;
-        }
-      }
-      @media (max-width: 850px) {
-        .nw-nav-menu {
-          display: none;
-        }
-        .nw-navbar {
-          padding: 0 24px;
-        }
-        .nw-nav-logo img {
-          height: 70px;
-        }
-      }
-      @media (max-width: 480px) {
-        .nw-navbar {
-          height: 80px;
-          padding: 0 16px;
-        }
-        .nw-nav-logo img {
-          height: 60px;
-        }
-        .nw-nav-btn {
-          padding: 0 18px;
-          height: 42px;
-          font-size: 13px;
-        }
+        gap: 28px;
       }
 
-      /* =========================================================
+      .nw-nav-menu li a {
+        font-size: 14px;
+      }
+
+      .nw-nav-btn {
+        padding: 0 24px;
+        height: 48px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 850px) {
+      .nw-nav-menu {
+        display: none;
+      }
+
+      .nw-navbar {
+        padding: 0 24px;
+      }
+
+      .nw-nav-logo img {
+        height: 70px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nw-navbar {
+        height: 80px;
+        padding: 0 16px;
+      }
+
+      .nw-nav-logo img {
+        height: 60px;
+      }
+
+      .nw-nav-btn {
+        padding: 0 18px;
+        height: 42px;
+        font-size: 13px;
+      }
+    }
+
+    /* =========================================================
            BLOG HERO
         ========================================================= */
+    .nw-blog-hero {
+      position: relative;
+      width: 100%;
+      min-height: 480px;
+      background-color: #0a2540;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .nw-blog-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-size: 70px 70px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .nw-blog-hero::after {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      right: -200px;
+      top: -200px;
+      border-radius: 50%;
+      border: 1px solid rgba(43, 176, 172, 0.1);
+      box-shadow: 0 0 0 60px rgba(43, 176, 172, 0.025);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .nw-blog-hero-container {
+      position: relative;
+      z-index: 5;
+      width: min(1380px, calc(100% - 80px));
+      margin: auto;
+      text-align: center;
+      padding: 70px 0;
+    }
+
+    .nw-blog-hero-title {
+      margin: 0 0 30px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(52px, 7vw, 96px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -4px;
+      color: #ffffff;
+    }
+
+    .nw-blog-hero-line {
+      display: block;
+      width: 80px;
+      height: 3px;
+      margin: 0 auto 40px;
+      border-radius: 20px;
+      background: linear-gradient(90deg, #2bb0ac, #ee6d29);
+      opacity: 0.9;
+    }
+
+    .nw-blog-hero-desc {
+      max-width: 620px;
+      margin: 0 auto 40px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .nw-blog-hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .nw-blog-hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 56px;
+      padding: 0 32px;
+      border-radius: 12px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none !important;
+      white-space: nowrap;
+      cursor: pointer;
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease,
+        border-color 0.35s ease,
+        color 0.35s ease;
+    }
+
+    .nw-blog-hero-btn svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.35s ease;
+    }
+
+    .nw-blog-hero-btn:hover svg {
+      transform: translateX(5px);
+    }
+
+    .nw-blog-hero-btn-primary {
+      color: #ffffff !important;
+      background: linear-gradient(135deg, #ee6d29, #d9581e);
+      border: 1px solid #ee6d29;
+      box-shadow: 0 15px 35px rgba(238, 109, 41, 0.3);
+    }
+
+    .nw-blog-hero-btn-primary:hover {
+      color: #ffffff !important;
+      background: linear-gradient(135deg, #ff8a4d, #ee6d29);
+      border-color: #ff8a4d;
+      transform: translateY(-4px);
+      box-shadow: 0 22px 45px rgba(238, 109, 41, 0.42);
+    }
+
+    .nw-blog-hero-btn-secondary {
+      color: #ffffff !important;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(10px);
+    }
+
+    .nw-blog-hero-btn-secondary:hover {
+      color: #ffffff !important;
+      background: rgba(43, 176, 172, 0.18);
+      border-color: #2bb0ac;
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(43, 176, 172, 0.22);
+    }
+
+    @media (max-width: 900px) {
       .nw-blog-hero {
-        position: relative;
-        width: 100%;
-        min-height: 480px;
-        background-color: #0a2540;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        isolation: isolate;
-      }
-      .nw-blog-hero::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-size: 70px 70px;
-        pointer-events: none;
-        z-index: 1;
-      }
-      .nw-blog-hero::after {
-        content: "";
-        position: absolute;
-        width: 500px;
-        height: 500px;
-        right: -200px;
-        top: -200px;
-        border-radius: 50%;
-        border: 1px solid rgba(43, 176, 172, 0.1);
-        box-shadow: 0 0 0 60px rgba(43, 176, 172, 0.025);
-        pointer-events: none;
-        z-index: 1;
-      }
-      .nw-blog-hero-container {
-        position: relative;
-        z-index: 5;
-        width: min(1380px, calc(100% - 80px));
-        margin: auto;
-        text-align: center;
-        padding: 70px 0;
-      }
-      .nw-blog-hero-title {
-        margin: 0 0 30px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: clamp(52px, 7vw, 96px);
-        font-weight: 700;
-        line-height: 1;
-        letter-spacing: -4px;
-        color: #ffffff;
-      }
-      .nw-blog-hero-line {
-        display: block;
-        width: 80px;
-        height: 3px;
-        margin: 0 auto 40px;
-        border-radius: 20px;
-        background: linear-gradient(90deg, #2bb0ac, #ee6d29);
-        opacity: 0.9;
-      }
-      .nw-blog-hero-desc {
-        max-width: 620px;
-        margin: 0 auto 40px;
-        color: rgba(255, 255, 255, 0.72);
-        font-size: 15px;
-        line-height: 1.8;
-      }
-      .nw-blog-hero-actions {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 16px;
-        flex-wrap: wrap;
-      }
-      .nw-blog-hero-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        min-height: 56px;
-        padding: 0 32px;
-        border-radius: 12px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        text-decoration: none !important;
-        white-space: nowrap;
-        cursor: pointer;
-        transition:
-          transform 0.35s ease,
-          box-shadow 0.35s ease,
-          background 0.35s ease,
-          border-color 0.35s ease,
-          color 0.35s ease;
-      }
-      .nw-blog-hero-btn svg {
-        width: 16px;
-        height: 16px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 2.2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        transition: transform 0.35s ease;
-      }
-      .nw-blog-hero-btn:hover svg {
-        transform: translateX(5px);
-      }
-      .nw-blog-hero-btn-primary {
-        color: #ffffff !important;
-        background: linear-gradient(135deg, #ee6d29, #d9581e);
-        border: 1px solid #ee6d29;
-        box-shadow: 0 15px 35px rgba(238, 109, 41, 0.3);
-      }
-      .nw-blog-hero-btn-primary:hover {
-        color: #ffffff !important;
-        background: linear-gradient(135deg, #ff8a4d, #ee6d29);
-        border-color: #ff8a4d;
-        transform: translateY(-4px);
-        box-shadow: 0 22px 45px rgba(238, 109, 41, 0.42);
-      }
-      .nw-blog-hero-btn-secondary {
-        color: #ffffff !important;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.35);
-        backdrop-filter: blur(10px);
-      }
-      .nw-blog-hero-btn-secondary:hover {
-        color: #ffffff !important;
-        background: rgba(43, 176, 172, 0.18);
-        border-color: #2bb0ac;
-        transform: translateY(-4px);
-        box-shadow: 0 18px 40px rgba(43, 176, 172, 0.22);
-      }
-      @media (max-width: 900px) {
-        .nw-blog-hero {
-          min-height: 420px;
-        }
-        .nw-blog-hero-container {
-          width: calc(100% - 50px);
-          padding: 60px 0;
-        }
-        .nw-blog-hero-title {
-          font-size: clamp(46px, 10vw, 72px);
-          letter-spacing: -3px;
-        }
-      }
-      @media (max-width: 600px) {
-        .nw-blog-hero {
-          min-height: 380px;
-        }
-        .nw-blog-hero-container {
-          width: calc(100% - 30px);
-          padding: 50px 0;
-        }
-        .nw-blog-hero-title {
-          font-size: 44px;
-          letter-spacing: -2.5px;
-          margin-bottom: 22px;
-        }
-        .nw-blog-hero-line {
-          width: 60px;
-          height: 2px;
-          margin-bottom: 30px;
-        }
-        .nw-blog-hero-desc {
-          font-size: 13px;
-          margin-bottom: 30px;
-        }
-        .nw-blog-hero-actions {
-          flex-direction: column;
-          gap: 12px;
-          width: 100%;
-        }
-        .nw-blog-hero-btn {
-          width: 100%;
-          min-height: 52px;
-          font-size: 12px;
-          padding: 0 24px;
-        }
+        min-height: 420px;
       }
 
-      /* =========================================================
+      .nw-blog-hero-container {
+        width: calc(100% - 50px);
+        padding: 60px 0;
+      }
+
+      .nw-blog-hero-title {
+        font-size: clamp(46px, 10vw, 72px);
+        letter-spacing: -3px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nw-blog-hero {
+        min-height: 380px;
+      }
+
+      .nw-blog-hero-container {
+        width: calc(100% - 30px);
+        padding: 50px 0;
+      }
+
+      .nw-blog-hero-title {
+        font-size: 44px;
+        letter-spacing: -2.5px;
+        margin-bottom: 22px;
+      }
+
+      .nw-blog-hero-line {
+        width: 60px;
+        height: 2px;
+        margin-bottom: 30px;
+      }
+
+      .nw-blog-hero-desc {
+        font-size: 13px;
+        margin-bottom: 30px;
+      }
+
+      .nw-blog-hero-actions {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+      }
+
+      .nw-blog-hero-btn {
+        width: 100%;
+        min-height: 52px;
+        font-size: 12px;
+        padding: 0 24px;
+      }
+    }
+
+    /* =========================================================
            BLOG LISTING — MAIN
         ========================================================= */
-      .nw-blog-main {
-        --teal: #2bb0ac;
-        --teal-light: #55c8c3;
-        --orange: #ee6d29;
-        --orange-light: #ff8a4d;
-        --navy: #183b5e;
-        --navy-deep: #0c2034;
-        --navy-mid: #102b45;
-        position: relative;
-        width: 100%;
-        padding: 110px 0 120px;
-        background:
-          radial-gradient(
-            circle at 85% 10%,
-            rgba(43, 176, 172, 0.1),
-            transparent 30%
-          ),
-          radial-gradient(
-            circle at 5% 80%,
-            rgba(238, 109, 41, 0.07),
-            transparent 30%
-          ),
-          #ffffff;
-        color: #0a2540;
-        font-family: "Manrope", sans-serif;
-        overflow: clip;
-        isolation: isolate;
-      }
-      .nw-blog-main::before {
-        content: "BLOG";
-        position: absolute;
-        right: -40px;
-        bottom: -30px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: clamp(120px, 17vw, 260px);
-        font-weight: 700;
-        line-height: 0.8;
-        letter-spacing: -14px;
-        color: rgba(255, 255, 255, 0.018);
-        pointer-events: none;
-        white-space: nowrap;
-      }
-      .nw-blog-main::after {
-        content: "";
-        position: absolute;
-        width: 600px;
-        height: 600px;
-        right: -250px;
-        top: -300px;
-        border-radius: 50%;
-        border: 1px solid rgba(43, 176, 172, 0.1);
-        box-shadow:
-          0 0 0 80px rgba(43, 176, 172, 0.025),
-          0 0 0 160px rgba(238, 109, 41, 0.018);
-        pointer-events: none;
-      }
-      .nw-blog-grid-bg {
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        opacity: 0.035;
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.28) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.28) 1px, transparent 1px);
-        background-size: 80px 80px;
-        mask-image: linear-gradient(to bottom, black, transparent 88%);
-        pointer-events: none;
-      }
-      .nw-blog-container {
-        position: relative;
-        z-index: 5;
-        width: min(1240px, calc(100% - 70px));
-        margin: 0 auto;
-      }
+    .nw-blog-main {
+      --teal: #2bb0ac;
+      --teal-light: #55c8c3;
+      --orange: #ee6d29;
+      --orange-light: #ff8a4d;
+      --navy: #183b5e;
+      --navy-deep: #0c2034;
+      --navy-mid: #102b45;
+      position: relative;
+      width: 100%;
+      padding: 110px 0 120px;
+      background:
+        radial-gradient(circle at 85% 10%,
+          rgba(43, 176, 172, 0.1),
+          transparent 30%),
+        radial-gradient(circle at 5% 80%,
+          rgba(238, 109, 41, 0.07),
+          transparent 30%),
+        #ffffff;
+      color: #0a2540;
+      font-family: "Manrope", sans-serif;
+      overflow: clip;
+      isolation: isolate;
+    }
 
-      .nw-blog-header {
-        display: grid;
-        grid-template-columns: 1fr 360px;
-        align-items: end;
-        gap: 70px;
-        margin-bottom: 60px;
-      }
-      .nw-blog-eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 11px;
-        margin-bottom: 20px;
-        color: var(--teal);
-        font-size: 9px;
-        font-weight: 800;
-        letter-spacing: 2.5px;
-        text-transform: uppercase;
-      }
-      .nw-blog-eyebrow::before {
-        content: "";
-        width: 30px;
-        height: 2px;
-        border-radius: 20px;
-        background: linear-gradient(90deg, var(--teal), var(--orange));
-      }
-      .nw-blog-title {
-        max-width: 720px;
-        margin: 0;
-        color: #0a2540;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: clamp(46px, 5.4vw, 74px);
-        font-weight: 700;
-        line-height: 0.94;
-        letter-spacing: -4px;
-      }
-      .nw-blog-title .accent {
-        color: var(--teal);
-      }
-      .nw-blog-header-right {
-        padding-bottom: 3px;
-      }
-      .nw-blog-header-copy {
-        max-width: 350px;
-        margin: 0;
-        color: #0a2540;
-        font-size: 12px;
-        line-height: 1.8;
-      }
-      .nw-blog-meta {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-top: 20px;
-        color: #0a2540;
-        font-size: 8px;
-        font-weight: 800;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-      }
-      .nw-blog-meta-dot {
-        width: 6px;
-        height: 6px;
-        flex-shrink: 0;
-        border-radius: 50%;
-        background: var(--teal);
-        box-shadow:
-          0 0 0 5px rgba(43, 176, 172, 0.1),
-          0 0 16px rgba(43, 176, 172, 0.25);
-      }
+    .nw-blog-main::before {
+      content: "BLOG";
+      position: absolute;
+      right: -40px;
+      bottom: -30px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(120px, 17vw, 260px);
+      font-weight: 700;
+      line-height: 0.8;
+      letter-spacing: -14px;
+      color: rgba(255, 255, 255, 0.018);
+      pointer-events: none;
+      white-space: nowrap;
+    }
 
-      .nw-blog-filters {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-bottom: 50px;
-      }
-      .nw-blog-filter {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 20px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 30px;
-        background: rgba(255, 255, 255, 0.03);
-        color: rgba(255, 255, 255, 0.75);
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.6px;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-      .nw-blog-filter:hover {
-        border-color: rgba(43, 176, 172, 0.4);
-        color: #fff;
-        background: rgba(43, 176, 172, 0.08);
-      }
-      .nw-blog-filter.active {
-        border-color: var(--orange);
-        background: linear-gradient(
-          135deg,
+    .nw-blog-main::after {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      right: -250px;
+      top: -300px;
+      border-radius: 50%;
+      border: 1px solid rgba(43, 176, 172, 0.1);
+      box-shadow:
+        0 0 0 80px rgba(43, 176, 172, 0.025),
+        0 0 0 160px rgba(238, 109, 41, 0.018);
+      pointer-events: none;
+    }
+
+    .nw-blog-grid-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.035;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.28) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.28) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: linear-gradient(to bottom, black, transparent 88%);
+      pointer-events: none;
+    }
+
+    .nw-blog-container {
+      position: relative;
+      z-index: 5;
+      width: min(1240px, calc(100% - 70px));
+      margin: 0 auto;
+    }
+
+    .nw-blog-header {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      align-items: end;
+      gap: 70px;
+      margin-bottom: 60px;
+    }
+
+    .nw-blog-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 20px;
+      color: var(--teal);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    .nw-blog-eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 2px;
+      border-radius: 20px;
+      background: linear-gradient(90deg, var(--teal), var(--orange));
+    }
+
+    .nw-blog-title {
+      max-width: 720px;
+      margin: 0;
+      color: #0a2540;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(46px, 5.4vw, 74px);
+      font-weight: 700;
+      line-height: 0.94;
+      letter-spacing: -4px;
+    }
+
+    .nw-blog-title .accent {
+      color: var(--teal);
+    }
+
+    .nw-blog-header-right {
+      padding-bottom: 3px;
+    }
+
+    .nw-blog-header-copy {
+      max-width: 350px;
+      margin: 0;
+      color: #0a2540;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .nw-blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      color: #0a2540;
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .nw-blog-meta-dot {
+      width: 6px;
+      height: 6px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow:
+        0 0 0 5px rgba(43, 176, 172, 0.1),
+        0 0 16px rgba(43, 176, 172, 0.25);
+    }
+
+    .nw-blog-filters {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+
+    .nw-blog-filter {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.03);
+      color: rgba(255, 255, 255, 0.75);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nw-blog-filter:hover {
+      border-color: rgba(43, 176, 172, 0.4);
+      color: #fff;
+      background: rgba(43, 176, 172, 0.08);
+    }
+
+    .nw-blog-filter.active {
+      border-color: var(--orange);
+      background: linear-gradient(135deg,
           rgba(238, 109, 41, 0.18),
-          rgba(238, 109, 41, 0.05)
-        );
-        color: #fff;
-        box-shadow: 0 8px 24px rgba(238, 109, 41, 0.18);
-      }
-      .nw-blog-filter.active::before {
-        content: "";
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--orange);
-        box-shadow: 0 0 10px rgba(238, 109, 41, 0.6);
-      }
+          rgba(238, 109, 41, 0.05));
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(238, 109, 41, 0.18);
+    }
 
-      .nw-blog-featured {
-        position: relative;
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        gap: 0;
-        margin-bottom: 60px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 28px;
-        background: linear-gradient(
-          135deg,
+    .nw-blog-filter.active::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 10px rgba(238, 109, 41, 0.6);
+    }
+
+    .nw-blog-featured {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 0;
+      margin-bottom: 60px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 28px;
+      background: linear-gradient(135deg,
           #163650 0%,
           #102b45 52%,
-          #0c2034 100%
-        );
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
-        overflow: hidden;
-        transition:
-          transform 0.4s ease,
-          border-color 0.4s ease,
-          box-shadow 0.4s ease;
-      }
-      .nw-blog-featured:hover {
-        transform: translateY(-6px);
-        border-color: rgba(43, 176, 172, 0.25);
-        box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
-      }
-      .nw-blog-featured::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 90px;
-        height: 3px;
-        border-radius: 0 0 8px 8px;
-        background: linear-gradient(90deg, var(--teal), var(--orange));
-        box-shadow: 0 4px 15px rgba(43, 176, 172, 0.18);
-        z-index: 3;
-      }
-      .nw-blog-featured-media {
-        position: relative;
-        min-height: 380px;
-        background: linear-gradient(135deg, #183b5e, #0c2034);
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .nw-blog-featured-media img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0.55;
-        transition:
-          transform 0.6s ease,
-          opacity 0.6s ease;
-      }
-      .nw-blog-featured:hover .nw-blog-featured-media img {
-        transform: scale(1.06);
-        opacity: 0.7;
-      }
-      .nw-blog-featured-media::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-        background-size: 40px 40px;
-        z-index: 1;
-      }
-      .nw-blog-featured-media-icon {
-        position: relative;
-        z-index: 2;
-        width: 110px;
-        height: 110px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(
-          135deg,
+          #0c2034 100%);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+      transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+    }
+
+    .nw-blog-featured:hover {
+      transform: translateY(-6px);
+      border-color: rgba(43, 176, 172, 0.25);
+      box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
+    }
+
+    .nw-blog-featured::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 90px;
+      height: 3px;
+      border-radius: 0 0 8px 8px;
+      background: linear-gradient(90deg, var(--teal), var(--orange));
+      box-shadow: 0 4px 15px rgba(43, 176, 172, 0.18);
+      z-index: 3;
+    }
+
+    .nw-blog-featured-media {
+      position: relative;
+      min-height: 380px;
+      background: linear-gradient(135deg, #183b5e, #0c2034);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nw-blog-featured-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.55;
+      transition:
+        transform 0.6s ease,
+        opacity 0.6s ease;
+    }
+
+    .nw-blog-featured:hover .nw-blog-featured-media img {
+      transform: scale(1.06);
+      opacity: 0.7;
+    }
+
+    .nw-blog-featured-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 1;
+    }
+
+    .nw-blog-featured-media-icon {
+      position: relative;
+      z-index: 2;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg,
           rgba(43, 176, 172, 0.22),
-          rgba(238, 109, 41, 0.16)
-        );
-        border: 1px solid rgba(43, 176, 172, 0.35);
-        color: var(--teal-light);
-        backdrop-filter: blur(6px);
+          rgba(238, 109, 41, 0.16));
+      border: 1px solid rgba(43, 176, 172, 0.35);
+      color: var(--teal-light);
+      backdrop-filter: blur(6px);
+    }
+
+    .nw-blog-featured-media-icon svg {
+      width: 46px;
+      height: 46px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nw-blog-featured-badge {
+      position: absolute;
+      top: 22px;
+      left: 22px;
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, var(--orange), #d9581e);
+      color: #fff;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      box-shadow: 0 10px 25px rgba(238, 109, 41, 0.3);
+    }
+
+    .nw-blog-featured-badge::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    }
+
+    .nw-blog-featured-body {
+      padding: 48px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .nw-blog-featured-cat {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      color: var(--teal-light);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .nw-blog-featured-cat::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 10px rgba(43, 176, 172, 0.4);
+    }
+
+    .nw-blog-featured-title {
+      margin: 0 0 18px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(26px, 2.6vw, 36px);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      color: #fff;
+    }
+
+    .nw-blog-featured-excerpt {
+      margin: 0 0 26px;
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    .nw-blog-featured-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 26px;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .nw-blog-featured-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nw-blog-featured-meta svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--teal);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nw-blog-featured-meta .dot-sep {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .nw-blog-featured-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      align-self: flex-start;
+      min-height: 48px;
+      padding: 0 24px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, var(--teal), #1e8e8a);
+      color: #fff !important;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-decoration: none !important;
+      box-shadow: 0 15px 30px rgba(43, 176, 172, 0.25);
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+    }
+
+    .nw-blog-featured-btn:hover {
+      background: linear-gradient(135deg, var(--teal-light), var(--teal));
+      transform: translateY(-3px);
+      box-shadow: 0 22px 40px rgba(43, 176, 172, 0.35);
+    }
+
+    .nw-blog-featured-btn svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.2;
+      transition: transform 0.3s ease;
+    }
+
+    .nw-blog-featured-btn:hover svg {
+      transform: translateX(4px);
+    }
+
+    .nw-blog-posts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .nw-blog-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 22px;
+      background: linear-gradient(135deg,
+          #163650 0%,
+          #102b45 60%,
+          #0c2034 100%);
+      overflow: hidden;
+      transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+    }
+
+    .nw-blog-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(43, 176, 172, 0.3);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+    }
+
+    .nw-blog-card::before {
+      content: "";
+      position: absolute;
+      left: 28px;
+      top: 0;
+      width: 60px;
+      height: 3px;
+      border-radius: 0 0 8px 8px;
+      background: linear-gradient(90deg, var(--teal), var(--orange));
+      z-index: 3;
+    }
+
+    .nw-blog-card-media {
+      position: relative;
+      height: 190px;
+      background: linear-gradient(135deg, #183b5e, #0c2034);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nw-blog-card-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.5;
+      transition:
+        transform 0.5s ease,
+        opacity 0.5s ease;
+    }
+
+    .nw-blog-card:hover .nw-blog-card-media img {
+      transform: scale(1.08);
+      opacity: 0.68;
+    }
+
+    .nw-blog-card-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 30px 30px;
+      transition: transform 0.5s ease;
+      z-index: 1;
+    }
+
+    .nw-blog-card:hover .nw-blog-card-media::before {
+      transform: scale(1.1);
+    }
+
+    .nw-blog-card-media-icon {
+      position: relative;
+      z-index: 2;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg,
+          rgba(43, 176, 172, 0.22),
+          rgba(238, 109, 41, 0.14));
+      border: 1px solid rgba(43, 176, 172, 0.35);
+      color: var(--teal-light);
+      transition: transform 0.5s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .nw-blog-card:hover .nw-blog-card-media-icon {
+      transform: scale(1.1) rotate(-5deg);
+    }
+
+    .nw-blog-card-media-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nw-blog-card-tag {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 4;
+      padding: 6px 12px;
+      border-radius: 30px;
+      background: rgba(12, 32, 52, 0.85);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(43, 176, 172, 0.3);
+      color: var(--teal-light);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .nw-blog-card-body {
+      padding: 26px 26px 28px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .nw-blog-card-title {
+      margin: 0 0 12px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.6px;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+
+    .nw-blog-card:hover .nw-blog-card-title {
+      color: var(--teal-light);
+    }
+
+    .nw-blog-card-excerpt {
+      margin: 0 0 20px;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 11px;
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .nw-blog-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .nw-blog-card-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    .nw-blog-card-date svg {
+      width: 13px;
+      height: 13px;
+      stroke: var(--teal);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nw-blog-card-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.55);
+      transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .nw-blog-card-link svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nw-blog-card:hover .nw-blog-card-link {
+      background: rgba(43, 176, 172, 0.15);
+      border-color: rgba(43, 176, 172, 0.45);
+      color: var(--teal-light);
+      transform: translateX(3px);
+    }
+
+    .nw-blog-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 60px;
+      flex-wrap: wrap;
+    }
+
+    .nw-blog-page-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 46px;
+      height: 46px;
+      padding: 0 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #0a2540;
+      color: #fff;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nw-blog-page-btn:hover {
+      border-color: rgba(43, 176, 172, 0.4);
+      color: #fff;
+      background: rgba(43, 176, 172, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .nw-blog-page-btn.active {
+      border-color: var(--orange);
+      background: linear-gradient(135deg, var(--orange), #d9581e);
+      color: #fff;
+      box-shadow: 0 12px 25px rgba(238, 109, 41, 0.28);
+    }
+
+    .nw-blog-page-btn svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* =========================================================
+           NEWSLETTER CTA STRIP
+        ========================================================= */
+    .nw-blog-cta {
+      --teal: #2bb0ac;
+      --orange: #ee6d29;
+      --orange-light: #ff8a4d;
+      position: relative;
+      padding: 80px 0;
+      background:
+        radial-gradient(circle at 20% 50%,
+          rgba(43, 176, 172, 0.12),
+          transparent 35%),
+        radial-gradient(circle at 90% 30%,
+          rgba(238, 109, 41, 0.1),
+          transparent 30%),
+        linear-gradient(135deg, #102b45, #0c2034);
+      color: #fff;
+      font-family: "Manrope", sans-serif;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .nw-blog-cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: linear-gradient(to bottom, black, transparent 90%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .nw-blog-cta-container {
+      position: relative;
+      z-index: 5;
+      width: min(1240px, calc(100% - 70px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .nw-blog-cta-left h2 {
+      margin: 0 0 18px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(30px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.02;
+      letter-spacing: -2.2px;
+    }
+
+    .nw-blog-cta-left h2 span {
+      color: var(--teal);
+    }
+
+    .nw-blog-cta-left p {
+      max-width: 520px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .nw-blog-cta-form {
+      display: flex;
+      gap: 12px;
+      padding: 10px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(8px);
+    }
+
+    .nw-blog-cta-form input {
+      flex: 1;
+      min-width: 0;
+      padding: 0 18px;
+      height: 54px;
+      border: none;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      font-family: "Manrope", sans-serif;
+      font-size: 13.5px;
+      outline: none;
+      transition: background 0.3s ease;
+    }
+
+    .nw-blog-cta-form input::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .nw-blog-cta-form input:focus {
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .nw-blog-cta-form button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 54px;
+      padding: 0 26px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--orange), #d9581e);
+      color: #fff;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 15px 30px rgba(238, 109, 41, 0.28);
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .nw-blog-cta-form button:hover {
+      background: linear-gradient(135deg, var(--orange-light), var(--orange));
+      transform: translateY(-3px);
+      box-shadow: 0 22px 40px rgba(238, 109, 41, 0.38);
+    }
+
+    .nw-blog-cta-form button svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.2;
+    }
+
+    /* =========================================================
+           FOOTER
+        ========================================================= */
+    .nw-footer {
+      width: 100%;
+      padding: 60px 5% 30px;
+      background-color: #ffffff;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .nw-footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 1.2fr 1.3fr;
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .nw-footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .nw-footer-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .nw-footer-logo img {
+      height: 85px;
+      width: auto;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .nw-footer-tagline {
+      font-size: 15px;
+      font-weight: 700;
+      color: #183b5e;
+      line-height: 1.4;
+      max-width: 220px;
+    }
+
+    .nw-social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 5px;
+    }
+
+    .nw-social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background-color: #183b5e;
+      color: #ffffff;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .nw-social-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .nw-social-icon:hover {
+      background-color: #ee6d29;
+      transform: translateY(-2px);
+    }
+
+    .nw-footer-col h4 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 24px;
+      letter-spacing: -0.2px;
+    }
+
+    .nw-footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .nw-footer-links li a {
+      font-size: 15px;
+      font-weight: 500;
+      color: #333333;
+      transition: color 0.2s ease;
+    }
+
+    .nw-footer-links li a:hover {
+      color: #ee6d29;
+    }
+
+    .nw-footer-newsletter p {
+      font-size: 15px;
+      font-weight: 500;
+      color: #333333;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .nw-newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .nw-newsletter-input {
+      width: 100%;
+      min-height: 100px;
+      padding: 14px 16px;
+      font-family: "Manrope", sans-serif;
+      font-size: 14px;
+      color: #333;
+      background-color: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      outline: none;
+      resize: vertical;
+      transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .nw-newsletter-input::placeholder {
+      color: #9ca3af;
+    }
+
+    .nw-newsletter-input:focus {
+      border-color: #183b5e;
+      box-shadow: 0 0 0 3px rgba(24, 59, 94, 0.1);
+    }
+
+    .nw-newsletter-btn {
+      align-self: flex-end;
+      padding: 12px 32px;
+      background-color: #183b5e;
+      color: #ffffff;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nw-newsletter-btn:hover {
+      background-color: #ee6d29;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(238, 109, 41, 0.25);
+    }
+
+    .nw-footer-bottom {
+      margin-top: 50px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      text-align: center;
+    }
+
+    .nw-footer-bottom p {
+      font-size: 14px;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    @media (max-width: 1100px) {
+      .nw-blog-featured {
+        grid-template-columns: 1fr;
       }
-      .nw-blog-featured-media-icon svg {
-        width: 46px;
-        height: 46px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 1.4;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-      .nw-blog-featured-badge {
-        position: absolute;
-        top: 22px;
-        left: 22px;
-        z-index: 4;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 16px;
-        border-radius: 30px;
-        background: linear-gradient(135deg, var(--orange), #d9581e);
-        color: #fff;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        box-shadow: 0 10px 25px rgba(238, 109, 41, 0.3);
-      }
-      .nw-blog-featured-badge::before {
-        content: "";
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: #fff;
-        box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-      }
-      .nw-blog-featured-body {
-        padding: 48px 44px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-      .nw-blog-featured-cat {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 18px;
-        color: var(--teal-light);
-        font-size: 10px;
-        font-weight: 800;
-        letter-spacing: 1.8px;
-        text-transform: uppercase;
-      }
-      .nw-blog-featured-cat::before {
-        content: "";
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--teal);
-        box-shadow: 0 0 10px rgba(43, 176, 172, 0.4);
-      }
-      .nw-blog-featured-title {
-        margin: 0 0 18px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: clamp(26px, 2.6vw, 36px);
-        font-weight: 600;
-        line-height: 1.08;
-        letter-spacing: -1.5px;
-        color: #fff;
-      }
-      .nw-blog-featured-excerpt {
-        margin: 0 0 26px;
-        color: rgba(255, 255, 255, 0.95);
-        font-size: 12px;
-        line-height: 1.75;
-      }
-      .nw-blog-featured-meta {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        padding-top: 22px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        margin-bottom: 26px;
-        font-size: 11px;
-        color: rgba(255, 255, 255, 0.75);
-      }
-      .nw-blog-featured-meta span {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .nw-blog-featured-meta svg {
-        width: 14px;
-        height: 14px;
-        stroke: var(--teal);
-        fill: none;
-        stroke-width: 1.8;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-      .nw-blog-featured-meta .dot-sep {
-        width: 4px;
-        height: 4px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.25);
-      }
-      .nw-blog-featured-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 11px;
-        align-self: flex-start;
-        min-height: 48px;
-        padding: 0 24px;
-        border-radius: 11px;
-        background: linear-gradient(135deg, var(--teal), #1e8e8a);
-        color: #fff !important;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        text-decoration: none !important;
-        box-shadow: 0 15px 30px rgba(43, 176, 172, 0.25);
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease,
-          background 0.3s ease;
-      }
-      .nw-blog-featured-btn:hover {
-        background: linear-gradient(135deg, var(--teal-light), var(--teal));
-        transform: translateY(-3px);
-        box-shadow: 0 22px 40px rgba(43, 176, 172, 0.35);
-      }
-      .nw-blog-featured-btn svg {
-        width: 14px;
-        height: 14px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 2.2;
-        transition: transform 0.3s ease;
-      }
-      .nw-blog-featured-btn:hover svg {
-        transform: translateX(4px);
+
+      .nw-blog-featured-media {
+        min-height: 260px;
       }
 
       .nw-blog-posts {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 28px;
+        grid-template-columns: repeat(2, 1fr);
       }
-      .nw-blog-card {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        border: 1px solid rgba(255, 255, 255, 0.09);
-        border-radius: 22px;
-        background: linear-gradient(
-          135deg,
-          #163650 0%,
-          #102b45 60%,
-          #0c2034 100%
-        );
-        overflow: hidden;
-        transition:
-          transform 0.4s ease,
-          border-color 0.4s ease,
-          box-shadow 0.4s ease;
-      }
-      .nw-blog-card:hover {
-        transform: translateY(-8px);
-        border-color: rgba(43, 176, 172, 0.3);
-        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
-      }
-      .nw-blog-card::before {
-        content: "";
-        position: absolute;
-        left: 28px;
-        top: 0;
-        width: 60px;
-        height: 3px;
-        border-radius: 0 0 8px 8px;
-        background: linear-gradient(90deg, var(--teal), var(--orange));
-        z-index: 3;
-      }
-      .nw-blog-card-media {
-        position: relative;
-        height: 190px;
-        background: linear-gradient(135deg, #183b5e, #0c2034);
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .nw-blog-card-media img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0.5;
-        transition:
-          transform 0.5s ease,
-          opacity 0.5s ease;
-      }
-      .nw-blog-card:hover .nw-blog-card-media img {
-        transform: scale(1.08);
-        opacity: 0.68;
-      }
-      .nw-blog-card-media::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-        background-size: 30px 30px;
-        transition: transform 0.5s ease;
-        z-index: 1;
-      }
-      .nw-blog-card:hover .nw-blog-card-media::before {
-        transform: scale(1.1);
-      }
-      .nw-blog-card-media-icon {
-        position: relative;
-        z-index: 2;
-        width: 68px;
-        height: 68px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(
-          135deg,
-          rgba(43, 176, 172, 0.22),
-          rgba(238, 109, 41, 0.14)
-        );
-        border: 1px solid rgba(43, 176, 172, 0.35);
-        color: var(--teal-light);
-        transition: transform 0.5s ease;
-        backdrop-filter: blur(4px);
-      }
-      .nw-blog-card:hover .nw-blog-card-media-icon {
-        transform: scale(1.1) rotate(-5deg);
-      }
-      .nw-blog-card-media-icon svg {
-        width: 28px;
-        height: 28px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 1.4;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-      .nw-blog-card-tag {
-        position: absolute;
-        top: 16px;
-        left: 16px;
-        z-index: 4;
-        padding: 6px 12px;
-        border-radius: 30px;
-        background: rgba(12, 32, 52, 0.85);
-        backdrop-filter: blur(6px);
-        border: 1px solid rgba(43, 176, 172, 0.3);
-        color: var(--teal-light);
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 9px;
-        font-weight: 700;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-      }
-      .nw-blog-card-body {
-        padding: 26px 26px 28px;
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-      }
-      .nw-blog-card-title {
-        margin: 0 0 12px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 19px;
-        font-weight: 600;
-        line-height: 1.25;
-        letter-spacing: -0.6px;
-        color: #fff;
-        transition: color 0.3s ease;
-      }
-      .nw-blog-card:hover .nw-blog-card-title {
-        color: var(--teal-light);
-      }
-      .nw-blog-card-excerpt {
-        margin: 0 0 20px;
-        color: rgba(255, 255, 255, 0.85);
-        font-size: 11px;
-        line-height: 1.7;
-        flex: 1;
-      }
-      .nw-blog-card-footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        padding-top: 18px;
-        border-top: 1px solid rgba(255, 255, 255, 0.07);
-      }
-      .nw-blog-card-date {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 10px;
-        color: rgba(255, 255, 255, 0.6);
-        font-weight: 600;
-        letter-spacing: 0.3px;
-      }
-      .nw-blog-card-date svg {
-        width: 13px;
-        height: 13px;
-        stroke: var(--teal);
-        fill: none;
-        stroke-width: 1.8;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-      .nw-blog-card-link {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        color: rgba(255, 255, 255, 0.55);
-        transition:
-          background 0.3s ease,
-          color 0.3s ease,
-          border-color 0.3s ease,
-          transform 0.3s ease;
-      }
-      .nw-blog-card-link svg {
-        width: 14px;
-        height: 14px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-      .nw-blog-card:hover .nw-blog-card-link {
-        background: rgba(43, 176, 172, 0.15);
-        border-color: rgba(43, 176, 172, 0.45);
-        color: var(--teal-light);
-        transform: translateX(3px);
+    }
+
+    @media (max-width: 900px) {
+      .nw-blog-main {
+        padding: 90px 0 100px;
       }
 
-      .nw-blog-pagination {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 60px;
-        flex-wrap: wrap;
-      }
-      .nw-blog-page-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 46px;
-        height: 46px;
-        padding: 0 14px;
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: #0a2540;
-        color: #fff;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 13px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-      .nw-blog-page-btn:hover {
-        border-color: rgba(43, 176, 172, 0.4);
-        color: #fff;
-        background: rgba(43, 176, 172, 0.08);
-        transform: translateY(-2px);
-      }
-      .nw-blog-page-btn.active {
-        border-color: var(--orange);
-        background: linear-gradient(135deg, var(--orange), #d9581e);
-        color: #fff;
-        box-shadow: 0 12px 25px rgba(238, 109, 41, 0.28);
-      }
-      .nw-blog-page-btn svg {
-        width: 14px;
-        height: 14px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
+      .nw-blog-container {
+        width: calc(100% - 50px);
       }
 
-      /* =========================================================
-           NEWSLETTER CTA STRIP
-        ========================================================= */
-      .nw-blog-cta {
-        --teal: #2bb0ac;
-        --orange: #ee6d29;
-        --orange-light: #ff8a4d;
-        position: relative;
-        padding: 80px 0;
-        background:
-          radial-gradient(
-            circle at 20% 50%,
-            rgba(43, 176, 172, 0.12),
-            transparent 35%
-          ),
-          radial-gradient(
-            circle at 90% 30%,
-            rgba(238, 109, 41, 0.1),
-            transparent 30%
-          ),
-          linear-gradient(135deg, #102b45, #0c2034);
-        color: #fff;
-        font-family: "Manrope", sans-serif;
-        overflow: hidden;
-        isolation: isolate;
-      }
-      .nw-blog-cta::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        background-size: 60px 60px;
-        mask-image: linear-gradient(to bottom, black, transparent 90%);
-        pointer-events: none;
-        z-index: -1;
-      }
-      .nw-blog-cta-container {
-        position: relative;
-        z-index: 5;
-        width: min(1240px, calc(100% - 70px));
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        align-items: center;
-        gap: 60px;
-      }
-      .nw-blog-cta-left h2 {
-        margin: 0 0 18px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: clamp(30px, 4vw, 52px);
-        font-weight: 700;
-        line-height: 1.02;
-        letter-spacing: -2.2px;
-      }
-      .nw-blog-cta-left h2 span {
-        color: var(--teal);
-      }
-      .nw-blog-cta-left p {
-        max-width: 520px;
-        margin: 0;
-        color: rgba(255, 255, 255, 0.68);
-        font-size: 14px;
-        line-height: 1.8;
-      }
-      .nw-blog-cta-form {
-        display: flex;
-        gap: 12px;
-        padding: 10px;
-        border-radius: 16px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: rgba(255, 255, 255, 0.04);
-        backdrop-filter: blur(8px);
-      }
-      .nw-blog-cta-form input {
-        flex: 1;
-        min-width: 0;
-        padding: 0 18px;
-        height: 54px;
-        border: none;
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.05);
-        color: #fff;
-        font-family: "Manrope", sans-serif;
-        font-size: 13.5px;
-        outline: none;
-        transition: background 0.3s ease;
-      }
-      .nw-blog-cta-form input::placeholder {
-        color: rgba(255, 255, 255, 0.4);
-      }
-      .nw-blog-cta-form input:focus {
-        background: rgba(255, 255, 255, 0.09);
-      }
-      .nw-blog-cta-form button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        min-height: 54px;
-        padding: 0 26px;
-        border: none;
-        border-radius: 12px;
-        background: linear-gradient(135deg, var(--orange), #d9581e);
-        color: #fff;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        cursor: pointer;
-        box-shadow: 0 15px 30px rgba(238, 109, 41, 0.28);
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease,
-          background 0.3s ease;
-        white-space: nowrap;
-      }
-      .nw-blog-cta-form button:hover {
-        background: linear-gradient(135deg, var(--orange-light), var(--orange));
-        transform: translateY(-3px);
-        box-shadow: 0 22px 40px rgba(238, 109, 41, 0.38);
-      }
-      .nw-blog-cta-form button svg {
-        width: 14px;
-        height: 14px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 2.2;
-      }
-
-      /* =========================================================
-           FOOTER
-        ========================================================= */
-      .nw-footer {
-        width: 100%;
-        padding: 60px 5% 30px;
-        background-color: #ffffff;
-        border-top: 1px solid rgba(0, 0, 0, 0.06);
-      }
-      .nw-footer-grid {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr 1.2fr 1.3fr;
-        gap: 40px;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-      .nw-footer-brand {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-      .nw-footer-logo {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .nw-footer-logo img {
-        height: 85px;
-        width: auto;
+      .nw-blog-header {
         display: block;
-        margin-bottom: 12px;
+        margin-bottom: 45px;
       }
-      .nw-footer-tagline {
-        font-size: 15px;
-        font-weight: 700;
-        color: #183b5e;
-        line-height: 1.4;
-        max-width: 220px;
+
+      .nw-blog-header-right {
+        margin-top: 22px;
       }
-      .nw-social-links {
-        display: flex;
-        gap: 12px;
-        margin-top: 5px;
+
+      .nw-blog-header-copy {
+        max-width: 600px;
       }
-      .nw-social-icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 38px;
-        height: 38px;
-        background-color: #183b5e;
-        color: #ffffff;
-        border-radius: 50%;
-        transition: all 0.3s ease;
+
+      .nw-blog-cta-container {
+        grid-template-columns: 1fr;
+        gap: 35px;
       }
-      .nw-social-icon svg {
-        width: 18px;
-        height: 18px;
-        fill: currentColor;
+    }
+
+    @media (max-width: 700px) {
+      .nw-blog-main {
+        padding: 70px 0 80px;
       }
-      .nw-social-icon:hover {
-        background-color: #ee6d29;
-        transform: translateY(-2px);
+
+      .nw-blog-main::before {
+        font-size: 90px;
+        right: -20px;
+        bottom: -10px;
+        letter-spacing: -7px;
       }
-      .nw-footer-col h4 {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 16px;
-        font-weight: 700;
-        color: #1a1a1a;
-        margin-bottom: 24px;
-        letter-spacing: -0.2px;
+
+      .nw-blog-container {
+        width: calc(100% - 28px);
       }
-      .nw-footer-links {
-        list-style: none;
-        display: flex;
+
+      .nw-blog-title {
+        font-size: 42px;
+        letter-spacing: -2.8px;
+      }
+
+      .nw-blog-posts {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .nw-blog-featured-body {
+        padding: 32px 24px;
+      }
+
+      .nw-blog-featured-title {
+        font-size: 24px;
+        letter-spacing: -1px;
+      }
+
+      .nw-blog-featured-meta {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .nw-blog-cta {
+        padding: 60px 0;
+      }
+
+      .nw-blog-cta-container {
+        width: calc(100% - 28px);
+      }
+
+      .nw-blog-cta-form {
         flex-direction: column;
-        gap: 16px;
+        padding: 14px;
       }
-      .nw-footer-links li a {
-        font-size: 15px;
-        font-weight: 500;
-        color: #333333;
-        transition: color 0.2s ease;
-      }
-      .nw-footer-links li a:hover {
-        color: #ee6d29;
-      }
-      .nw-footer-newsletter p {
-        font-size: 15px;
-        font-weight: 500;
-        color: #333333;
-        line-height: 1.6;
-        margin-bottom: 20px;
-      }
-      .nw-newsletter-form {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
+
+      .nw-blog-cta-form button {
         width: 100%;
       }
-      .nw-newsletter-input {
-        width: 100%;
-        min-height: 100px;
-        padding: 14px 16px;
-        font-family: "Manrope", sans-serif;
-        font-size: 14px;
-        color: #333;
-        background-color: #ffffff;
-        border: 1px solid #d1d5db;
-        border-radius: 8px;
-        outline: none;
-        resize: vertical;
-        transition:
-          border-color 0.3s ease,
-          box-shadow 0.3s ease;
-      }
-      .nw-newsletter-input::placeholder {
-        color: #9ca3af;
-      }
-      .nw-newsletter-input:focus {
-        border-color: #183b5e;
-        box-shadow: 0 0 0 3px rgba(24, 59, 94, 0.1);
-      }
-      .nw-newsletter-btn {
-        align-self: flex-end;
-        padding: 12px 32px;
-        background-color: #183b5e;
-        color: #ffffff;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-      .nw-newsletter-btn:hover {
-        background-color: #ee6d29;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 15px rgba(238, 109, 41, 0.25);
-      }
-      .nw-footer-bottom {
-        margin-top: 50px;
-        padding-top: 24px;
-        border-top: 1px solid rgba(0, 0, 0, 0.06);
-        text-align: center;
-      }
-      .nw-footer-bottom p {
-        font-size: 14px;
-        font-weight: 500;
-        color: #1a1a1a;
+    }
+
+    @media (max-width: 480px) {
+      .nw-blog-title {
+        font-size: 36px;
+        letter-spacing: -2.4px;
       }
 
-      @media (max-width: 1100px) {
-        .nw-blog-featured {
-          grid-template-columns: 1fr;
-        }
-        .nw-blog-featured-media {
-          min-height: 260px;
-        }
-        .nw-blog-posts {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      @media (max-width: 900px) {
-        .nw-blog-main {
-          padding: 90px 0 100px;
-        }
-        .nw-blog-container {
-          width: calc(100% - 50px);
-        }
-        .nw-blog-header {
-          display: block;
-          margin-bottom: 45px;
-        }
-        .nw-blog-header-right {
-          margin-top: 22px;
-        }
-        .nw-blog-header-copy {
-          max-width: 600px;
-        }
-        .nw-blog-cta-container {
-          grid-template-columns: 1fr;
-          gap: 35px;
-        }
-      }
-      @media (max-width: 700px) {
-        .nw-blog-main {
-          padding: 70px 0 80px;
-        }
-        .nw-blog-main::before {
-          font-size: 90px;
-          right: -20px;
-          bottom: -10px;
-          letter-spacing: -7px;
-        }
-        .nw-blog-container {
-          width: calc(100% - 28px);
-        }
-        .nw-blog-title {
-          font-size: 42px;
-          letter-spacing: -2.8px;
-        }
-        .nw-blog-posts {
-          grid-template-columns: 1fr;
-          gap: 22px;
-        }
-        .nw-blog-featured-body {
-          padding: 32px 24px;
-        }
-        .nw-blog-featured-title {
-          font-size: 24px;
-          letter-spacing: -1px;
-        }
-        .nw-blog-featured-meta {
-          flex-wrap: wrap;
-          gap: 10px;
-        }
-        .nw-blog-cta {
-          padding: 60px 0;
-        }
-        .nw-blog-cta-container {
-          width: calc(100% - 28px);
-        }
-        .nw-blog-cta-form {
-          flex-direction: column;
-          padding: 14px;
-        }
-        .nw-blog-cta-form button {
-          width: 100%;
-        }
-      }
-      @media (max-width: 480px) {
-        .nw-blog-title {
-          font-size: 36px;
-          letter-spacing: -2.4px;
-        }
-        .nw-blog-featured-media-icon {
-          width: 80px;
-          height: 80px;
-        }
-        .nw-blog-featured-media-icon svg {
-          width: 34px;
-          height: 34px;
-        }
-        .nw-blog-card-body {
-          padding: 22px 20px 24px;
-        }
+      .nw-blog-featured-media-icon {
+        width: 80px;
+        height: 80px;
       }
 
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #0c2034;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #2bb0ac;
-        border-radius: 10px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #ee6d29;
+      .nw-blog-featured-media-icon svg {
+        width: 34px;
+        height: 34px;
       }
 
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          transition: none !important;
-          animation: none !important;
-        }
+      .nw-blog-card-body {
+        padding: 22px 20px 24px;
       }
-    </style>
-  </head>
-  <body>
-    <!-- NAVBAR -->
-    <header class="nw-navbar">
-      <a href="index.html" class="nw-nav-logo">
-        <img
-          src="assets/Logo/NSH Logo 01.png"
-          alt="Northwest Safety & Health"
-        />
-      </a>
-      <ul class="nw-nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="courses-training.html">Courses & Training</a></li>
-        <li><a href="blog.html" class="active">Blog</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <div class="nw-nav-btn-wrap">
-        <a href="login.html" id="navActionBtn" class="nw-nav-btn"
-          >Book Training</a
-        >
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0c2034;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #2bb0ac;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ee6d29;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header class="nw-navbar">
+    <a href="index.html" class="nw-nav-logo">
+      <img src="assets/Logo/NSH Logo 01.png" alt="Northwest Safety & Health" />
+    </a>
+    <ul class="nw-nav-menu">
+      <li><a href="index.html" class="active">Home</a></li>
+
+      <li class="nw-has-dropdown">
+        <a href="courses-training.html">
+          Courses &amp; Training
+          <svg class="nw-caret" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 9L12 15L18 9" />
+          </svg>
+        </a>
+
+        <ul class="nw-dropdown">
+          <li><a href="courses-training.html">All Courses &amp; Training</a></li>
+          <li><a href="services-details.html?service=fall-protection">Fall Protection</a></li>
+          <li><a href="services-details.html?service=competent-person">Competent Person Training</a></li>
+          <li><a href="services-details.html?service=self-rescue">Self Rescue for Fall Protection</a></li>
+          <li><a href="services-details.html?service=fall-refresher">Fall Protection Refresher</a></li>
+          <li class="nw-dropdown-divider" role="separator"></li>
+          <li><a href="services-details.html?service=osha">OSHA Safety Training</a></li>
+          <li><a href="services-details.html?service=construction-safety">Construction Safety</a></li>
+          <li><a href="services-details.html?service=government-contractor">Government Contractor Training</a></li>
+          <li><a href="services-details.html?service=workplace-safety">Workplace Safety</a></li>
+          <li><a href="services-details.html?service=first-aid-cpr">First Aid &amp; CPR</a></li>
+          <li><a href="services-details.html?service=customized-safety">Customized Safety Programs</a></li>
+        </ul>
+      </li>
+
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nw-nav-btn-wrap">
+      <a href="login.html" id="navActionBtn" class="nw-nav-btn">Book Training</a>
+    </div>
+  </header>
+
+  <!-- BLOG HERO -->
+  <section class="nw-blog-hero">
+    <div class="nw-blog-hero-container">
+      <h1 class="nw-blog-hero-title">Blog</h1>
+      <span class="nw-blog-hero-line"></span>
+      <p class="nw-blog-hero-desc">
+        Insights, updates, and practical safety knowledge for construction and
+        government contractors — written by the trainers who work on the
+        jobsite every day.
+      </p>
+      <div class="nw-blog-hero-actions">
+        <a href="index.html" class="nw-blog-hero-btn nw-blog-hero-btn-secondary">
+          <svg viewBox="0 0 24 24">
+            <path d="M19 12H5" />
+            <path d="M11 6L5 12L11 18" />
+          </svg>
+          Back to Home
+        </a>
+        <a href="#latest" class="nw-blog-hero-btn nw-blog-hero-btn-primary">
+          Read Latest
+          <svg viewBox="0 0 24 24">
+            <path d="M5 12H19" />
+            <path d="M13 6L19 12L13 18" />
+          </svg>
+        </a>
       </div>
-    </header>
+    </div>
+  </section>
 
-    <!-- BLOG HERO -->
-    <section class="nw-blog-hero">
-      <div class="nw-blog-hero-container">
-        <h1 class="nw-blog-hero-title">Blog</h1>
-        <span class="nw-blog-hero-line"></span>
-        <p class="nw-blog-hero-desc">
-          Insights, updates, and practical safety knowledge for construction and
-          government contractors — written by the trainers who work on the
-          jobsite every day.
-        </p>
-        <div class="nw-blog-hero-actions">
-          <a
-            href="index.html"
-            class="nw-blog-hero-btn nw-blog-hero-btn-secondary"
-          >
-            <svg viewBox="0 0 24 24">
-              <path d="M19 12H5" />
-              <path d="M11 6L5 12L11 18" />
-            </svg>
-            Back to Home
-          </a>
-          <a href="#latest" class="nw-blog-hero-btn nw-blog-hero-btn-primary">
-            Read Latest
-            <svg viewBox="0 0 24 24">
-              <path d="M5 12H19" />
-              <path d="M13 6L19 12L13 18" />
-            </svg>
-          </a>
+  <!-- BLOG MAIN -->
+  <section class="nw-blog-main" id="latest">
+    <div class="nw-blog-grid-bg"></div>
+    <div class="nw-blog-container">
+      <!-- HEADER -->
+      <div class="nw-blog-header">
+        <div>
+          <div class="nw-blog-eyebrow">Safety Insights</div>
+          <h2 class="nw-blog-title">
+            Latest from the
+            <span class="accent">Jobsite.</span>
+          </h2>
         </div>
-      </div>
-    </section>
-
-    <!-- BLOG MAIN -->
-    <section class="nw-blog-main" id="latest">
-      <div class="nw-blog-grid-bg"></div>
-      <div class="nw-blog-container">
-        <!-- HEADER -->
-        <div class="nw-blog-header">
-          <div>
-            <div class="nw-blog-eyebrow">Safety Insights</div>
-            <h2 class="nw-blog-title">
-              Latest from the
-              <span class="accent">Jobsite.</span>
-            </h2>
-          </div>
-          <div class="nw-blog-header-right">
-            <p class="nw-blog-header-copy">
-              Practical articles on fall protection, OSHA compliance, government
-              projects, and the everyday decisions that keep crews safe.
-            </p>
-            <div class="nw-blog-meta">
-              <span class="nw-blog-meta-dot"></span>
-              Updated Weekly • Field Tested
-            </div>
-          </div>
-        </div>
-
-        <!-- FILTERS -->
-        <div class="nw-blog-filters">
-          <button class="nw-blog-filter active" data-filter="all">
-            All Posts
-          </button>
-          <button class="nw-blog-filter" data-filter="fall">
-            Fall Protection
-          </button>
-          <button class="nw-blog-filter" data-filter="osha">OSHA</button>
-          <button class="nw-blog-filter" data-filter="government">
-            Government
-          </button>
-          <button class="nw-blog-filter" data-filter="firstaid">
-            First Aid
-          </button>
-          <button class="nw-blog-filter" data-filter="workplace">
-            Workplace
-          </button>
-        </div>
-
-        <!-- FEATURED POST (dynamically filled) -->
-        <article class="nw-blog-featured" id="featuredPost">
-          <div class="nw-blog-featured-media">
-            <img
-              id="featuredImage"
-              src="assets/blog/back-view-man-with-safety-equipment.jpg?w=1200&q=80&auto=format&fit=crop"
-              alt="Featured article"
-              loading="lazy"
-            />
-            <div class="nw-blog-featured-badge">Featured</div>
-            <div class="nw-blog-featured-media-icon" id="featuredIcon">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M12 3L20 7V12C20 17 16.5 20 12 22C7.5 20 4 17 4 12V7L12 3Z"
-                />
-                <path d="M9 12L11 14L15 10" />
-              </svg>
-            </div>
-          </div>
-          <div class="nw-blog-featured-body">
-            <div class="nw-blog-featured-cat" id="featuredCat">
-              Fall Protection
-            </div>
-            <h3 class="nw-blog-featured-title" id="featuredTitle">
-              The 5 Most Common Fall Protection Mistakes on Today's Jobsites
-            </h3>
-            <p class="nw-blog-featured-excerpt" id="featuredExcerpt">
-              Falls remain the leading cause of death in construction. From
-              improper anchor points to missing rescue plans, here are the five
-              mistakes we see most often — and exactly how to fix them before
-              your next inspection.
-            </p>
-            <div class="nw-blog-featured-meta">
-              <span>
-                <svg viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="9" />
-                  <path d="M12 7V12L15 15" />
-                </svg>
-                <span id="featuredDate">Feb 14, 2026</span>
-              </span>
-              <span class="dot-sep"></span>
-              <span>
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 3L20 7V12C20 17 16.5 20 12 22C7.5 20 4 17 4 12V7L12 3Z"
-                  />
-                </svg>
-                <span id="featuredRead">6 min read</span>
-              </span>
-            </div>
-            <a href="#" class="nw-blog-featured-btn" id="featuredLink">
-              Read Full Article
-              <svg viewBox="0 0 24 24">
-                <path d="M5 12H19" />
-                <path d="M13 6L19 12L13 18" />
-              </svg>
-            </a>
-          </div>
-        </article>
-
-        <!-- POSTS GRID (dynamically filled) -->
-        <div class="nw-blog-posts" id="postsGrid"></div>
-
-        <!-- PAGINATION -->
-        <div class="nw-blog-pagination">
-          <button class="nw-blog-page-btn" aria-label="Previous">
-            <svg viewBox="0 0 24 24">
-              <path d="M19 12H5" />
-              <path d="M11 6L5 12L11 18" />
-            </svg>
-          </button>
-          <button class="nw-blog-page-btn active">1</button>
-          <button class="nw-blog-page-btn">2</button>
-          <button class="nw-blog-page-btn">3</button>
-          <button class="nw-blog-page-btn" aria-label="Next">
-            <svg viewBox="0 0 24 24">
-              <path d="M5 12H19" />
-              <path d="M13 6L19 12L13 18" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- NEWSLETTER CTA -->
-    <section class="nw-blog-cta">
-      <div class="nw-blog-cta-container">
-        <div class="nw-blog-cta-left">
-          <h2>Safety insights,<br /><span>straight to your inbox.</span></h2>
-          <p>
-            Join hundreds of safety professionals getting weekly jobsite tips,
-            compliance updates, and training resources.
+        <div class="nw-blog-header-right">
+          <p class="nw-blog-header-copy">
+            Practical articles on fall protection, OSHA compliance, government
+            projects, and the everyday decisions that keep crews safe.
           </p>
+          <div class="nw-blog-meta">
+            <span class="nw-blog-meta-dot"></span>
+            Updated Weekly • Field Tested
+          </div>
         </div>
-        <form
-          class="nw-blog-cta-form"
-          onsubmit="
+      </div>
+
+      <!-- FILTERS -->
+      <div class="nw-blog-filters">
+        <button class="nw-blog-filter active" data-filter="all">
+          All Posts
+        </button>
+        <button class="nw-blog-filter" data-filter="fall">
+          Fall Protection
+        </button>
+        <button class="nw-blog-filter" data-filter="osha">OSHA</button>
+        <button class="nw-blog-filter" data-filter="government">
+          Government
+        </button>
+        <button class="nw-blog-filter" data-filter="firstaid">
+          First Aid
+        </button>
+        <button class="nw-blog-filter" data-filter="workplace">
+          Workplace
+        </button>
+      </div>
+
+      <!-- FEATURED POST (dynamically filled) -->
+      <article class="nw-blog-featured" id="featuredPost">
+        <div class="nw-blog-featured-media">
+          <img id="featuredImage"
+            src="assets/blog/back-view-man-with-safety-equipment.jpg?w=1200&q=80&auto=format&fit=crop"
+            alt="Featured article" loading="lazy" />
+          <div class="nw-blog-featured-badge">Featured</div>
+          <div class="nw-blog-featured-media-icon" id="featuredIcon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 3L20 7V12C20 17 16.5 20 12 22C7.5 20 4 17 4 12V7L12 3Z" />
+              <path d="M9 12L11 14L15 10" />
+            </svg>
+          </div>
+        </div>
+        <div class="nw-blog-featured-body">
+          <div class="nw-blog-featured-cat" id="featuredCat">
+            Fall Protection
+          </div>
+          <h3 class="nw-blog-featured-title" id="featuredTitle">
+            The 5 Most Common Fall Protection Mistakes on Today's Jobsites
+          </h3>
+          <p class="nw-blog-featured-excerpt" id="featuredExcerpt">
+            Falls remain the leading cause of death in construction. From
+            improper anchor points to missing rescue plans, here are the five
+            mistakes we see most often — and exactly how to fix them before
+            your next inspection.
+          </p>
+          <div class="nw-blog-featured-meta">
+            <span>
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7V12L15 15" />
+              </svg>
+              <span id="featuredDate">Feb 14, 2026</span>
+            </span>
+            <span class="dot-sep"></span>
+            <span>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3L20 7V12C20 17 16.5 20 12 22C7.5 20 4 17 4 12V7L12 3Z" />
+              </svg>
+              <span id="featuredRead">6 min read</span>
+            </span>
+          </div>
+          <a href="#" class="nw-blog-featured-btn" id="featuredLink">
+            Read Full Article
+            <svg viewBox="0 0 24 24">
+              <path d="M5 12H19" />
+              <path d="M13 6L19 12L13 18" />
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- POSTS GRID (dynamically filled) -->
+      <div class="nw-blog-posts" id="postsGrid"></div>
+
+      <!-- PAGINATION -->
+      <div class="nw-blog-pagination">
+        <button class="nw-blog-page-btn" aria-label="Previous">
+          <svg viewBox="0 0 24 24">
+            <path d="M19 12H5" />
+            <path d="M11 6L5 12L11 18" />
+          </svg>
+        </button>
+        <button class="nw-blog-page-btn active">1</button>
+        <button class="nw-blog-page-btn">2</button>
+        <button class="nw-blog-page-btn">3</button>
+        <button class="nw-blog-page-btn" aria-label="Next">
+          <svg viewBox="0 0 24 24">
+            <path d="M5 12H19" />
+            <path d="M13 6L19 12L13 18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER CTA -->
+  <section class="nw-blog-cta">
+    <div class="nw-blog-cta-container">
+      <div class="nw-blog-cta-left">
+        <h2>Safety insights,<br /><span>straight to your inbox.</span></h2>
+        <p>
+          Join hundreds of safety professionals getting weekly jobsite tips,
+          compliance updates, and training resources.
+        </p>
+      </div>
+      <form class="nw-blog-cta-form" onsubmit="
             event.preventDefault();
             alert('Subscribed!');
-          "
-        >
-          <input type="email" placeholder="you@company.com" required />
-          <button type="submit">
-            Subscribe
-            <svg viewBox="0 0 24 24">
-              <path d="M5 12H19" />
-              <path d="M13 6L19 12L13 18" />
-            </svg>
-          </button>
-        </form>
-      </div>
-    </section>
+          ">
+        <input type="email" placeholder="you@company.com" required />
+        <button type="submit">
+          Subscribe
+          <svg viewBox="0 0 24 24">
+            <path d="M5 12H19" />
+            <path d="M13 6L19 12L13 18" />
+          </svg>
+        </button>
+      </form>
+    </div>
+  </section>
 
-    <!-- FOOTER -->
-    <footer class="nw-footer">
-      <div class="nw-footer-grid">
-        <div class="nw-footer-brand">
-          <div class="nw-footer-logo">
-            <img
-              src="assets/Logo/NSH Logo 01.png"
-              alt="Northwest Safety & Health"
-            />
-            <p class="nw-footer-tagline">
-              Safety Training Built for Construction &amp; Government
-              Contractors.
-            </p>
-          </div>
-          <div class="nw-social-links">
-            <a href="#" class="nw-social-icon" aria-label="Facebook"
-              ><svg viewBox="0 0 24 24">
-                <path
-                  d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8v-6.93H7.9V12h2.1V9.8c0-2.07 1.23-3.22 3.12-3.22.9 0 1.85.16 1.85.16v2.04h-1.04c-1.03 0-1.35.64-1.35 1.3V12h2.3l-.37 2.87h-1.93v6.93c4.56-.93 8-4.96 8-9.8z"
-                /></svg
-            ></a>
-            <a href="#" class="nw-social-icon" aria-label="X"
-              ><svg viewBox="0 0 24 24">
-                <path
-                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                /></svg
-            ></a>
-            <a href="#" class="nw-social-icon" aria-label="LinkedIn"
-              ><svg viewBox="0 0 24 24">
-                <path
-                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                /></svg
-            ></a>
-          </div>
-        </div>
-        <div class="nw-footer-col">
-          <h4>Quick Links</h4>
-          <ul class="nw-footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="courses-training.html">Courses & Training</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="nw-footer-col">
-          <h4>Training</h4>
-          <ul class="nw-footer-links">
-            <li>
-              <a href="services-details.html?service=osha"
-                >OSHA Safety Training</a
-              >
-            </li>
-            <li>
-              <a href="services-details.html?service=Construction"
-                >Construction Safety</a
-              >
-            </li>
-            <li>
-              <a href="services-details.html?service=Government"
-                >Government Contractor Training</a
-              >
-            </li>
-            <li>
-              <a href="services-details.html?service=Workplace"
-                >Workplace Safety</a
-              >
-            </li>
-            <li>
-              <a href="services-details.html?service=FirstAid"
-                >First Aid &amp; CPR</a
-              >
-            </li>
-            <li>
-              <a href="services-details.html?service=Customized"
-                >Customized Safety Programs</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="nw-footer-newsletter">
-          <h4>Newsletter</h4>
-          <p>
-            Stay informed with the latest safety compliance updates, government
-            contract news, and expert training tips.
+  <!-- FOOTER -->
+  <footer class="nw-footer">
+    <div class="nw-footer-grid">
+      <div class="nw-footer-brand">
+        <div class="nw-footer-logo">
+          <img src="assets/Logo/NSH Logo 01.png" alt="Northwest Safety & Health" />
+          <p class="nw-footer-tagline">
+            Safety Training Built for Construction &amp; Government
+            Contractors.
           </p>
-          <form
-            class="nw-newsletter-form"
-            onsubmit="
+        </div>
+        <div class="nw-social-links">
+          <a href="#" class="nw-social-icon" aria-label="Facebook"><svg viewBox="0 0 24 24">
+              <path
+                d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8v-6.93H7.9V12h2.1V9.8c0-2.07 1.23-3.22 3.12-3.22.9 0 1.85.16 1.85.16v2.04h-1.04c-1.03 0-1.35.64-1.35 1.3V12h2.3l-.37 2.87h-1.93v6.93c4.56-.93 8-4.96 8-9.8z" />
+            </svg></a>
+          <a href="#" class="nw-social-icon" aria-label="X"><svg viewBox="0 0 24 24">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg></a>
+          <a href="#" class="nw-social-icon" aria-label="LinkedIn"><svg viewBox="0 0 24 24">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg></a>
+        </div>
+      </div>
+      <div class="nw-footer-col">
+        <h4>Quick Links</h4>
+        <ul class="nw-footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="courses-training.html">Courses & Training</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="nw-footer-col">
+        <h4>Training</h4>
+        <ul class="nw-footer-links">
+          <li>
+            <a href="services-details.html?service=osha">OSHA Safety Training</a>
+          </li>
+          <li>
+            <a href="services-details.html?service=Construction">Construction Safety</a>
+          </li>
+          <li>
+            <a href="services-details.html?service=Government">Government Contractor Training</a>
+          </li>
+          <li>
+            <a href="services-details.html?service=Workplace">Workplace Safety</a>
+          </li>
+          <li>
+            <a href="services-details.html?service=FirstAid">First Aid &amp; CPR</a>
+          </li>
+          <li>
+            <a href="services-details.html?service=Customized">Customized Safety Programs</a>
+          </li>
+        </ul>
+      </div>
+      <div class="nw-footer-newsletter">
+        <h4>Newsletter</h4>
+        <p>
+          Stay informed with the latest safety compliance updates, government
+          contract news, and expert training tips.
+        </p>
+        <form class="nw-newsletter-form" onsubmit="
               event.preventDefault();
               alert('Subscribed!');
-            "
-          >
-            <textarea
-              class="nw-newsletter-input"
-              placeholder="Message"
-              required
-            ></textarea>
-            <button type="submit" class="nw-newsletter-btn">Subscribe</button>
-          </form>
-        </div>
+            ">
+          <textarea class="nw-newsletter-input" placeholder="Message" required></textarea>
+          <button type="submit" class="nw-newsletter-btn">Subscribe</button>
+        </form>
       </div>
-      <div class="nw-footer-bottom">
-        <p>&copy; 2026 Northwest Safety &amp; Health. All Rights Reserved.</p>
-      </div>
-    </footer>
+    </div>
+    <div class="nw-footer-bottom">
+      <p>&copy; 2026 Northwest Safety &amp; Health. All Rights Reserved.</p>
+    </div>
+  </footer>
 
-    <!-- =========================================================
+  <!-- =========================================================
          JAVASCRIPT — BLOG DATA & RENDERING
     ========================================================= -->
-    <script>
-      // -----------------------------------------------------
-      // AUTH CHECK — BOOK TRAINING vs DASHBOARD
-      // -----------------------------------------------------
-      function setNavAction() {
-        var isLoggedIn = false;
+  <script>
+    // -----------------------------------------------------
+    // AUTH CHECK — BOOK TRAINING vs DASHBOARD
+    // -----------------------------------------------------
+    function setNavAction() {
+      var isLoggedIn = false;
 
-        try {
-          // Real check would go here
-        } catch (e) {
-          // ignore
-        }
-
-        var navBtn = document.getElementById("navActionBtn");
-
-        if (isLoggedIn) {
-          if (navBtn) {
-            navBtn.textContent = "Dashboard";
-            navBtn.href = "dashboard.html";
-          }
-        } else {
-          if (navBtn) {
-            navBtn.textContent = "Book Training";
-            navBtn.href = "courses-training.html#book-appointment";
-          }
-        }
+      try {
+        // Real check would go here
+      } catch (e) {
+        // ignore
       }
 
-      // -----------------------------------------------------
-      // BLOG DATA — with image field added for every post
-      // -----------------------------------------------------
-      window.NW_BLOGS = {
-        "fall-protection-mistakes": {
-          slug: "fall-protection-mistakes",
-          category: "fall",
-          categoryLabel: "Fall Protection",
-          title:
-            "The 5 Most Common Fall Protection Mistakes on Today's Jobsites",
-          excerpt:
-            "Falls remain the leading cause of death in construction. From improper anchor points to missing rescue plans, here are the five mistakes we see most often — and exactly how to fix them before your next inspection.",
-          date: "Feb 14, 2026",
-          read: "6 min read",
-          featured: true,
-          image:
-            "assets/blog/back-view-man-with-safety-equipment.jpg?w=1200&q=80&auto=format&fit=crop",
-          icon: '<path d="M12 3L20 7V12C20 17 16.5 20 12 22C7.5 20 4 17 4 12V7L12 3Z"/><path d="M8 11L12 7L16 11"/><path d="M12 7V17"/><path d="M9 14H15"/>',
-          author: {
-            initials: "MS",
-            name: "Marcus Steele",
-            role: "Lead Safety Instructor",
-          },
-          tags: ["Fall Protection", "OSHA", "Construction Safety", "Rescue"],
-          content: `
+      var navBtn = document.getElementById("navActionBtn");
+
+      if (isLoggedIn) {
+        if (navBtn) {
+          navBtn.textContent = "Dashboard";
+          navBtn.href = "dashboard.html";
+        }
+      } else {
+        if (navBtn) {
+          navBtn.textContent = "Book Training";
+          navBtn.href = "courses-training.html#book-appointment";
+        }
+      }
+    }
+
+    // -----------------------------------------------------
+    // BLOG DATA — with image field added for every post
+    // -----------------------------------------------------
+    window.NW_BLOGS = {
+      "fall-protection-mistakes": {
+        slug: "fall-protection-mistakes",
+        category: "fall",
+        categoryLabel: "Fall Protection",
+        title:
+          "The 5 Most Common Fall Protection Mistakes on Today's Jobsites",
+        excerpt:
+          "Falls remain the leading cause of death in construction. From improper anchor points to missing rescue plans, here are the five mistakes we see most often — and exactly how to fix them before your next inspection.",
+        date: "Feb 14, 2026",
+        read: "6 min read",
+        featured: true,
+        image:
+          "assets/blog/back-view-man-with-safety-equipment.jpg?w=1200&q=80&auto=format&fit=crop",
+        icon: '<path d="M12 3L20 7V12C20 17 16.5 20 12 22C7.5 20 4 17 4 12V7L12 3Z"/><path d="M8 11L12 7L16 11"/><path d="M12 7V17"/><path d="M9 14H15"/>',
+        author: {
+          initials: "MS",
+          name: "Marcus Steele",
+          role: "Lead Safety Instructor",
+        },
+        tags: ["Fall Protection", "OSHA", "Construction Safety", "Rescue"],
+        content: `
                     <p>If there's one hazard that shows up in nearly every fatal construction accident report, it's falls. According to OSHA, falls account for roughly one in three construction deaths — a number that has stayed stubbornly high even as other categories have improved.</p>
                     <p>The frustrating part? Most falls are preventable. In our years training crews across the Northwest, we see the same handful of mistakes repeated over and over. Here are the five we encounter most — and what to do about each.</p>
 
@@ -1850,37 +2131,37 @@
                     <p>Fall protection failures rarely come down to a single mistake. They're almost always a stack: incomplete planning, wrong equipment, missed calculations, and stale training, all coming together on the wrong day.</p>
                     <p>The good news is that each layer of the stack is fixable. Start with a rescue plan. Verify your anchors. Match your equipment. Run the numbers. Keep the training fresh. Do those five things, and you've eliminated the mistakes that cause most fall fatalities on today's jobsites.</p>
                 `,
-          toc: [
-            { id: "mistake-1", label: "1. Skipping the Rescue Plan" },
-            { id: "mistake-2", label: "2. Improper Anchor Points" },
-            { id: "mistake-3", label: "3. Using the Wrong Equipment" },
-            { id: "mistake-4", label: "4. Ignoring Fall Clearance" },
-            { id: "mistake-5", label: "5. One-Time Training Mindset" },
-            { id: "wrap-up", label: "The Bottom Line" },
-          ],
-        },
+        toc: [
+          { id: "mistake-1", label: "1. Skipping the Rescue Plan" },
+          { id: "mistake-2", label: "2. Improper Anchor Points" },
+          { id: "mistake-3", label: "3. Using the Wrong Equipment" },
+          { id: "mistake-4", label: "4. Ignoring Fall Clearance" },
+          { id: "mistake-5", label: "5. One-Time Training Mindset" },
+          { id: "wrap-up", label: "The Bottom Line" },
+        ],
+      },
 
-        "osha-top-10-2026": {
-          slug: "osha-top-10-2026",
-          category: "osha",
-          categoryLabel: "OSHA",
-          title:
-            "OSHA's Top 10 Violations for 2026 — And What They Mean for You",
-          excerpt:
-            "The new list is out. Here's what changed, what didn't, and the simple steps that prevent most citations.",
-          date: "Feb 10, 2026",
-          read: "7 min read",
-          featured: false,
-          image:
-            "assets/blog/three-people-discussing-plan-factory.jpg?w=1200&q=80&auto=format&fit=crop",
-          icon: '<path d="M12 3L20 7V12C20 17 16.5 20 12 22C7.5 20 4 17 4 12V7L12 3Z"/><path d="M12 8V13"/><circle cx="12" cy="16.5" r=".8" fill="currentColor"/>',
-          author: {
-            initials: "JR",
-            name: "Jenna Reyes",
-            role: "Compliance Specialist",
-          },
-          tags: ["OSHA", "Compliance", "Workplace Safety"],
-          content: `
+      "osha-top-10-2026": {
+        slug: "osha-top-10-2026",
+        category: "osha",
+        categoryLabel: "OSHA",
+        title:
+          "OSHA's Top 10 Violations for 2026 — And What They Mean for You",
+        excerpt:
+          "The new list is out. Here's what changed, what didn't, and the simple steps that prevent most citations.",
+        date: "Feb 10, 2026",
+        read: "7 min read",
+        featured: false,
+        image:
+          "assets/blog/three-people-discussing-plan-factory.jpg?w=1200&q=80&auto=format&fit=crop",
+        icon: '<path d="M12 3L20 7V12C20 17 16.5 20 12 22C7.5 20 4 17 4 12V7L12 3Z"/><path d="M12 8V13"/><circle cx="12" cy="16.5" r=".8" fill="currentColor"/>',
+        author: {
+          initials: "JR",
+          name: "Jenna Reyes",
+          role: "Compliance Specialist",
+        },
+        tags: ["OSHA", "Compliance", "Workplace Safety"],
+        content: `
                     <p>Every year, OSHA publishes its list of the ten most frequently cited standards. It's a useful snapshot of where the industry is struggling — and for contractors, it's a roadmap of where to focus your safety efforts.</p>
                     <p>The 2026 list has some familiar names at the top, but there are a couple of shifts worth paying attention to.</p>
 
@@ -1911,34 +2192,34 @@
                     </ol>
                     <p>Small, consistent action beats a frantic response to an inspection every time.</p>
                 `,
-          toc: [
-            { id: "still-top", label: "Still on Top: Fall Protection" },
-            { id: "moved-up", label: "What Moved Up" },
-            { id: "what-it-means", label: "What It Means for Your Crew" },
-            { id: "action", label: "Three Actions to Take This Week" },
-          ],
-        },
+        toc: [
+          { id: "still-top", label: "Still on Top: Fall Protection" },
+          { id: "moved-up", label: "What Moved Up" },
+          { id: "what-it-means", label: "What It Means for Your Crew" },
+          { id: "action", label: "Three Actions to Take This Week" },
+        ],
+      },
 
-        "government-contractor-training-2026": {
-          slug: "government-contractor-training-2026",
-          category: "government",
-          categoryLabel: "Government",
-          title: "Government Contractor Training: What's Required in 2026",
-          excerpt:
-            "New contract clauses bring updated safety training expectations. Here's a plain-English breakdown.",
-          date: "Feb 6, 2026",
-          read: "5 min read",
-          featured: false,
-          image:
-            "assets/blog/mid-adult-businessman-giving-presentation-group-industrial-workers-factory.jpg?w=1200&q=80&auto=format&fit=crop",
-          icon: '<path d="M3 21H21"/><path d="M5 21V9L12 4L19 9V21"/><path d="M9 21V14H15V21"/>',
-          author: {
-            initials: "DK",
-            name: "David Kim",
-            role: "Government Projects Lead",
-          },
-          tags: ["Government", "Contractors", "Compliance"],
-          content: `
+      "government-contractor-training-2026": {
+        slug: "government-contractor-training-2026",
+        category: "government",
+        categoryLabel: "Government",
+        title: "Government Contractor Training: What's Required in 2026",
+        excerpt:
+          "New contract clauses bring updated safety training expectations. Here's a plain-English breakdown.",
+        date: "Feb 6, 2026",
+        read: "5 min read",
+        featured: false,
+        image:
+          "assets/blog/mid-adult-businessman-giving-presentation-group-industrial-workers-factory.jpg?w=1200&q=80&auto=format&fit=crop",
+        icon: '<path d="M3 21H21"/><path d="M5 21V9L12 4L19 9V21"/><path d="M9 21V14H15V21"/>',
+        author: {
+          initials: "DK",
+          name: "David Kim",
+          role: "Government Projects Lead",
+        },
+        tags: ["Government", "Contractors", "Compliance"],
+        content: `
                     <p>If you work on federal or state-funded projects, you already know the training expectations are higher. In 2026, several new contract clauses tighten those requirements further.</p>
                     <p>Here's what's changed and what you need to do about it.</p>
 
@@ -1974,34 +2255,34 @@
                     <h2 id="bottom-line">The Bottom Line</h2>
                     <p>The new clauses formalize what good contractors were already doing. If you've been treating safety training as a real investment, you're already most of the way there. The remaining work is administration — and it's worth doing right.</p>
                 `,
-          toc: [
-            { id: "new-clauses", label: "The New Clauses at a Glance" },
-            { id: "who-affected", label: "Who's Affected" },
-            { id: "how-to-prepare", label: "How to Prepare" },
-            { id: "bottom-line", label: "The Bottom Line" },
-          ],
-        },
+        toc: [
+          { id: "new-clauses", label: "The New Clauses at a Glance" },
+          { id: "who-affected", label: "Who's Affected" },
+          { id: "how-to-prepare", label: "How to Prepare" },
+          { id: "bottom-line", label: "The Bottom Line" },
+        ],
+      },
 
-        "cpr-first-5-minutes": {
-          slug: "cpr-first-5-minutes",
-          category: "firstaid",
-          categoryLabel: "First Aid",
-          title: "CPR on the Jobsite: The First 5 Minutes Matter Most",
-          excerpt:
-            "Quick, decisive action saves lives. Here's how to prepare your crew for the moments that count.",
-          date: "Feb 2, 2026",
-          read: "4 min read",
-          featured: false,
-          image:
-            "assets/blog/cpr-training-demonstration-class-emergency-life-rescue.jpg?w=1200&q=80&auto=format&fit=crop",
-          icon: '<rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V4H16V7"/><path d="M12 11V17"/><path d="M9 14H15"/>',
-          author: {
-            initials: "AL",
-            name: "Amara Lewis",
-            role: "Emergency Response Instructor",
-          },
-          tags: ["First Aid", "CPR", "Emergency Response"],
-          content: `
+      "cpr-first-5-minutes": {
+        slug: "cpr-first-5-minutes",
+        category: "firstaid",
+        categoryLabel: "First Aid",
+        title: "CPR on the Jobsite: The First 5 Minutes Matter Most",
+        excerpt:
+          "Quick, decisive action saves lives. Here's how to prepare your crew for the moments that count.",
+        date: "Feb 2, 2026",
+        read: "4 min read",
+        featured: false,
+        image:
+          "assets/blog/cpr-training-demonstration-class-emergency-life-rescue.jpg?w=1200&q=80&auto=format&fit=crop",
+        icon: '<rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V4H16V7"/><path d="M12 11V17"/><path d="M9 14H15"/>',
+        author: {
+          initials: "AL",
+          name: "Amara Lewis",
+          role: "Emergency Response Instructor",
+        },
+        tags: ["First Aid", "CPR", "Emergency Response"],
+        content: `
                     <p>When someone goes down on a jobsite, the first five minutes determine the outcome. Not the ambulance. Not the hospital. The people standing right there.</p>
                     <p>Here's how to make sure your crew is ready.</p>
 
@@ -2030,34 +2311,34 @@
                     <p>Reading about CPR doesn't save lives. Hands-on practice does. Schedule short, regular drills so your crew builds muscle memory.</p>
                     <p>First Aid &amp; CPR training from Northwest Safety &amp; Health is designed for real jobsite conditions. Reach out to schedule a session.</p>
                 `,
-          toc: [
-            { id: "why-it-matters", label: "Why Jobsite CPR Is Different" },
-            { id: "what-to-train", label: "What to Train" },
-            { id: "aed-placement", label: "AED Placement Matters" },
-            { id: "practice", label: "Practice Beats Theory" },
-          ],
-        },
+        toc: [
+          { id: "why-it-matters", label: "Why Jobsite CPR Is Different" },
+          { id: "what-to-train", label: "What to Train" },
+          { id: "aed-placement", label: "AED Placement Matters" },
+          { id: "practice", label: "Practice Beats Theory" },
+        ],
+      },
 
-        "self-rescue-fall-protection": {
-          slug: "self-rescue-fall-protection",
-          category: "fall",
-          categoryLabel: "Fall Protection",
-          title: "Self-Rescue: The Step Most Fall Protection Plans Miss",
-          excerpt:
-            "A fall doesn't end when the harness catches. Learn the rescue steps every crew should know.",
-          date: "Jan 28, 2026",
-          read: "5 min read",
-          featured: false,
-          image:
-            "assets/blog/paramedic-giving-oxygen-injured-girl.jpg?w=1200&q=80&auto=format&fit=crop",
-          icon: '<path d="M12 3L20 7V12C20 17 16.5 20 12 22C7.5 20 4 17 4 12V7L12 3Z"/><path d="M8 11L12 7L16 11"/><path d="M12 7V17"/><path d="M9 14H15"/>',
-          author: {
-            initials: "MS",
-            name: "Marcus Steele",
-            role: "Lead Safety Instructor",
-          },
-          tags: ["Fall Protection", "Rescue", "Self-Rescue"],
-          content: `
+      "self-rescue-fall-protection": {
+        slug: "self-rescue-fall-protection",
+        category: "fall",
+        categoryLabel: "Fall Protection",
+        title: "Self-Rescue: The Step Most Fall Protection Plans Miss",
+        excerpt:
+          "A fall doesn't end when the harness catches. Learn the rescue steps every crew should know.",
+        date: "Jan 28, 2026",
+        read: "5 min read",
+        featured: false,
+        image:
+          "assets/blog/paramedic-giving-oxygen-injured-girl.jpg?w=1200&q=80&auto=format&fit=crop",
+        icon: '<path d="M12 3L20 7V12C20 17 16.5 20 12 22C7.5 20 4 17 4 12V7L12 3Z"/><path d="M8 11L12 7L16 11"/><path d="M12 7V17"/><path d="M9 14H15"/>',
+        author: {
+          initials: "MS",
+          name: "Marcus Steele",
+          role: "Lead Safety Instructor",
+        },
+        tags: ["Fall Protection", "Rescue", "Self-Rescue"],
+        content: `
                     <p>Most fall protection training focuses on preventing the fall. That's essential — but it's only half the story. The other half is what happens after.</p>
 
                     <h2 id="suspension-trauma">Suspension Trauma Is the Real Danger</h2>
@@ -2089,37 +2370,37 @@
                     <h2 id="bottom-line">The Bottom Line</h2>
                     <p>Self-rescue is not a nice-to-have. It's the difference between a close call and a fatality. If your fall protection plan doesn't include rescue, it's not complete.</p>
                 `,
-          toc: [
-            {
-              id: "suspension-trauma",
-              label: "Suspension Trauma Is the Real Danger",
-            },
-            { id: "self-rescue-steps", label: "The Self-Rescue Steps" },
-            { id: "crew-plan", label: "The Crew Rescue Plan" },
-            { id: "bottom-line", label: "The Bottom Line" },
-          ],
-        },
-
-        "safety-culture-sticks": {
-          slug: "safety-culture-sticks",
-          category: "workplace",
-          categoryLabel: "Workplace",
-          title: "Building a Safety Culture That Actually Sticks",
-          excerpt:
-            "Culture isn't a poster on the wall. Here's what it takes to make safety the default on your jobsite.",
-          date: "Jan 22, 2026",
-          read: "6 min read",
-          featured: false,
-          image:
-            "assets/blog/front-view-worker-with-hard-hat-putting-protective-gloves.jpg?w=1200&q=80&auto=format&fit=crop",
-          icon: '<path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>',
-          author: {
-            initials: "JR",
-            name: "Jenna Reyes",
-            role: "Compliance Specialist",
+        toc: [
+          {
+            id: "suspension-trauma",
+            label: "Suspension Trauma Is the Real Danger",
           },
-          tags: ["Workplace", "Safety Culture", "Leadership"],
-          content: `
+          { id: "self-rescue-steps", label: "The Self-Rescue Steps" },
+          { id: "crew-plan", label: "The Crew Rescue Plan" },
+          { id: "bottom-line", label: "The Bottom Line" },
+        ],
+      },
+
+      "safety-culture-sticks": {
+        slug: "safety-culture-sticks",
+        category: "workplace",
+        categoryLabel: "Workplace",
+        title: "Building a Safety Culture That Actually Sticks",
+        excerpt:
+          "Culture isn't a poster on the wall. Here's what it takes to make safety the default on your jobsite.",
+        date: "Jan 22, 2026",
+        read: "6 min read",
+        featured: false,
+        image:
+          "assets/blog/front-view-worker-with-hard-hat-putting-protective-gloves.jpg?w=1200&q=80&auto=format&fit=crop",
+        icon: '<path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>',
+        author: {
+          initials: "JR",
+          name: "Jenna Reyes",
+          role: "Compliance Specialist",
+        },
+        tags: ["Workplace", "Safety Culture", "Leadership"],
+        content: `
                     <p>Every company says safety is a priority. Far fewer have built a culture where safety is the default — where the right thing happens even when no one is watching.</p>
                     <p>The difference between a poster and a culture comes down to a few specific practices.</p>
 
@@ -2142,36 +2423,36 @@
                     <h2 id="bottom-line">The Bottom Line</h2>
                     <p>Safety culture isn't built in a day. It's built in the small decisions that happen on the jobsite every shift. If you want it to stick, lead by example, reward reporting, and stay consistent.</p>
                 `,
-          toc: [
-            { id: "leadership", label: "1. Leadership Goes First" },
-            { id: "near-miss", label: "2. Near-Miss Reporting Is Rewarded" },
-            { id: "consistency", label: "3. Consistency Beats Intensity" },
-            { id: "measure", label: "4. Measure What Matters" },
-            { id: "bottom-line", label: "The Bottom Line" },
-          ],
-        },
+        toc: [
+          { id: "leadership", label: "1. Leadership Goes First" },
+          { id: "near-miss", label: "2. Near-Miss Reporting Is Rewarded" },
+          { id: "consistency", label: "3. Consistency Beats Intensity" },
+          { id: "measure", label: "4. Measure What Matters" },
+          { id: "bottom-line", label: "The Bottom Line" },
+        ],
+      },
 
-        "competent-vs-qualified": {
-          slug: "competent-vs-qualified",
-          category: "osha",
-          categoryLabel: "OSHA",
-          title:
-            "Competent Person vs. Qualified Person: What's the Difference?",
-          excerpt:
-            "These two roles are often confused — and that confusion can cost you. Here's the clear breakdown.",
-          date: "Jan 16, 2026",
-          read: "5 min read",
-          featured: false,
-          image:
-            "assets/blog/two-builders-work-clothes-yellow-hardhats-working-workshop-with-tools-background.jpg?w=1200&q=80&auto=format&fit=crop",
-          icon: '<path d="M12 3L20 7V12C20 17 16.5 20 12 22C7.5 20 4 17 4 12V7L12 3Z"/><path d="M12 8V13"/><circle cx="12" cy="16.5" r=".8" fill="currentColor"/>',
-          author: {
-            initials: "MS",
-            name: "Marcus Steele",
-            role: "Lead Safety Instructor",
-          },
-          tags: ["OSHA", "Competent Person", "Definitions"],
-          content: `
+      "competent-vs-qualified": {
+        slug: "competent-vs-qualified",
+        category: "osha",
+        categoryLabel: "OSHA",
+        title:
+          "Competent Person vs. Qualified Person: What's the Difference?",
+        excerpt:
+          "These two roles are often confused — and that confusion can cost you. Here's the clear breakdown.",
+        date: "Jan 16, 2026",
+        read: "5 min read",
+        featured: false,
+        image:
+          "assets/blog/two-builders-work-clothes-yellow-hardhats-working-workshop-with-tools-background.jpg?w=1200&q=80&auto=format&fit=crop",
+        icon: '<path d="M12 3L20 7V12C20 17 16.5 20 12 22C7.5 20 4 17 4 12V7L12 3Z"/><path d="M12 8V13"/><circle cx="12" cy="16.5" r=".8" fill="currentColor"/>',
+        author: {
+          initials: "MS",
+          name: "Marcus Steele",
+          role: "Lead Safety Instructor",
+        },
+        tags: ["OSHA", "Competent Person", "Definitions"],
+        content: `
                     <p>In OSHA language, "competent person" and "qualified person" are not interchangeable. Using them loosely creates real liability — and real danger.</p>
 
                     <h2 id="competent">Competent Person</h2>
@@ -2202,27 +2483,27 @@
                     <h2 id="bottom-line">The Bottom Line</h2>
                     <p>Know which role your project needs, train to that standard, and document it. When in doubt, consult a qualified person before making structural safety decisions.</p>
                 `,
-          toc: [
-            { id: "competent", label: "Competent Person" },
-            { id: "qualified", label: "Qualified Person" },
-            { id: "why-it-matters", label: "Why the Distinction Matters" },
-            { id: "bottom-line", label: "The Bottom Line" },
-          ],
-        },
-      };
+        toc: [
+          { id: "competent", label: "Competent Person" },
+          { id: "qualified", label: "Qualified Person" },
+          { id: "why-it-matters", label: "Why the Distinction Matters" },
+          { id: "bottom-line", label: "The Bottom Line" },
+        ],
+      },
+    };
 
-      // -----------------------------------------------------
-      // Helper: get blog by slug
-      // -----------------------------------------------------
-      function getBlog(slug) {
-        return window.NW_BLOGS[slug] || null;
-      }
+    // -----------------------------------------------------
+    // Helper: get blog by slug
+    // -----------------------------------------------------
+    function getBlog(slug) {
+      return window.NW_BLOGS[slug] || null;
+    }
 
-      // -----------------------------------------------------
-      // Render post card HTML — with image
-      // -----------------------------------------------------
-      function renderCard(blog) {
-        return `
+    // -----------------------------------------------------
+    // Render post card HTML — with image
+    // -----------------------------------------------------
+    function renderCard(blog) {
+      return `
                 <article class="nw-blog-card">
                     <div class="nw-blog-card-media">
                         <img src="${blog.image}" alt="${blog.title}" loading="lazy" />
@@ -2246,91 +2527,92 @@
                     </div>
                 </article>
             `;
+    }
+
+    // -----------------------------------------------------
+    // Render featured post — with image
+    // -----------------------------------------------------
+    function renderFeatured(blog) {
+      if (!blog) return;
+
+      const imgEl = document.getElementById("featuredImage");
+      if (imgEl) {
+        imgEl.src = blog.image;
+        imgEl.alt = blog.title;
       }
 
-      // -----------------------------------------------------
-      // Render featured post — with image
-      // -----------------------------------------------------
-      function renderFeatured(blog) {
-        if (!blog) return;
+      const iconBox = document.getElementById("featuredIcon");
+      if (iconBox)
+        iconBox.innerHTML = `<svg viewBox="0 0 24 24">${blog.icon}</svg>`;
 
-        const imgEl = document.getElementById("featuredImage");
-        if (imgEl) {
-          imgEl.src = blog.image;
-          imgEl.alt = blog.title;
-        }
+      document.getElementById("featuredCat").textContent = blog.categoryLabel;
+      document.getElementById("featuredTitle").textContent = blog.title;
+      document.getElementById("featuredExcerpt").textContent = blog.excerpt;
+      document.getElementById("featuredDate").textContent = blog.date;
+      document.getElementById("featuredRead").textContent = blog.read;
+      document
+        .getElementById("featuredLink")
+        .setAttribute("href", `blog-details.html?post=${blog.slug}`);
+    }
 
-        const iconBox = document.getElementById("featuredIcon");
-        if (iconBox)
-          iconBox.innerHTML = `<svg viewBox="0 0 24 24">${blog.icon}</svg>`;
+    // -----------------------------------------------------
+    // Build the blog listing page
+    // -----------------------------------------------------
+    function buildBlogListing() {
+      const blogs = Object.values(window.NW_BLOGS);
+      if (!blogs.length) return;
 
-        document.getElementById("featuredCat").textContent = blog.categoryLabel;
-        document.getElementById("featuredTitle").textContent = blog.title;
-        document.getElementById("featuredExcerpt").textContent = blog.excerpt;
-        document.getElementById("featuredDate").textContent = blog.date;
-        document.getElementById("featuredRead").textContent = blog.read;
-        document
-          .getElementById("featuredLink")
-          .setAttribute("href", `blog-details.html?post=${blog.slug}`);
+      const featured = blogs.find((b) => b.featured) || blogs[0];
+      const others = blogs.filter((b) => b.slug !== featured.slug);
+
+      renderFeatured(featured);
+
+      const grid = document.getElementById("postsGrid");
+      if (grid) {
+        grid.innerHTML = others.map(renderCard).join("");
       }
+    }
 
-      // -----------------------------------------------------
-      // Build the blog listing page
-      // -----------------------------------------------------
-      function buildBlogListing() {
-        const blogs = Object.values(window.NW_BLOGS);
-        if (!blogs.length) return;
+    // -----------------------------------------------------
+    // Filter chips
+    // -----------------------------------------------------
+    function initFilters() {
+      const filters = document.querySelectorAll(".nw-blog-filter");
+      const grid = document.getElementById("postsGrid");
+      if (!filters.length || !grid) return;
 
-        const featured = blogs.find((b) => b.featured) || blogs[0];
-        const others = blogs.filter((b) => b.slug !== featured.slug);
+      filters.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filters.forEach((f) => f.classList.remove("active"));
+          btn.classList.add("active");
 
-        renderFeatured(featured);
+          const filter = btn.dataset.filter;
+          const blogs = Object.values(window.NW_BLOGS);
+          const featured = blogs.find((b) => b.featured) || blogs[0];
+          let list = blogs.filter((b) => b.slug !== featured.slug);
 
-        const grid = document.getElementById("postsGrid");
-        if (grid) {
-          grid.innerHTML = others.map(renderCard).join("");
-        }
-      }
+          if (filter !== "all") {
+            list = list.filter((b) => b.category === filter);
+          }
 
-      // -----------------------------------------------------
-      // Filter chips
-      // -----------------------------------------------------
-      function initFilters() {
-        const filters = document.querySelectorAll(".nw-blog-filter");
-        const grid = document.getElementById("postsGrid");
-        if (!filters.length || !grid) return;
-
-        filters.forEach((btn) => {
-          btn.addEventListener("click", () => {
-            filters.forEach((f) => f.classList.remove("active"));
-            btn.classList.add("active");
-
-            const filter = btn.dataset.filter;
-            const blogs = Object.values(window.NW_BLOGS);
-            const featured = blogs.find((b) => b.featured) || blogs[0];
-            let list = blogs.filter((b) => b.slug !== featured.slug);
-
-            if (filter !== "all") {
-              list = list.filter((b) => b.category === filter);
-            }
-
-            if (!list.length) {
-              grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:rgba(255,255,255,.5);font-size:14px;padding:40px 0;">No posts in this category yet.</p>`;
-            } else {
-              grid.innerHTML = list.map(renderCard).join("");
-            }
-          });
+          if (!list.length) {
+            grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:rgba(255,255,255,.5);font-size:14px;padding:40px 0;">No posts in this category yet.</p>`;
+          } else {
+            grid.innerHTML = list.map(renderCard).join("");
+          }
         });
-      }
-
-      // -----------------------------------------------------
-      // Init
-      // -----------------------------------------------------
-      document.addEventListener("DOMContentLoaded", () => {
-        setNavAction();
-        buildBlogListing();
-        initFilters();
       });
-    </script>
-  </body>
+    }
+
+    // -----------------------------------------------------
+    // Init
+    // -----------------------------------------------------
+    document.addEventListener("DOMContentLoaded", () => {
+      setNavAction();
+      buildBlogListing();
+      initFilters();
+    });
+  </script>
+</body>
+
 </html>

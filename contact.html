@@ -1,2597 +1,2867 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Us — Northwest Safety & Health</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Northwest Safety & Health</title>
 
-    <style>
-      /* =========================================================
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    /* =========================================================
+   NAV DROPDOWN — COURSES & TRAINING
+========================================================= */
+    .nw-nav-menu li.nw-has-dropdown {
+      position: relative;
+    }
+
+    /* Small caret next to the label */
+    .nw-nav-menu li.nw-has-dropdown>a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nw-nav-menu li.nw-has-dropdown>a .nw-caret {
+      width: 9px;
+      height: 9px;
+      display: block;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      fill: none;
+      transition: transform 0.3s ease;
+    }
+
+    .nw-nav-menu li.nw-has-dropdown:hover>a .nw-caret,
+    .nw-nav-menu li.nw-has-dropdown:focus-within>a .nw-caret {
+      transform: rotate(180deg);
+    }
+
+    /* Dropdown panel */
+    .nw-dropdown {
+      position: absolute;
+      top: calc(100% + 18px);
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      min-width: 260px;
+      padding: 10px;
+      list-style: none;
+      background: #ffffff;
+      border: 1px solid rgba(24, 59, 94, 0.08);
+      border-radius: 14px;
+      box-shadow: 0 22px 50px rgba(12, 32, 52, 0.14);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition:
+        opacity 0.28s ease,
+        transform 0.28s ease,
+        visibility 0.28s ease;
+      z-index: 1200;
+    }
+
+    /* Invisible bridge so the menu doesn't close on the gap */
+    .nw-dropdown::before {
+      content: "";
+      position: absolute;
+      top: -18px;
+      left: 0;
+      right: 0;
+      height: 18px;
+    }
+
+    /* Small pointer */
+    .nw-dropdown::after {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      width: 12px;
+      height: 12px;
+      background: #ffffff;
+      border-left: 1px solid rgba(24, 59, 94, 0.08);
+      border-top: 1px solid rgba(24, 59, 94, 0.08);
+      transform: translateX(-50%) rotate(45deg);
+      border-radius: 2px 0 0 0;
+    }
+
+    .nw-nav-menu li.nw-has-dropdown:hover .nw-dropdown,
+    .nw-nav-menu li.nw-has-dropdown:focus-within .nw-dropdown {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Dropdown items */
+    .nw-dropdown li a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 14px;
+      border-radius: 9px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a1a;
+      letter-spacing: -0.2px;
+      transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        padding-left 0.25s ease;
+    }
+
+    .nw-dropdown li a::before {
+      content: "";
+      width: 3px;
+      height: 14px;
+      border-radius: 3px;
+      background: rgba(24, 59, 94, 0.18);
+      transition: background 0.25s ease, height 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .nw-dropdown li a:hover::before {
+      background: #ee6d29;
+      height: 20px;
+    }
+
+    .nw-dropdown li a:hover::before {
+      background: #ee6d29;
+      transform: scale(1.2);
+    }
+
+    /* All Services item — highlighted */
+    .nw-dropdown li.nw-dropdown-all a {
+      color: #183b5e;
+      font-weight: 700;
+    }
+
+    .nw-dropdown li.nw-dropdown-all a::before {
+      background: #183b5e;
+      height: 18px;
+    }
+
+    .nw-dropdown li.nw-dropdown-all a:hover::before {
+      background: #ee6d29;
+    }
+
+    /* Divider */
+    .nw-dropdown li.nw-dropdown-divider {
+      height: 1px;
+      margin: 8px 12px;
+      background: rgba(24, 59, 94, 0.08);
+      list-style: none;
+    }
+
+    /* Responsive: hide dropdown when the menu itself is hidden */
+    @media (max-width: 850px) {
+      .nw-dropdown {
+        display: none;
+      }
+    }
+
+    /* =========================================================
            RESET & GLOBAL
         ========================================================= */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: "Manrope", sans-serif;
-        background: #0c2034;
-        -webkit-font-smoothing: antialiased;
-        overflow-x: hidden;
-      }
-      img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-      }
-      a {
-        text-decoration: none;
-      }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      /* =========================================================
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      background: #0c2034;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* =========================================================
            NAVBAR
         ========================================================= */
-      .nw-navbar {
-        width: 100%;
-        height: 96px;
-        background-color: #ffffff;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 5%;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        position: relative;
-        z-index: 1000;
-      }
-      .nw-nav-logo {
-        display: flex;
-        align-items: center;
-        flex-shrink: 0;
-      }
-      .nw-nav-logo img {
-        height: 85px;
-        width: auto;
-        display: block;
-      }
+    .nw-navbar {
+      width: 100%;
+      height: 96px;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      position: relative;
+      z-index: 1000;
+    }
+
+    .nw-nav-logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .nw-nav-logo img {
+      height: 85px;
+      width: auto;
+      display: block;
+    }
+
+    .nw-nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      list-style: none;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nw-nav-menu li a {
+      text-decoration: none;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1a1a1a;
+      letter-spacing: -0.2px;
+      transition: color 0.3s ease;
+    }
+
+    .nw-nav-menu li a.active {
+      color: #ee6d29;
+    }
+
+    .nw-nav-menu li a:hover {
+      color: #ee6d29;
+    }
+
+    .nw-nav-btn-wrap {
+      flex-shrink: 0;
+    }
+
+    .nw-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 32px;
+      height: 52px;
+      background-color: #183b5e;
+      color: #ffffff;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 12px;
+      letter-spacing: 0.2px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(24, 59, 94, 0.15);
+      white-space: nowrap;
+    }
+
+    .nw-nav-btn:hover {
+      background-color: #102b45;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(24, 59, 94, 0.25);
+    }
+
+    @media (max-width: 1024px) {
       .nw-nav-menu {
-        display: flex;
-        align-items: center;
-        gap: 48px;
-        list-style: none;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-      .nw-nav-menu li a {
-        text-decoration: none;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 16px;
-        font-weight: 600;
-        color: #1a1a1a;
-        letter-spacing: -0.2px;
-        transition: color 0.3s ease;
-      }
-      .nw-nav-menu li a.active {
-        color: #ee6d29;
-      }
-      .nw-nav-menu li a:hover {
-        color: #ee6d29;
-      }
-      .nw-nav-btn-wrap {
-        flex-shrink: 0;
-      }
-      .nw-nav-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 32px;
-        height: 52px;
-        background-color: #183b5e;
-        color: #ffffff;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 15px;
-        font-weight: 600;
-        text-decoration: none;
-        border-radius: 12px;
-        letter-spacing: 0.2px;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(24, 59, 94, 0.15);
-        white-space: nowrap;
-      }
-      .nw-nav-btn:hover {
-        background-color: #102b45;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 18px rgba(24, 59, 94, 0.25);
-      }
-      @media (max-width: 1024px) {
-        .nw-nav-menu {
-          gap: 28px;
-        }
-        .nw-nav-menu li a {
-          font-size: 14px;
-        }
-        .nw-nav-btn {
-          padding: 0 24px;
-          height: 48px;
-          font-size: 14px;
-        }
-      }
-      @media (max-width: 850px) {
-        .nw-nav-menu {
-          display: none;
-        }
-        .nw-navbar {
-          padding: 0 24px;
-        }
-        .nw-nav-logo img {
-          height: 70px;
-        }
-      }
-      @media (max-width: 480px) {
-        .nw-navbar {
-          height: 80px;
-          padding: 0 16px;
-        }
-        .nw-nav-logo img {
-          height: 60px;
-        }
-        .nw-nav-btn {
-          padding: 0 18px;
-          height: 42px;
-          font-size: 13px;
-        }
+        gap: 28px;
       }
 
-      /* =========================================================
+      .nw-nav-menu li a {
+        font-size: 14px;
+      }
+
+      .nw-nav-btn {
+        padding: 0 24px;
+        height: 48px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 850px) {
+      .nw-nav-menu {
+        display: none;
+      }
+
+      .nw-navbar {
+        padding: 0 24px;
+      }
+
+      .nw-nav-logo img {
+        height: 70px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nw-navbar {
+        height: 80px;
+        padding: 0 16px;
+      }
+
+      .nw-nav-logo img {
+        height: 60px;
+      }
+
+      .nw-nav-btn {
+        padding: 0 18px;
+        height: 42px;
+        font-size: 13px;
+      }
+    }
+
+    /* =========================================================
            CONTACT HERO
         ========================================================= */
-      .nw-contact-hero {
-        position: relative;
-        width: 100%;
-        min-height: 460px;
-        background-color: #0a2540;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        isolation: isolate;
-      }
-      .nw-contact-hero::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        /* background-image:
+    .nw-contact-hero {
+      position: relative;
+      width: 100%;
+      min-height: 460px;
+      background-color: #0a2540;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .nw-contact-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      /* background-image:
           linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
           linear-gradient(
             90deg,
             rgba(255, 255, 255, 0.025) 1px,
             transparent 1px
           ); */
-        background-size: 70px 70px;
-        pointer-events: none;
-        z-index: 1;
+      background-size: 70px 70px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .nw-contact-hero::after {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      right: -200px;
+      top: -200px;
+      border-radius: 50%;
+      border: 1px solid rgba(43, 176, 172, 0.1);
+      box-shadow: 0 0 0 60px rgba(43, 176, 172, 0.025);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .nw-contact-hero-container {
+      position: relative;
+      z-index: 5;
+      width: min(1380px, calc(100% - 80px));
+      margin: auto;
+      text-align: center;
+      padding: 70px 0;
+    }
+
+    .nw-contact-hero-title {
+      margin: 0 0 30px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(52px, 7vw, 96px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -4px;
+      color: #ffffff;
+    }
+
+    .nw-contact-hero-line {
+      display: block;
+      width: 80px;
+      height: 3px;
+      margin: 0 auto 40px;
+      border-radius: 20px;
+      background: linear-gradient(90deg, #2bb0ac, #ee6d29);
+      opacity: 0.9;
+    }
+
+    .nw-contact-hero-desc {
+      max-width: 620px;
+      margin: 0 auto 40px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .nw-contact-hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .nw-contact-hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 56px;
+      padding: 0 32px;
+      border-radius: 12px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none !important;
+      white-space: nowrap;
+      cursor: pointer;
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease,
+        border-color 0.35s ease,
+        color 0.35s ease;
+    }
+
+    .nw-contact-hero-btn svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.35s ease;
+    }
+
+    .nw-contact-hero-btn:hover svg {
+      transform: translateX(5px);
+    }
+
+    .nw-contact-hero-btn-primary {
+      color: #ffffff !important;
+      background: linear-gradient(135deg, #ee6d29, #d9581e);
+      border: 1px solid #ee6d29;
+      box-shadow: 0 15px 35px rgba(238, 109, 41, 0.3);
+    }
+
+    .nw-contact-hero-btn-primary:hover {
+      color: #ffffff !important;
+      background: linear-gradient(135deg, #ff8a4d, #ee6d29);
+      border-color: #ff8a4d;
+      transform: translateY(-4px);
+      box-shadow: 0 22px 45px rgba(238, 109, 41, 0.42);
+    }
+
+    .nw-contact-hero-btn-secondary {
+      color: #ffffff !important;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(10px);
+    }
+
+    .nw-contact-hero-btn-secondary:hover {
+      color: #ffffff !important;
+      background: rgba(43, 176, 172, 0.18);
+      border-color: #2bb0ac;
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(43, 176, 172, 0.22);
+    }
+
+    @media (max-width: 900px) {
+      .nw-contact-hero {
+        min-height: 400px;
       }
-      .nw-contact-hero::after {
-        content: "";
-        position: absolute;
-        width: 500px;
-        height: 500px;
-        right: -200px;
-        top: -200px;
-        border-radius: 50%;
-        border: 1px solid rgba(43, 176, 172, 0.1);
-        box-shadow: 0 0 0 60px rgba(43, 176, 172, 0.025);
-        pointer-events: none;
-        z-index: 1;
-      }
+
       .nw-contact-hero-container {
-        position: relative;
-        z-index: 5;
-        width: min(1380px, calc(100% - 80px));
-        margin: auto;
-        text-align: center;
-        padding: 70px 0;
+        width: calc(100% - 50px);
+        padding: 60px 0;
       }
+
       .nw-contact-hero-title {
-        margin: 0 0 30px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: clamp(52px, 7vw, 96px);
-        font-weight: 700;
-        line-height: 1;
-        letter-spacing: -4px;
-        color: #ffffff;
+        font-size: clamp(46px, 10vw, 72px);
+        letter-spacing: -3px;
       }
-      .nw-contact-hero-line {
-        display: block;
-        width: 80px;
-        height: 3px;
-        margin: 0 auto 40px;
-        border-radius: 20px;
-        background: linear-gradient(90deg, #2bb0ac, #ee6d29);
-        opacity: 0.9;
-      }
-      .nw-contact-hero-desc {
-        max-width: 620px;
-        margin: 0 auto 40px;
-        color: rgba(255, 255, 255, 0.72);
-        font-size: 15px;
-        line-height: 1.8;
-      }
-      .nw-contact-hero-actions {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 16px;
-        flex-wrap: wrap;
-      }
-      .nw-contact-hero-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        min-height: 56px;
-        padding: 0 32px;
-        border-radius: 12px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        text-decoration: none !important;
-        white-space: nowrap;
-        cursor: pointer;
-        transition:
-          transform 0.35s ease,
-          box-shadow 0.35s ease,
-          background 0.35s ease,
-          border-color 0.35s ease,
-          color 0.35s ease;
-      }
-      .nw-contact-hero-btn svg {
-        width: 16px;
-        height: 16px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 2.2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        transition: transform 0.35s ease;
-      }
-      .nw-contact-hero-btn:hover svg {
-        transform: translateX(5px);
-      }
-      .nw-contact-hero-btn-primary {
-        color: #ffffff !important;
-        background: linear-gradient(135deg, #ee6d29, #d9581e);
-        border: 1px solid #ee6d29;
-        box-shadow: 0 15px 35px rgba(238, 109, 41, 0.3);
-      }
-      .nw-contact-hero-btn-primary:hover {
-        color: #ffffff !important;
-        background: linear-gradient(135deg, #ff8a4d, #ee6d29);
-        border-color: #ff8a4d;
-        transform: translateY(-4px);
-        box-shadow: 0 22px 45px rgba(238, 109, 41, 0.42);
-      }
-      .nw-contact-hero-btn-secondary {
-        color: #ffffff !important;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.35);
-        backdrop-filter: blur(10px);
-      }
-      .nw-contact-hero-btn-secondary:hover {
-        color: #ffffff !important;
-        background: rgba(43, 176, 172, 0.18);
-        border-color: #2bb0ac;
-        transform: translateY(-4px);
-        box-shadow: 0 18px 40px rgba(43, 176, 172, 0.22);
-      }
-      @media (max-width: 900px) {
-        .nw-contact-hero {
-          min-height: 400px;
-        }
-        .nw-contact-hero-container {
-          width: calc(100% - 50px);
-          padding: 60px 0;
-        }
-        .nw-contact-hero-title {
-          font-size: clamp(46px, 10vw, 72px);
-          letter-spacing: -3px;
-        }
-      }
-      @media (max-width: 600px) {
-        .nw-contact-hero {
-          min-height: 360px;
-        }
-        .nw-contact-hero-container {
-          width: calc(100% - 30px);
-          padding: 50px 0;
-        }
-        .nw-contact-hero-title {
-          font-size: 44px;
-          letter-spacing: -2.5px;
-          margin-bottom: 22px;
-        }
-        .nw-contact-hero-line {
-          width: 60px;
-          height: 2px;
-          margin-bottom: 30px;
-        }
-        .nw-contact-hero-desc {
-          font-size: 13px;
-          margin-bottom: 30px;
-        }
-        .nw-contact-hero-actions {
-          flex-direction: column;
-          gap: 12px;
-          width: 100%;
-        }
-        .nw-contact-hero-btn {
-          width: 100%;
-          min-height: 52px;
-          font-size: 12px;
-          padding: 0 24px;
-        }
+    }
+
+    @media (max-width: 600px) {
+      .nw-contact-hero {
+        min-height: 360px;
       }
 
-      /* =========================================================
-           CONTACT INFO CARDS STRIP
-        ========================================================= */
-      .nw-contact-cards {
-        position: relative;
-        width: 100%;
-        padding: 147px 0 80px;
-        background: #ffffff;
-        overflow: hidden;
-        isolation: isolate;
-      }
-      .nw-contact-cards::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-          linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.025) 1px,
-            transparent 1px
-          );
-        background-size: 80px 80px;
-        mask-image: linear-gradient(to bottom, black, transparent 90%);
-        pointer-events: none;
-        z-index: 0;
-      }
-      .nw-contact-cards-container {
-        position: relative;
-        z-index: 5;
-        width: min(1240px, calc(100% - 70px));
-        margin: -70px auto 0;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 26px;
-      }
-      .nw-contact-info-card {
-        position: relative;
-        padding: 34px 30px 32px;
-        border-radius: 22px;
-        background: linear-gradient(
-          135deg,
-          #163650 0%,
-          #102b45 55%,
-          #0c2034 100%
-        );
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
-        overflow: hidden;
-        transition:
-          transform 0.4s ease,
-          border-color 0.4s ease,
-          box-shadow 0.4s ease;
-      }
-      .nw-contact-info-card:hover {
-        transform: translateY(-8px);
-        border-color: rgba(43, 176, 172, 0.3);
-        box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
-      }
-      .nw-contact-info-card::before {
-        content: "";
-        position: absolute;
-        left: 30px;
-        top: 0;
-        width: 60px;
-        height: 3px;
-        border-radius: 0 0 8px 8px;
-        background: linear-gradient(90deg, #2bb0ac, #ee6d29);
-        box-shadow: 0 4px 15px rgba(43, 176, 172, 0.18);
-      }
-      .nw-contact-info-card::after {
-        content: "";
-        position: absolute;
-        width: 240px;
-        height: 240px;
-        right: -130px;
-        bottom: -140px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(43, 176, 172, 0.1),
-          transparent 70%
-        );
-        pointer-events: none;
-      }
-      .nw-contact-info-icon {
-        position: relative;
-        z-index: 2;
-        width: 56px;
-        height: 56px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 14px;
-        background: linear-gradient(
-          135deg,
-          rgba(43, 176, 172, 0.18),
-          rgba(238, 109, 41, 0.1)
-        );
-        border: 1px solid rgba(43, 176, 172, 0.25);
-        color: #55c8c3;
-        margin-bottom: 22px;
-        transition: transform 0.4s ease;
-      }
-      .nw-contact-info-card:hover .nw-contact-info-icon {
-        transform: scale(1.08) rotate(-4deg);
-      }
-      .nw-contact-info-icon svg {
-        width: 24px;
-        height: 24px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 1.7;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-      .nw-contact-info-label {
-        position: relative;
-        z-index: 2;
-        font-size: 9.5px;
-        font-weight: 800;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #2bb0ac;
-        margin-bottom: 10px;
-      }
-      .nw-contact-info-title {
-        position: relative;
-        z-index: 2;
-        margin: 0 0 12px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 20px;
-        font-weight: 600;
-        letter-spacing: -0.6px;
-        line-height: 1.25;
-        color: #fff;
-      }
-      .nw-contact-info-text {
-        position: relative;
-        z-index: 2;
-        margin: 0;
-        color: rgba(255, 255, 255, 0.85);
-        font-size: 12.5px;
-        line-height: 1.75;
-        text-decoration: none;
-      }
-      .nw-contact-info-text a {
-        color: #fff;
-        font-weight: 600;
-        border-bottom: 1px solid rgba(43, 176, 172, 0.4);
-        transition:
-          color 0.3s ease,
-          border-color 0.3s ease;
-      }
-      .nw-contact-info-text a:hover {
-        color: #55c8c3;
-        border-color: rgba(43, 176, 172, 0.8);
+      .nw-contact-hero-container {
+        width: calc(100% - 30px);
+        padding: 50px 0;
       }
 
-      /* =========================================================
-           MAIN CONTACT SECTION
-        ========================================================= */
-      .nw-contact-main {
-        --teal: #2bb0ac;
-        --teal-light: #55c8c3;
-        --orange: #ee6d29;
-        --orange-light: #ff8a4d;
-        --error: #ff5c5c;
-        --success: #4ade80;
-        position: relative;
-        width: 100%;
-        padding: 90px 0 110px;
-        background:
-          radial-gradient(
-            circle at 85% 20%,
-            rgba(43, 176, 172, 0.1),
-            transparent 32%
-          ),
-          radial-gradient(
-            circle at 5% 80%,
-            rgba(238, 109, 41, 0.07),
-            transparent 30%
-          ),
-          #0c2034;
-        color: #fff;
-        font-family: "Manrope", sans-serif;
-        overflow: clip;
-        isolation: isolate;
-      }
-      .nw-contact-main::before {
-        content: "CONTACT";
-        position: absolute;
-        right: -55px;
-        bottom: -35px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: clamp(120px, 16vw, 250px);
-        font-weight: 700;
-        line-height: 0.8;
-        letter-spacing: -13px;
-        color: rgba(255, 255, 255, 0.018);
-        pointer-events: none;
-        white-space: nowrap;
-      }
-      .nw-contact-main::after {
-        content: "";
-        position: absolute;
-        width: 600px;
-        height: 600px;
-        right: -250px;
-        top: -300px;
-        border-radius: 50%;
-        border: 1px solid rgba(43, 176, 172, 0.1);
-        box-shadow:
-          0 0 0 80px rgba(43, 176, 172, 0.025),
-          0 0 0 160px rgba(238, 109, 41, 0.018);
-        pointer-events: none;
-      }
-      .nw-contact-container {
-        position: relative;
-        z-index: 5;
-        width: min(1240px, calc(100% - 70px));
-        margin: 0 auto;
-      }
-
-      .nw-contact-layout {
-        display: grid;
-        grid-template-columns: 1fr 1.15fr;
-        gap: 60px;
-        align-items: start;
-      }
-
-      /* ---------- LEFT: Info Panel ---------- */
-      .nw-contact-left {
-        min-width: 0;
-      }
-
-      .nw-contact-eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 11px;
-        margin-bottom: 20px;
-        color: var(--teal);
-        font-size: 9px;
-        font-weight: 800;
-        letter-spacing: 2.5px;
-        text-transform: uppercase;
-      }
-      .nw-contact-eyebrow::before {
-        content: "";
-        width: 30px;
-        height: 2px;
-        border-radius: 20px;
-        background: linear-gradient(90deg, var(--teal), var(--orange));
-      }
-      .nw-contact-title {
-        margin: 0 0 26px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: clamp(38px, 4.4vw, 58px);
-        font-weight: 700;
-        line-height: 1;
+      .nw-contact-hero-title {
+        font-size: 44px;
         letter-spacing: -2.5px;
-        color: #fff;
-      }
-      .nw-contact-title .accent {
-        color: var(--teal);
+        margin-bottom: 22px;
       }
 
-      .nw-contact-lede {
-        max-width: 520px;
-        margin: 0 0 40px;
-        font-size: 14px;
-        line-height: 1.85;
-        color: rgba(255, 255, 255, 0.72);
-      }
-
-      .nw-contact-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 22px;
-        margin-bottom: 42px;
-      }
-      .nw-contact-list-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 16px;
-      }
-      .nw-contact-list-icon {
-        flex-shrink: 0;
-        width: 46px;
-        height: 46px;
-        border-radius: 13px;
-        background: rgba(43, 176, 172, 0.1);
-        border: 1px solid rgba(43, 176, 172, 0.22);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--teal);
-        transition:
-          background 0.3s ease,
-          color 0.3s ease,
-          border-color 0.3s ease,
-          transform 0.3s ease;
-      }
-      .nw-contact-list-item:hover .nw-contact-list-icon {
-        background: rgba(238, 109, 41, 0.12);
-        border-color: rgba(238, 109, 41, 0.3);
-        color: var(--orange-light);
-        transform: translateY(-2px);
-      }
-      .nw-contact-list-icon svg {
-        width: 20px;
-        height: 20px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 1.8;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-      .nw-contact-list-body strong {
-        display: block;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 14px;
-        font-weight: 700;
-        color: #fff;
-        margin-bottom: 5px;
-        letter-spacing: -0.2px;
-      }
-      .nw-contact-list-body span,
-      .nw-contact-list-body a {
-        font-size: 12.5px;
-        color: rgba(255, 255, 255, 0.7);
-        line-height: 1.6;
-        transition: color 0.3s ease;
-      }
-      .nw-contact-list-body a:hover {
-        color: var(--teal-light);
-      }
-
-      .nw-contact-socials-label {
-        font-size: 9.5px;
-        font-weight: 800;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.55);
-        margin-bottom: 16px;
-      }
-      .nw-contact-socials {
-        display: flex;
-        gap: 12px;
-      }
-      .nw-contact-social {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 44px;
-        height: 44px;
-        border-radius: 13px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background: rgba(255, 255, 255, 0.04);
-        color: rgba(255, 255, 255, 0.75);
-        transition: all 0.3s ease;
-      }
-      .nw-contact-social svg {
-        width: 17px;
-        height: 17px;
-        fill: currentColor;
-      }
-      .nw-contact-social:hover {
-        background: rgba(43, 176, 172, 0.14);
-        border-color: rgba(43, 176, 172, 0.45);
-        color: #55c8c3;
-        transform: translateY(-3px);
-        box-shadow: 0 12px 24px rgba(43, 176, 172, 0.18);
-      }
-
-      /* ---------- RIGHT: Form Card ---------- */
-      .nw-contact-form-card {
-        position: relative;
-        padding: 48px 46px 46px;
-        border-radius: 26px;
-        background: linear-gradient(
-          135deg,
-          #163650 0%,
-          #102b45 55%,
-          #0c2034 100%
-        );
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 35px 80px rgba(0, 0, 0, 0.4);
-        overflow: hidden;
-      }
-      .nw-contact-form-card::before {
-        content: "";
-        position: absolute;
-        left: 46px;
-        top: 0;
-        width: 80px;
-        height: 3px;
-        border-radius: 0 0 8px 8px;
-        background: linear-gradient(90deg, var(--teal), var(--orange));
-        box-shadow: 0 4px 15px rgba(43, 176, 172, 0.18);
-      }
-      .nw-contact-form-card::after {
-        content: "";
-        position: absolute;
-        width: 320px;
-        height: 320px;
-        right: -160px;
-        bottom: -180px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(43, 176, 172, 0.1),
-          transparent 68%
-        );
-        pointer-events: none;
-      }
-
-      .nw-form-header {
-        position: relative;
-        z-index: 2;
+      .nw-contact-hero-line {
+        width: 60px;
+        height: 2px;
         margin-bottom: 30px;
       }
-      .nw-form-header-label {
-        display: inline-flex;
-        align-items: center;
-        gap: 9px;
-        margin-bottom: 14px;
-        color: var(--orange);
-        font-size: 9.5px;
-        font-weight: 800;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-      }
-      .nw-form-header-label::before {
-        content: "";
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--orange);
-        box-shadow: 0 0 10px rgba(238, 109, 41, 0.6);
-      }
-      .nw-form-header h3 {
-        margin: 0 0 8px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 24px;
-        font-weight: 600;
-        letter-spacing: -1px;
-        color: #fff;
-      }
-      .nw-form-header p {
-        margin: 0;
+
+      .nw-contact-hero-desc {
         font-size: 13px;
-        color: rgba(255, 255, 255, 0.62);
-        line-height: 1.7;
+        margin-bottom: 30px;
       }
 
-      .nw-contact-form-grid {
-        position: relative;
-        z-index: 2;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 18px 20px;
-      }
-      .nw-contact-field {
-        display: flex;
+      .nw-contact-hero-actions {
         flex-direction: column;
-      }
-      .nw-contact-field.full {
-        grid-column: 1 / -1;
-      }
-      .nw-contact-field label {
-        font-size: 10px;
-        font-weight: 800;
-        letter-spacing: 1.3px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.72);
-        margin-bottom: 9px;
-      }
-      .nw-contact-field label span {
-        color: var(--orange);
-        margin-left: 3px;
-      }
-
-      .nw-contact-field input,
-      .nw-contact-field select,
-      .nw-contact-field textarea {
-        width: 100%;
-        padding: 0 18px;
-        height: 54px;
-        border-radius: 13px;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: #fff;
-        font-family: "Manrope", sans-serif;
-        font-size: 13.5px;
-        font-weight: 500;
-        outline: none;
-        appearance: none;
-        transition:
-          border-color 0.3s ease,
-          background 0.3s ease,
-          box-shadow 0.3s ease;
-      }
-      .nw-contact-field textarea {
-        height: 130px;
-        padding: 16px 18px;
-        resize: vertical;
-        line-height: 1.65;
-      }
-      .nw-contact-field input::placeholder,
-      .nw-contact-field textarea::placeholder {
-        color: rgba(255, 255, 255, 0.35);
-        font-weight: 400;
-      }
-      .nw-contact-field select {
-        cursor: pointer;
-        background-image:
-          linear-gradient(45deg, transparent 50%, rgba(255, 255, 255, 0.6) 50%),
-          linear-gradient(135deg, rgba(255, 255, 255, 0.6) 50%, transparent 50%);
-        background-position:
-          calc(100% - 22px) 24px,
-          calc(100% - 16px) 24px;
-        background-size: 6px 6px;
-        background-repeat: no-repeat;
-        color: #fff;
-      }
-      .nw-contact-field select option {
-        background: #102b45;
-        color: #fff;
-      }
-      .nw-contact-field input:focus,
-      .nw-contact-field select:focus,
-      .nw-contact-field textarea:focus {
-        border-color: var(--teal);
-        background: rgba(43, 176, 172, 0.06);
-        box-shadow: 0 0 0 4px rgba(43, 176, 172, 0.1);
-      }
-      .nw-contact-field input[type="date"]::-webkit-calendar-picker-indicator {
-        filter: invert(0.8);
-        cursor: pointer;
-      }
-
-      /* ----- VALIDATION STATES ----- */
-      .nw-contact-field.has-error input,
-      .nw-contact-field.has-error select,
-      .nw-contact-field.has-error textarea {
-        border-color: var(--error);
-        background: rgba(255, 92, 92, 0.05);
-        box-shadow: 0 0 0 4px rgba(255, 92, 92, 0.1);
-      }
-      .nw-contact-field.has-error label {
-        color: var(--error);
-      }
-      .nw-contact-field.has-success input,
-      .nw-contact-field.has-success select,
-      .nw-contact-field.has-success textarea {
-        border-color: rgba(74, 222, 128, 0.5);
-      }
-
-      /* Inline error message */
-      .nw-field-error {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        margin-top: 7px;
-        color: var(--error);
-        font-size: 11.5px;
-        font-weight: 600;
-        letter-spacing: 0.2px;
-        opacity: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition:
-          opacity 0.25s ease,
-          max-height 0.25s ease,
-          margin 0.25s ease;
-      }
-      .nw-contact-field.has-error .nw-field-error {
-        opacity: 1;
-        max-height: 40px;
-      }
-      .nw-field-error svg {
-        flex-shrink: 0;
-        width: 13px;
-        height: 13px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 2.2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-
-      /* Success check on field */
-      .nw-field-success-icon {
-        position: absolute;
-        right: 16px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 18px;
-        height: 18px;
-        color: var(--success);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-      }
-      .nw-contact-field {
-        position: relative;
-      }
-      .nw-contact-field.has-success .nw-field-success-icon {
-        opacity: 1;
-      }
-      .nw-contact-field textarea ~ .nw-field-success-icon {
-        top: 26px;
-        transform: none;
-      }
-
-      .nw-contact-form-footer {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 24px;
-        grid-column: 1 / -1;
-        margin-top: 14px;
-        padding-top: 26px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        flex-wrap: wrap;
-      }
-      .nw-contact-note {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        max-width: 360px;
-        margin: 0;
-        color: rgba(255, 255, 255, 0.55);
-        font-size: 11.5px;
-        line-height: 1.6;
-      }
-      .nw-contact-note svg {
-        width: 18px;
-        height: 18px;
-        flex-shrink: 0;
-        color: var(--teal);
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 1.8;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-      .nw-contact-submit {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
         gap: 12px;
-        min-height: 56px;
-        padding: 0 36px;
-        border: none;
-        border-radius: 13px;
-        background: linear-gradient(135deg, var(--orange), #d9581e);
-        color: #fff;
-        font-family: "Space Grotesk", sans-serif;
+        width: 100%;
+      }
+
+      .nw-contact-hero-btn {
+        width: 100%;
+        min-height: 52px;
         font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 1.3px;
-        text-transform: uppercase;
-        cursor: pointer;
-        box-shadow: 0 18px 35px rgba(238, 109, 41, 0.28);
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease,
-          background 0.3s ease,
-          opacity 0.3s ease;
-        white-space: nowrap;
-        position: relative;
+        padding: 0 24px;
       }
-      .nw-contact-submit:hover:not(:disabled) {
-        background: linear-gradient(135deg, var(--orange-light), var(--orange));
-        transform: translateY(-3px);
-        box-shadow: 0 24px 45px rgba(238, 109, 41, 0.4);
-      }
-      .nw-contact-submit:disabled {
-        opacity: 0.55;
-        cursor: not-allowed;
-        transform: none;
-      }
-      .nw-contact-submit svg {
-        width: 16px;
-        height: 16px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 2.2;
-        transition: transform 0.3s ease;
-      }
-      .nw-contact-submit:hover:not(:disabled) svg {
-        transform: translateX(4px);
-      }
+    }
 
-      /* Loading spinner */
-      .nw-submit-spinner {
-        display: none;
-        width: 16px;
-        height: 16px;
-        border: 2px solid rgba(255, 255, 255, 0.35);
-        border-top-color: #fff;
-        border-radius: 50%;
-        animation: nwSpin 0.8s linear infinite;
-      }
-      .nw-contact-submit.loading .nw-submit-spinner {
-        display: inline-block;
-      }
-      .nw-contact-submit.loading svg {
-        display: none;
-      }
-      @keyframes nwSpin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
+    /* =========================================================
+           CONTACT INFO CARDS STRIP
+        ========================================================= */
+    .nw-contact-cards {
+      position: relative;
+      width: 100%;
+      padding: 147px 0 80px;
+      background: #ffffff;
+      overflow: hidden;
+      isolation: isolate;
+    }
 
-      /* Success banner */
-      .nw-form-success {
-        display: flex;
-        align-items: flex-start;
-        gap: 14px;
-        padding: 18px 22px;
-        margin-bottom: 26px;
-        border-radius: 14px;
-        background: rgba(74, 222, 128, 0.08);
-        border: 1px solid rgba(74, 222, 128, 0.3);
-        color: #fff;
-        opacity: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition:
-          opacity 0.4s ease,
-          max-height 0.4s ease,
-          padding 0.4s ease,
-          margin 0.4s ease;
-      }
-      .nw-form-success.show {
-        opacity: 1;
-        max-height: 220px;
-      }
-      .nw-form-success-icon {
-        flex-shrink: 0;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #4ade80, #22c55e);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #062b14;
-        box-shadow: 0 10px 22px rgba(74, 222, 128, 0.3);
-      }
-      .nw-form-success-icon svg {
-        width: 20px;
-        height: 20px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 2.6;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-      .nw-form-success-body h4 {
-        margin: 0 0 5px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 15px;
-        font-weight: 700;
-        color: #fff;
-        letter-spacing: -0.3px;
-      }
-      .nw-form-success-body p {
-        margin: 0;
-        font-size: 12.5px;
-        color: rgba(255, 255, 255, 0.82);
-        line-height: 1.6;
-      }
+    .nw-contact-cards::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg,
+          rgba(255, 255, 255, 0.025) 1px,
+          transparent 1px);
+      background-size: 80px 80px;
+      mask-image: linear-gradient(to bottom, black, transparent 90%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-      /* =========================================================
+    .nw-contact-cards-container {
+      position: relative;
+      z-index: 5;
+      width: min(1240px, calc(100% - 70px));
+      margin: -70px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .nw-contact-info-card {
+      position: relative;
+      padding: 34px 30px 32px;
+      border-radius: 22px;
+      background: linear-gradient(135deg,
+          #163650 0%,
+          #102b45 55%,
+          #0c2034 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+      transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+    }
+
+    .nw-contact-info-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(43, 176, 172, 0.3);
+      box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
+    }
+
+    .nw-contact-info-card::before {
+      content: "";
+      position: absolute;
+      left: 30px;
+      top: 0;
+      width: 60px;
+      height: 3px;
+      border-radius: 0 0 8px 8px;
+      background: linear-gradient(90deg, #2bb0ac, #ee6d29);
+      box-shadow: 0 4px 15px rgba(43, 176, 172, 0.18);
+    }
+
+    .nw-contact-info-card::after {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      right: -130px;
+      bottom: -140px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
+          rgba(43, 176, 172, 0.1),
+          transparent 70%);
+      pointer-events: none;
+    }
+
+    .nw-contact-info-icon {
+      position: relative;
+      z-index: 2;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg,
+          rgba(43, 176, 172, 0.18),
+          rgba(238, 109, 41, 0.1));
+      border: 1px solid rgba(43, 176, 172, 0.25);
+      color: #55c8c3;
+      margin-bottom: 22px;
+      transition: transform 0.4s ease;
+    }
+
+    .nw-contact-info-card:hover .nw-contact-info-icon {
+      transform: scale(1.08) rotate(-4deg);
+    }
+
+    .nw-contact-info-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nw-contact-info-label {
+      position: relative;
+      z-index: 2;
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #2bb0ac;
+      margin-bottom: 10px;
+    }
+
+    .nw-contact-info-title {
+      position: relative;
+      z-index: 2;
+      margin: 0 0 12px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.6px;
+      line-height: 1.25;
+      color: #fff;
+    }
+
+    .nw-contact-info-text {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 12.5px;
+      line-height: 1.75;
+      text-decoration: none;
+    }
+
+    .nw-contact-info-text a {
+      color: #fff;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(43, 176, 172, 0.4);
+      transition:
+        color 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .nw-contact-info-text a:hover {
+      color: #55c8c3;
+      border-color: rgba(43, 176, 172, 0.8);
+    }
+
+    /* =========================================================
+           MAIN CONTACT SECTION
+        ========================================================= */
+    .nw-contact-main {
+      --teal: #2bb0ac;
+      --teal-light: #55c8c3;
+      --orange: #ee6d29;
+      --orange-light: #ff8a4d;
+      --error: #ff5c5c;
+      --success: #4ade80;
+      position: relative;
+      width: 100%;
+      padding: 90px 0 110px;
+      background:
+        radial-gradient(circle at 85% 20%,
+          rgba(43, 176, 172, 0.1),
+          transparent 32%),
+        radial-gradient(circle at 5% 80%,
+          rgba(238, 109, 41, 0.07),
+          transparent 30%),
+        #0c2034;
+      color: #fff;
+      font-family: "Manrope", sans-serif;
+      overflow: clip;
+      isolation: isolate;
+    }
+
+    .nw-contact-main::before {
+      content: "CONTACT";
+      position: absolute;
+      right: -55px;
+      bottom: -35px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(120px, 16vw, 250px);
+      font-weight: 700;
+      line-height: 0.8;
+      letter-spacing: -13px;
+      color: rgba(255, 255, 255, 0.018);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .nw-contact-main::after {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      right: -250px;
+      top: -300px;
+      border-radius: 50%;
+      border: 1px solid rgba(43, 176, 172, 0.1);
+      box-shadow:
+        0 0 0 80px rgba(43, 176, 172, 0.025),
+        0 0 0 160px rgba(238, 109, 41, 0.018);
+      pointer-events: none;
+    }
+
+    .nw-contact-container {
+      position: relative;
+      z-index: 5;
+      width: min(1240px, calc(100% - 70px));
+      margin: 0 auto;
+    }
+
+    .nw-contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* ---------- LEFT: Info Panel ---------- */
+    .nw-contact-left {
+      min-width: 0;
+    }
+
+    .nw-contact-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 20px;
+      color: var(--teal);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    .nw-contact-eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 2px;
+      border-radius: 20px;
+      background: linear-gradient(90deg, var(--teal), var(--orange));
+    }
+
+    .nw-contact-title {
+      margin: 0 0 26px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(38px, 4.4vw, 58px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -2.5px;
+      color: #fff;
+    }
+
+    .nw-contact-title .accent {
+      color: var(--teal);
+    }
+
+    .nw-contact-lede {
+      max-width: 520px;
+      margin: 0 0 40px;
+      font-size: 14px;
+      line-height: 1.85;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .nw-contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      margin-bottom: 42px;
+    }
+
+    .nw-contact-list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .nw-contact-list-icon {
+      flex-shrink: 0;
+      width: 46px;
+      height: 46px;
+      border-radius: 13px;
+      background: rgba(43, 176, 172, 0.1);
+      border: 1px solid rgba(43, 176, 172, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal);
+      transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .nw-contact-list-item:hover .nw-contact-list-icon {
+      background: rgba(238, 109, 41, 0.12);
+      border-color: rgba(238, 109, 41, 0.3);
+      color: var(--orange-light);
+      transform: translateY(-2px);
+    }
+
+    .nw-contact-list-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nw-contact-list-body strong {
+      display: block;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 5px;
+      letter-spacing: -0.2px;
+    }
+
+    .nw-contact-list-body span,
+    .nw-contact-list-body a {
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+      transition: color 0.3s ease;
+    }
+
+    .nw-contact-list-body a:hover {
+      color: var(--teal-light);
+    }
+
+    .nw-contact-socials-label {
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 16px;
+    }
+
+    .nw-contact-socials {
+      display: flex;
+      gap: 12px;
+    }
+
+    .nw-contact-social {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.75);
+      transition: all 0.3s ease;
+    }
+
+    .nw-contact-social svg {
+      width: 17px;
+      height: 17px;
+      fill: currentColor;
+    }
+
+    .nw-contact-social:hover {
+      background: rgba(43, 176, 172, 0.14);
+      border-color: rgba(43, 176, 172, 0.45);
+      color: #55c8c3;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(43, 176, 172, 0.18);
+    }
+
+    /* ---------- RIGHT: Form Card ---------- */
+    .nw-contact-form-card {
+      position: relative;
+      padding: 48px 46px 46px;
+      border-radius: 26px;
+      background: linear-gradient(135deg,
+          #163650 0%,
+          #102b45 55%,
+          #0c2034 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+    }
+
+    .nw-contact-form-card::before {
+      content: "";
+      position: absolute;
+      left: 46px;
+      top: 0;
+      width: 80px;
+      height: 3px;
+      border-radius: 0 0 8px 8px;
+      background: linear-gradient(90deg, var(--teal), var(--orange));
+      box-shadow: 0 4px 15px rgba(43, 176, 172, 0.18);
+    }
+
+    .nw-contact-form-card::after {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      right: -160px;
+      bottom: -180px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
+          rgba(43, 176, 172, 0.1),
+          transparent 68%);
+      pointer-events: none;
+    }
+
+    .nw-form-header {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 30px;
+    }
+
+    .nw-form-header-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 14px;
+      color: var(--orange);
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nw-form-header-label::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 10px rgba(238, 109, 41, 0.6);
+    }
+
+    .nw-form-header h3 {
+      margin: 0 0 8px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -1px;
+      color: #fff;
+    }
+
+    .nw-form-header p {
+      margin: 0;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.62);
+      line-height: 1.7;
+    }
+
+    .nw-contact-form-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 20px;
+    }
+
+    .nw-contact-field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nw-contact-field.full {
+      grid-column: 1 / -1;
+    }
+
+    .nw-contact-field label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.72);
+      margin-bottom: 9px;
+    }
+
+    .nw-contact-field label span {
+      color: var(--orange);
+      margin-left: 3px;
+    }
+
+    .nw-contact-field input,
+    .nw-contact-field select,
+    .nw-contact-field textarea {
+      width: 100%;
+      padding: 0 18px;
+      height: 54px;
+      border-radius: 13px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-family: "Manrope", sans-serif;
+      font-size: 13.5px;
+      font-weight: 500;
+      outline: none;
+      appearance: none;
+      transition:
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .nw-contact-field textarea {
+      height: 130px;
+      padding: 16px 18px;
+      resize: vertical;
+      line-height: 1.65;
+    }
+
+    .nw-contact-field input::placeholder,
+    .nw-contact-field textarea::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+      font-weight: 400;
+    }
+
+    .nw-contact-field select {
+      cursor: pointer;
+      background-image:
+        linear-gradient(45deg, transparent 50%, rgba(255, 255, 255, 0.6) 50%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.6) 50%, transparent 50%);
+      background-position:
+        calc(100% - 22px) 24px,
+        calc(100% - 16px) 24px;
+      background-size: 6px 6px;
+      background-repeat: no-repeat;
+      color: #fff;
+    }
+
+    .nw-contact-field select option {
+      background: #102b45;
+      color: #fff;
+    }
+
+    .nw-contact-field input:focus,
+    .nw-contact-field select:focus,
+    .nw-contact-field textarea:focus {
+      border-color: var(--teal);
+      background: rgba(43, 176, 172, 0.06);
+      box-shadow: 0 0 0 4px rgba(43, 176, 172, 0.1);
+    }
+
+    .nw-contact-field input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(0.8);
+      cursor: pointer;
+    }
+
+    /* ----- VALIDATION STATES ----- */
+    .nw-contact-field.has-error input,
+    .nw-contact-field.has-error select,
+    .nw-contact-field.has-error textarea {
+      border-color: var(--error);
+      background: rgba(255, 92, 92, 0.05);
+      box-shadow: 0 0 0 4px rgba(255, 92, 92, 0.1);
+    }
+
+    .nw-contact-field.has-error label {
+      color: var(--error);
+    }
+
+    .nw-contact-field.has-success input,
+    .nw-contact-field.has-success select,
+    .nw-contact-field.has-success textarea {
+      border-color: rgba(74, 222, 128, 0.5);
+    }
+
+    /* Inline error message */
+    .nw-field-error {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 7px;
+      color: var(--error);
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition:
+        opacity 0.25s ease,
+        max-height 0.25s ease,
+        margin 0.25s ease;
+    }
+
+    .nw-contact-field.has-error .nw-field-error {
+      opacity: 1;
+      max-height: 40px;
+    }
+
+    .nw-field-error svg {
+      flex-shrink: 0;
+      width: 13px;
+      height: 13px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Success check on field */
+    .nw-field-success-icon {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      color: var(--success);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .nw-contact-field {
+      position: relative;
+    }
+
+    .nw-contact-field.has-success .nw-field-success-icon {
+      opacity: 1;
+    }
+
+    .nw-contact-field textarea~.nw-field-success-icon {
+      top: 26px;
+      transform: none;
+    }
+
+    .nw-contact-form-footer {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      grid-column: 1 / -1;
+      margin-top: 14px;
+      padding-top: 26px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      flex-wrap: wrap;
+    }
+
+    .nw-contact-note {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 360px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 11.5px;
+      line-height: 1.6;
+    }
+
+    .nw-contact-note svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      color: var(--teal);
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nw-contact-submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 56px;
+      padding: 0 36px;
+      border: none;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--orange), #d9581e);
+      color: #fff;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 18px 35px rgba(238, 109, 41, 0.28);
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease,
+        opacity 0.3s ease;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .nw-contact-submit:hover:not(:disabled) {
+      background: linear-gradient(135deg, var(--orange-light), var(--orange));
+      transform: translateY(-3px);
+      box-shadow: 0 24px 45px rgba(238, 109, 41, 0.4);
+    }
+
+    .nw-contact-submit:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .nw-contact-submit svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.2;
+      transition: transform 0.3s ease;
+    }
+
+    .nw-contact-submit:hover:not(:disabled) svg {
+      transform: translateX(4px);
+    }
+
+    /* Loading spinner */
+    .nw-submit-spinner {
+      display: none;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: nwSpin 0.8s linear infinite;
+    }
+
+    .nw-contact-submit.loading .nw-submit-spinner {
+      display: inline-block;
+    }
+
+    .nw-contact-submit.loading svg {
+      display: none;
+    }
+
+    @keyframes nwSpin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Success banner */
+    .nw-form-success {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 22px;
+      margin-bottom: 26px;
+      border-radius: 14px;
+      background: rgba(74, 222, 128, 0.08);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      color: #fff;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition:
+        opacity 0.4s ease,
+        max-height 0.4s ease,
+        padding 0.4s ease,
+        margin 0.4s ease;
+    }
+
+    .nw-form-success.show {
+      opacity: 1;
+      max-height: 220px;
+    }
+
+    .nw-form-success-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4ade80, #22c55e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #062b14;
+      box-shadow: 0 10px 22px rgba(74, 222, 128, 0.3);
+    }
+
+    .nw-form-success-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nw-form-success-body h4 {
+      margin: 0 0 5px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.3px;
+    }
+
+    .nw-form-success-body p {
+      margin: 0;
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, 0.82);
+      line-height: 1.6;
+    }
+
+    /* =========================================================
            MAP SECTION
         ========================================================= */
-      .nw-contact-map {
-        position: relative;
-        width: 100%;
-        height: 460px;
-        background: linear-gradient(
-          135deg,
+    .nw-contact-map {
+      position: relative;
+      width: 100%;
+      height: 460px;
+      background: linear-gradient(135deg,
           #163650 0%,
           #102b45 50%,
-          #0c2034 100%
-        );
-        overflow: hidden;
-        isolation: isolate;
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      }
-      .nw-contact-map::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-        background-size: 50px 50px;
-        pointer-events: none;
-      }
-      .nw-contact-map::after {
-        content: "";
-        position: absolute;
-        width: 520px;
-        height: 520px;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
+          #0c2034 100%);
+      overflow: hidden;
+      isolation: isolate;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nw-contact-map::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+    }
+
+    .nw-contact-map::after {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(circle,
           rgba(43, 176, 172, 0.15),
-          transparent 60%
-        );
-        pointer-events: none;
-      }
-      .nw-contact-map-inner {
-        position: relative;
-        z-index: 3;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-      }
-      .nw-contact-map-pin {
-        position: relative;
-        z-index: 4;
-        padding: 26px 34px;
-        border-radius: 20px;
-        background: rgba(12, 32, 52, 0.78);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(43, 176, 172, 0.3);
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
-      }
-      .nw-contact-map-pin-icon {
-        width: 56px;
-        height: 56px;
-        margin: 0 auto 16px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, #2bb0ac, #1e8e8a);
-        color: #fff;
+          transparent 60%);
+      pointer-events: none;
+    }
+
+    .nw-contact-map-inner {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .nw-contact-map-pin {
+      position: relative;
+      z-index: 4;
+      padding: 26px 34px;
+      border-radius: 20px;
+      background: rgba(12, 32, 52, 0.78);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(43, 176, 172, 0.3);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .nw-contact-map-pin-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #2bb0ac, #1e8e8a);
+      color: #fff;
+      box-shadow: 0 15px 30px rgba(43, 176, 172, 0.3);
+      animation: pinPulse 2.4s ease-in-out infinite;
+    }
+
+    .nw-contact-map-pin-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    @keyframes pinPulse {
+
+      0%,
+      100% {
+        transform: scale(1);
         box-shadow: 0 15px 30px rgba(43, 176, 172, 0.3);
-        animation: pinPulse 2.4s ease-in-out infinite;
-      }
-      .nw-contact-map-pin-icon svg {
-        width: 26px;
-        height: 26px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 1.9;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-      @keyframes pinPulse {
-        0%,
-        100% {
-          transform: scale(1);
-          box-shadow: 0 15px 30px rgba(43, 176, 172, 0.3);
-        }
-        50% {
-          transform: scale(1.06);
-          box-shadow: 0 20px 45px rgba(43, 176, 172, 0.5);
-        }
-      }
-      .nw-contact-map-pin h4 {
-        margin: 0 0 6px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 20px;
-        font-weight: 600;
-        letter-spacing: -0.6px;
-        color: #fff;
-      }
-      .nw-contact-map-pin p {
-        margin: 0;
-        font-size: 12.5px;
-        color: rgba(255, 255, 255, 0.65);
-        line-height: 1.6;
       }
 
-      /* =========================================================
+      50% {
+        transform: scale(1.06);
+        box-shadow: 0 20px 45px rgba(43, 176, 172, 0.5);
+      }
+    }
+
+    .nw-contact-map-pin h4 {
+      margin: 0 0 6px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.6px;
+      color: #fff;
+    }
+
+    .nw-contact-map-pin p {
+      margin: 0;
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.6;
+    }
+
+    /* =========================================================
            FAQ / HOURS SECTION
         ========================================================= */
-      .nw-contact-faq {
-        position: relative;
+    .nw-contact-faq {
+      position: relative;
+      width: 100%;
+      padding: 100px 0 110px;
+      background:
+        radial-gradient(circle at 20% 10%,
+          rgba(238, 109, 41, 0.06),
+          transparent 30%),
+        radial-gradient(circle at 90% 90%,
+          rgba(43, 176, 172, 0.08),
+          transparent 35%),
+        #ffffff;
+      font-family: "Manrope", sans-serif;
+      color: #fff;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .nw-contact-faq-container {
+      position: relative;
+      z-index: 5;
+      width: min(1240px, calc(100% - 70px));
+      margin: 0 auto;
+    }
+
+    .nw-contact-faq-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 55px;
+    }
+
+    .nw-contact-faq-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 20px;
+      color: #2bb0ac;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    .nw-contact-faq-eyebrow::before,
+    .nw-contact-faq-eyebrow::after {
+      content: "";
+      width: 30px;
+      height: 2px;
+      border-radius: 20px;
+      background: linear-gradient(90deg, #2bb0ac, #ee6d29);
+    }
+
+    .nw-contact-faq-title {
+      margin: 0 0 16px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(34px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.02;
+      letter-spacing: -2.2px;
+      color: #183b5e;
+    }
+
+    .nw-contact-faq-title .accent {
+      color: #2bb0ac;
+    }
+
+    .nw-contact-faq-desc {
+      margin: 0;
+      color: #183b5e;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .nw-contact-hours {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .nw-hours-card {
+      position: relative;
+      padding: 28px 26px;
+      border-radius: 18px;
+      background: linear-gradient(135deg,
+          #163650 0%,
+          #102b45 60%,
+          #0c2034 100%);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+      overflow: hidden;
+    }
+
+    .nw-hours-card::before {
+      content: "";
+      position: absolute;
+      left: 26px;
+      top: 0;
+      width: 50px;
+      height: 3px;
+      border-radius: 0 0 8px 8px;
+      background: linear-gradient(90deg, #2bb0ac, #ee6d29);
+    }
+
+    .nw-hours-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(43, 176, 172, 0.28);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.38);
+    }
+
+    .nw-hours-day {
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #ee6d29;
+      margin-bottom: 12px;
+    }
+
+    .nw-hours-time {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.7px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .nw-hours-note {
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+    }
+
+    .nw-faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .nw-faq-item {
+      position: relative;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: linear-gradient(135deg,
+          #163650 0%,
+          #102b45 60%,
+          #0c2034 100%);
+      overflow: hidden;
+      transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .nw-faq-item:hover {
+      border-color: rgba(43, 176, 172, 0.25);
+    }
+
+    .nw-faq-item.open {
+      border-color: rgba(43, 176, 172, 0.4);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+    }
+
+    .nw-faq-question {
+      width: 100%;
+      padding: 22px 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      color: #fff;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      line-height: 1.4;
+    }
+
+    .nw-faq-toggle {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(43, 176, 172, 0.12);
+      border: 1px solid rgba(43, 176, 172, 0.3);
+      color: #55c8c3;
+      transition:
+        transform 0.35s ease,
+        background 0.3s ease,
+        color 0.3s ease;
+    }
+
+    .nw-faq-toggle svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nw-faq-item.open .nw-faq-toggle {
+      background: linear-gradient(135deg, #ee6d29, #d9581e);
+      border-color: transparent;
+      color: #fff;
+      transform: rotate(180deg);
+    }
+
+    .nw-faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .nw-faq-answer-inner {
+      padding: 0 26px 24px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 13.5px;
+      line-height: 1.8;
+    }
+
+    .nw-faq-item.open .nw-faq-answer {
+      max-height: 500px;
+    }
+
+    /* =========================================================
+           CTA SECTION
+        ========================================================= */
+    .nw-contact-cta {
+      position: relative;
+      padding: 80px 0;
+      background:
+        radial-gradient(circle at 20% 50%,
+          rgba(43, 176, 172, 0.12),
+          transparent 35%),
+        radial-gradient(circle at 90% 30%,
+          rgba(238, 109, 41, 0.1),
+          transparent 30%),
+        linear-gradient(135deg, #102b45, #0c2034);
+      color: #fff;
+      font-family: "Manrope", sans-serif;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .nw-contact-cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: linear-gradient(to bottom, black, transparent 90%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .nw-contact-cta-container {
+      position: relative;
+      z-index: 5;
+      width: min(1240px, calc(100% - 70px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 45px;
+      flex-wrap: wrap;
+    }
+
+    .nw-contact-cta-left h2 {
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(34px, 4.5vw, 58px);
+      font-weight: 700;
+      line-height: 1.02;
+      letter-spacing: -2.5px;
+    }
+
+    .nw-contact-cta-left h2 span {
+      color: #2bb0ac;
+    }
+
+    .nw-contact-cta-left p {
+      max-width: 520px;
+      margin: 18px 0 0;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .nw-contact-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 32px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ee6d29, #d9581e);
+      color: #fff !important;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none !important;
+      box-shadow: 0 18px 40px rgba(238, 109, 41, 0.25);
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .nw-contact-cta-btn:hover {
+      background: linear-gradient(135deg, #ff8a4d, #ee6d29);
+      transform: translateY(-4px);
+      box-shadow: 0 24px 50px rgba(238, 109, 41, 0.35);
+      color: #fff !important;
+    }
+
+    .nw-contact-cta-btn svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.2;
+      transition: transform 0.3s ease;
+    }
+
+    .nw-contact-cta-btn:hover svg {
+      transform: translateX(5px);
+    }
+
+    @media (max-width: 820px) {
+      .nw-contact-cta {
+        padding: 65px 0;
+      }
+
+      .nw-contact-cta-container {
+        width: calc(100% - 44px);
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nw-contact-cta-btn {
         width: 100%;
-        padding: 100px 0 110px;
-        background:
-          radial-gradient(
-            circle at 20% 10%,
-            rgba(238, 109, 41, 0.06),
-            transparent 30%
-          ),
-          radial-gradient(
-            circle at 90% 90%,
-            rgba(43, 176, 172, 0.08),
-            transparent 35%
-          ),
-          #ffffff;
-        font-family: "Manrope", sans-serif;
-        color: #fff;
-        overflow: hidden;
-        isolation: isolate;
+        justify-content: center;
       }
-      .nw-contact-faq-container {
-        position: relative;
-        z-index: 5;
-        width: min(1240px, calc(100% - 70px));
-        margin: 0 auto;
+    }
+
+    /* =========================================================
+           FOOTER
+        ========================================================= */
+    .nw-footer {
+      width: 100%;
+      padding: 60px 5% 30px;
+      background-color: #ffffff;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .nw-footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 1.2fr 1.3fr;
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .nw-footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .nw-footer-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .nw-footer-logo img {
+      height: 85px;
+      width: auto;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .nw-footer-tagline {
+      font-size: 15px;
+      font-weight: 700;
+      color: #183b5e;
+      line-height: 1.4;
+      max-width: 220px;
+    }
+
+    .nw-social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 5px;
+    }
+
+    .nw-social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background-color: #183b5e;
+      color: #ffffff;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .nw-social-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .nw-social-icon:hover {
+      background-color: #ee6d29;
+      transform: translateY(-2px);
+    }
+
+    .nw-footer-col h4 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 24px;
+      letter-spacing: -0.2px;
+    }
+
+    .nw-footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .nw-footer-links li a {
+      font-size: 15px;
+      font-weight: 500;
+      color: #333333;
+      transition: color 0.2s ease;
+    }
+
+    .nw-footer-links li a:hover {
+      color: #ee6d29;
+    }
+
+    .nw-footer-newsletter p {
+      font-size: 15px;
+      font-weight: 500;
+      color: #333333;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .nw-newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .nw-newsletter-input {
+      width: 100%;
+      min-height: 100px;
+      padding: 14px 16px;
+      font-family: "Manrope", sans-serif;
+      font-size: 14px;
+      color: #333;
+      background-color: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      outline: none;
+      resize: vertical;
+      transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .nw-newsletter-input::placeholder {
+      color: #9ca3af;
+    }
+
+    .nw-newsletter-input:focus {
+      border-color: #183b5e;
+      box-shadow: 0 0 0 3px rgba(24, 59, 94, 0.1);
+    }
+
+    .nw-newsletter-btn {
+      align-self: flex-end;
+      padding: 12px 32px;
+      background-color: #183b5e;
+      color: #ffffff;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nw-newsletter-btn:hover {
+      background-color: #ee6d29;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(238, 109, 41, 0.25);
+    }
+
+    .nw-footer-bottom {
+      margin-top: 50px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      text-align: center;
+    }
+
+    .nw-footer-bottom p {
+      font-size: 14px;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+    @media (max-width: 1100px) {
+      .nw-contact-cards-container {
+        grid-template-columns: repeat(2, 1fr);
       }
-      .nw-contact-faq-header {
-        text-align: center;
-        max-width: 700px;
-        margin: 0 auto 55px;
+
+      .nw-contact-info-card:last-child {
+        grid-column: 1 / -1;
       }
-      .nw-contact-faq-eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 11px;
-        margin-bottom: 20px;
-        color: #2bb0ac;
-        font-size: 9px;
-        font-weight: 800;
-        letter-spacing: 2.5px;
-        text-transform: uppercase;
-      }
-      .nw-contact-faq-eyebrow::before,
-      .nw-contact-faq-eyebrow::after {
-        content: "";
-        width: 30px;
-        height: 2px;
-        border-radius: 20px;
-        background: linear-gradient(90deg, #2bb0ac, #ee6d29);
-      }
-      .nw-contact-faq-title {
-        margin: 0 0 16px;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: clamp(34px, 4vw, 52px);
-        font-weight: 700;
-        line-height: 1.02;
-        letter-spacing: -2.2px;
-        color: #183b5e;
-      }
-      .nw-contact-faq-title .accent {
-        color: #2bb0ac;
-      }
-      .nw-contact-faq-desc {
-        margin: 0;
-        color: #183b5e;
-        font-size: 14px;
-        line-height: 1.8;
+    }
+
+    @media (max-width: 1000px) {
+      .nw-contact-layout {
+        grid-template-columns: 1fr;
+        gap: 55px;
       }
 
       .nw-contact-hours {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-        margin-bottom: 60px;
+        grid-template-columns: 1fr 1fr;
       }
-      .nw-hours-card {
-        position: relative;
-        padding: 28px 26px;
-        border-radius: 18px;
-        background: linear-gradient(
-          135deg,
-          #163650 0%,
-          #102b45 60%,
-          #0c2034 100%
-        );
-        border: 1px solid rgba(255, 255, 255, 0.09);
-        transition:
-          transform 0.35s ease,
-          border-color 0.35s ease,
-          box-shadow 0.35s ease;
-        overflow: hidden;
+    }
+
+    @media (max-width: 900px) {
+      .nw-contact-main {
+        padding: 75px 0 90px;
       }
-      .nw-hours-card::before {
-        content: "";
-        position: absolute;
+
+      .nw-contact-container {
+        width: calc(100% - 50px);
+      }
+
+      .nw-contact-faq {
+        padding: 80px 0 90px;
+      }
+
+      .nw-contact-faq-container {
+        width: calc(100% - 50px);
+      }
+
+      .nw-contact-cards-container {
+        width: calc(100% - 50px);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nw-contact-cards-container {
+        width: calc(100% - 28px);
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-top: -50px;
+      }
+
+      .nw-contact-info-card:last-child {
+        grid-column: auto;
+      }
+
+      .nw-contact-main {
+        padding: 60px 0 75px;
+      }
+
+      .nw-contact-main::before {
+        font-size: 90px;
+        right: -20px;
+        bottom: -10px;
+        letter-spacing: -7px;
+      }
+
+      .nw-contact-container {
+        width: calc(100% - 28px);
+      }
+
+      .nw-contact-title {
+        font-size: 38px;
+        letter-spacing: -2px;
+      }
+
+      .nw-contact-form-card {
+        padding: 36px 26px 34px;
+        border-radius: 22px;
+      }
+
+      .nw-contact-form-card::before {
         left: 26px;
-        top: 0;
-        width: 50px;
-        height: 3px;
-        border-radius: 0 0 8px 8px;
-        background: linear-gradient(90deg, #2bb0ac, #ee6d29);
-      }
-      .nw-hours-card:hover {
-        transform: translateY(-6px);
-        border-color: rgba(43, 176, 172, 0.28);
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.38);
-      }
-      .nw-hours-day {
-        font-size: 9.5px;
-        font-weight: 800;
-        letter-spacing: 1.8px;
-        text-transform: uppercase;
-        color: #ee6d29;
-        margin-bottom: 12px;
-      }
-      .nw-hours-time {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 22px;
-        font-weight: 600;
-        letter-spacing: -0.7px;
-        color: #fff;
-        margin-bottom: 6px;
-      }
-      .nw-hours-note {
-        font-size: 11.5px;
-        color: rgba(255, 255, 255, 0.6);
-        line-height: 1.6;
       }
 
-      .nw-faq-list {
-        display: flex;
-        flex-direction: column;
+      .nw-contact-form-grid {
+        grid-template-columns: 1fr;
         gap: 16px;
-        max-width: 900px;
-        margin: 0 auto;
       }
-      .nw-faq-item {
-        position: relative;
-        border-radius: 16px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: linear-gradient(
-          135deg,
-          #163650 0%,
-          #102b45 60%,
-          #0c2034 100%
-        );
-        overflow: hidden;
-        transition:
-          border-color 0.3s ease,
-          box-shadow 0.3s ease;
+
+      .nw-contact-field.full {
+        grid-column: auto;
       }
-      .nw-faq-item:hover {
-        border-color: rgba(43, 176, 172, 0.25);
+
+      .nw-contact-form-footer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
       }
-      .nw-faq-item.open {
-        border-color: rgba(43, 176, 172, 0.4);
-        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+
+      .nw-contact-note {
+        max-width: 100%;
       }
+
+      .nw-contact-submit {
+        width: 100%;
+      }
+
+      .nw-contact-map {
+        height: 360px;
+      }
+
+      .nw-contact-map-pin {
+        padding: 22px 24px;
+      }
+
+      .nw-contact-faq {
+        padding: 65px 0 75px;
+      }
+
+      .nw-contact-faq-container {
+        width: calc(100% - 28px);
+      }
+
+      .nw-contact-faq-title {
+        font-size: 32px;
+        letter-spacing: -1.5px;
+      }
+
+      .nw-contact-hours {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-bottom: 45px;
+      }
+
       .nw-faq-question {
-        width: 100%;
-        padding: 22px 26px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        text-align: left;
-        color: #fff;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 15px;
-        font-weight: 600;
-        letter-spacing: -0.3px;
-        line-height: 1.4;
+        padding: 18px 20px;
+        font-size: 14px;
       }
-      .nw-faq-toggle {
-        flex-shrink: 0;
-        width: 32px;
-        height: 32px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(43, 176, 172, 0.12);
-        border: 1px solid rgba(43, 176, 172, 0.3);
-        color: #55c8c3;
-        transition:
-          transform 0.35s ease,
-          background 0.3s ease,
-          color 0.3s ease;
-      }
-      .nw-faq-toggle svg {
-        width: 14px;
-        height: 14px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 2.4;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-      .nw-faq-item.open .nw-faq-toggle {
-        background: linear-gradient(135deg, #ee6d29, #d9581e);
-        border-color: transparent;
-        color: #fff;
-        transform: rotate(180deg);
-      }
-      .nw-faq-answer {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease;
-      }
+
       .nw-faq-answer-inner {
-        padding: 0 26px 24px;
-        color: rgba(255, 255, 255, 0.78);
+        padding: 0 20px 20px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nw-contact-hero-title {
+        font-size: 40px;
+        letter-spacing: -2px;
+      }
+
+      .nw-contact-title {
+        font-size: 32px;
+        letter-spacing: -1.6px;
+      }
+
+      .nw-contact-info-card {
+        padding: 26px 22px 24px;
+      }
+
+      .nw-contact-info-card::before {
+        left: 22px;
+      }
+
+      .nw-faq-question {
         font-size: 13.5px;
-        line-height: 1.8;
       }
-      .nw-faq-item.open .nw-faq-answer {
-        max-height: 500px;
-      }
+    }
 
-      /* =========================================================
-           CTA SECTION
-        ========================================================= */
-      .nw-contact-cta {
-        position: relative;
-        padding: 80px 0;
-        background:
-          radial-gradient(
-            circle at 20% 50%,
-            rgba(43, 176, 172, 0.12),
-            transparent 35%
-          ),
-          radial-gradient(
-            circle at 90% 30%,
-            rgba(238, 109, 41, 0.1),
-            transparent 30%
-          ),
-          linear-gradient(135deg, #102b45, #0c2034);
-        color: #fff;
-        font-family: "Manrope", sans-serif;
-        overflow: hidden;
-        isolation: isolate;
-      }
-      .nw-contact-cta::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        background-size: 60px 60px;
-        mask-image: linear-gradient(to bottom, black, transparent 90%);
-        pointer-events: none;
-        z-index: -1;
-      }
-      .nw-contact-cta-container {
-        position: relative;
-        z-index: 5;
-        width: min(1240px, calc(100% - 70px));
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 45px;
-        flex-wrap: wrap;
-      }
-      .nw-contact-cta-left h2 {
-        margin: 0;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: clamp(34px, 4.5vw, 58px);
-        font-weight: 700;
-        line-height: 1.02;
-        letter-spacing: -2.5px;
-      }
-      .nw-contact-cta-left h2 span {
-        color: #2bb0ac;
-      }
-      .nw-contact-cta-left p {
-        max-width: 520px;
-        margin: 18px 0 0;
-        color: rgba(255, 255, 255, 0.68);
-        font-size: 14px;
-        line-height: 1.8;
-      }
-      .nw-contact-cta-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 14px;
-        padding: 16px 32px;
-        border-radius: 12px;
-        background: linear-gradient(135deg, #ee6d29, #d9581e);
-        color: #fff !important;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        text-decoration: none !important;
-        box-shadow: 0 18px 40px rgba(238, 109, 41, 0.25);
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease,
-          background 0.3s ease;
-        white-space: nowrap;
-      }
-      .nw-contact-cta-btn:hover {
-        background: linear-gradient(135deg, #ff8a4d, #ee6d29);
-        transform: translateY(-4px);
-        box-shadow: 0 24px 50px rgba(238, 109, 41, 0.35);
-        color: #fff !important;
-      }
-      .nw-contact-cta-btn svg {
-        width: 16px;
-        height: 16px;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 2.2;
-        transition: transform 0.3s ease;
-      }
-      .nw-contact-cta-btn:hover svg {
-        transform: translateX(5px);
-      }
-      @media (max-width: 820px) {
-        .nw-contact-cta {
-          padding: 65px 0;
-        }
-        .nw-contact-cta-container {
-          width: calc(100% - 44px);
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        .nw-contact-cta-btn {
-          width: 100%;
-          justify-content: center;
-        }
-      }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
 
-      /* =========================================================
-           FOOTER
-        ========================================================= */
-      .nw-footer {
-        width: 100%;
-        padding: 60px 5% 30px;
-        background-color: #ffffff;
-        border-top: 1px solid rgba(0, 0, 0, 0.06);
-      }
-      .nw-footer-grid {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr 1.2fr 1.3fr;
-        gap: 40px;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-      .nw-footer-brand {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-      .nw-footer-logo {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .nw-footer-logo img {
-        height: 85px;
-        width: auto;
-        display: block;
-        margin-bottom: 12px;
-      }
-      .nw-footer-tagline {
-        font-size: 15px;
-        font-weight: 700;
-        color: #183b5e;
-        line-height: 1.4;
-        max-width: 220px;
-      }
-      .nw-social-links {
-        display: flex;
-        gap: 12px;
-        margin-top: 5px;
-      }
-      .nw-social-icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 38px;
-        height: 38px;
-        background-color: #183b5e;
-        color: #ffffff;
-        border-radius: 50%;
-        transition: all 0.3s ease;
-      }
-      .nw-social-icon svg {
-        width: 18px;
-        height: 18px;
-        fill: currentColor;
-      }
-      .nw-social-icon:hover {
-        background-color: #ee6d29;
-        transform: translateY(-2px);
-      }
-      .nw-footer-col h4 {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 16px;
-        font-weight: 700;
-        color: #1a1a1a;
-        margin-bottom: 24px;
-        letter-spacing: -0.2px;
-      }
-      .nw-footer-links {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-      .nw-footer-links li a {
-        font-size: 15px;
-        font-weight: 500;
-        color: #333333;
-        transition: color 0.2s ease;
-      }
-      .nw-footer-links li a:hover {
-        color: #ee6d29;
-      }
-      .nw-footer-newsletter p {
-        font-size: 15px;
-        font-weight: 500;
-        color: #333333;
-        line-height: 1.6;
-        margin-bottom: 20px;
-      }
-      .nw-newsletter-form {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        width: 100%;
-      }
-      .nw-newsletter-input {
-        width: 100%;
-        min-height: 100px;
-        padding: 14px 16px;
-        font-family: "Manrope", sans-serif;
-        font-size: 14px;
-        color: #333;
-        background-color: #ffffff;
-        border: 1px solid #d1d5db;
-        border-radius: 8px;
-        outline: none;
-        resize: vertical;
-        transition:
-          border-color 0.3s ease,
-          box-shadow 0.3s ease;
-      }
-      .nw-newsletter-input::placeholder {
-        color: #9ca3af;
-      }
-      .nw-newsletter-input:focus {
-        border-color: #183b5e;
-        box-shadow: 0 0 0 3px rgba(24, 59, 94, 0.1);
-      }
-      .nw-newsletter-btn {
-        align-self: flex-end;
-        padding: 12px 32px;
-        background-color: #183b5e;
-        color: #ffffff;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-      .nw-newsletter-btn:hover {
-        background-color: #ee6d29;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 15px rgba(238, 109, 41, 0.25);
-      }
-      .nw-footer-bottom {
-        margin-top: 50px;
-        padding-top: 24px;
-        border-top: 1px solid rgba(0, 0, 0, 0.06);
-        text-align: center;
-      }
-      .nw-footer-bottom p {
-        font-size: 14px;
-        font-weight: 500;
-        color: #1a1a1a;
-      }
+    ::-webkit-scrollbar-track {
+      background: #0c2034;
+    }
 
-      /* =========================================================
-           RESPONSIVE
-        ========================================================= */
-      @media (max-width: 1100px) {
-        .nw-contact-cards-container {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .nw-contact-info-card:last-child {
-          grid-column: 1 / -1;
-        }
+    ::-webkit-scrollbar-thumb {
+      background: #2bb0ac;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ee6d29;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+        animation: none !important;
       }
-      @media (max-width: 1000px) {
-        .nw-contact-layout {
-          grid-template-columns: 1fr;
-          gap: 55px;
-        }
-        .nw-contact-hours {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-      @media (max-width: 900px) {
-        .nw-contact-main {
-          padding: 75px 0 90px;
-        }
-        .nw-contact-container {
-          width: calc(100% - 50px);
-        }
-        .nw-contact-faq {
-          padding: 80px 0 90px;
-        }
-        .nw-contact-faq-container {
-          width: calc(100% - 50px);
-        }
-        .nw-contact-cards-container {
-          width: calc(100% - 50px);
-        }
-      }
-      @media (max-width: 700px) {
-        .nw-contact-cards-container {
-          width: calc(100% - 28px);
-          grid-template-columns: 1fr;
-          gap: 18px;
-          margin-top: -50px;
-        }
-        .nw-contact-info-card:last-child {
-          grid-column: auto;
-        }
-        .nw-contact-main {
-          padding: 60px 0 75px;
-        }
-        .nw-contact-main::before {
-          font-size: 90px;
-          right: -20px;
-          bottom: -10px;
-          letter-spacing: -7px;
-        }
-        .nw-contact-container {
-          width: calc(100% - 28px);
-        }
-        .nw-contact-title {
-          font-size: 38px;
-          letter-spacing: -2px;
-        }
-        .nw-contact-form-card {
-          padding: 36px 26px 34px;
-          border-radius: 22px;
-        }
-        .nw-contact-form-card::before {
-          left: 26px;
-        }
-        .nw-contact-form-grid {
-          grid-template-columns: 1fr;
-          gap: 16px;
-        }
-        .nw-contact-field.full {
-          grid-column: auto;
-        }
-        .nw-contact-form-footer {
-          flex-direction: column;
-          align-items: stretch;
-          gap: 18px;
-        }
-        .nw-contact-note {
-          max-width: 100%;
-        }
-        .nw-contact-submit {
-          width: 100%;
-        }
-        .nw-contact-map {
-          height: 360px;
-        }
-        .nw-contact-map-pin {
-          padding: 22px 24px;
-        }
-        .nw-contact-faq {
-          padding: 65px 0 75px;
-        }
-        .nw-contact-faq-container {
-          width: calc(100% - 28px);
-        }
-        .nw-contact-faq-title {
-          font-size: 32px;
-          letter-spacing: -1.5px;
-        }
-        .nw-contact-hours {
-          grid-template-columns: 1fr;
-          gap: 16px;
-          margin-bottom: 45px;
-        }
-        .nw-faq-question {
-          padding: 18px 20px;
-          font-size: 14px;
-        }
-        .nw-faq-answer-inner {
-          padding: 0 20px 20px;
-          font-size: 13px;
-        }
-      }
-      @media (max-width: 480px) {
-        .nw-contact-hero-title {
-          font-size: 40px;
-          letter-spacing: -2px;
-        }
-        .nw-contact-title {
-          font-size: 32px;
-          letter-spacing: -1.6px;
-        }
-        .nw-contact-info-card {
-          padding: 26px 22px 24px;
-        }
-        .nw-contact-info-card::before {
-          left: 22px;
-        }
-        .nw-faq-question {
-          font-size: 13.5px;
-        }
-      }
+    }
+  </style>
+</head>
 
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #0c2034;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #2bb0ac;
-        border-radius: 10px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #ee6d29;
-      }
+<body>
+  <!-- NAVBAR -->
+  <header class="nw-navbar">
+    <a href="index.html" class="nw-nav-logo">
+      <img src="assets/Logo/NSH Logo 01.png" alt="Northwest Safety & Health" />
+    </a>
+    <ul class="nw-nav-menu">
+      <li><a href="index.html" class="active">Home</a></li>
 
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          transition: none !important;
-          animation: none !important;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- NAVBAR -->
-    <header class="nw-navbar">
-      <a href="index.html" class="nw-nav-logo">
-        <img
-          src="assets/Logo/NSH Logo 01.png"
-          alt="Northwest Safety & Health"
-        />
-      </a>
-      <ul class="nw-nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="courses-training.html">Courses & Training</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
-      </ul>
-      <div class="nw-nav-btn-wrap">
-        <!-- Dynamic button: Dashboard if logged in, else Book Training -->
-        <a href="login.html" class="nw-nav-btn" id="navCtaBtn">Book Training</a>
-      </div>
-    </header>
+      <li class="nw-has-dropdown">
+        <a href="courses-training.html">
+          Courses &amp; Training
+          <svg class="nw-caret" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 9L12 15L18 9" />
+          </svg>
+        </a>
 
-    <!-- CONTACT HERO -->
-    <section class="nw-contact-hero">
-      <div class="nw-contact-hero-container">
-        <h1 class="nw-contact-hero-title">Contact Us</h1>
-        <span class="nw-contact-hero-line"></span>
-        <p class="nw-contact-hero-desc">
-          Have a question about training, scheduling, or a custom program? Our
-          team is ready to help you build a safer jobsite — reach out and we'll
-          respond within one business day.
-        </p>
-        <div class="nw-contact-hero-actions">
-          <a
-            href="index.html"
-            class="nw-contact-hero-btn nw-contact-hero-btn-secondary"
-          >
-            <svg viewBox="0 0 24 24">
-              <path d="M19 12H5" />
-              <path d="M11 6L5 12L11 18" />
-            </svg>
-            Back to Home
-          </a>
-          <a
-            href="contact.html#contact-form"
-            class="nw-contact-hero-btn nw-contact-hero-btn-primary"
-          >
-            Talk with Us
-            <svg viewBox="0 0 24 24">
-              <path d="M5 12H19" />
-              <path d="M13 6L19 12L13 18" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
+        <ul class="nw-dropdown">
+          <li><a href="courses-training.html">All Courses &amp; Training</a></li>
+          <li><a href="services-details.html?service=fall-protection">Fall Protection</a></li>
+          <li><a href="services-details.html?service=competent-person">Competent Person Training</a></li>
+          <li><a href="services-details.html?service=self-rescue">Self Rescue for Fall Protection</a></li>
+          <li><a href="services-details.html?service=fall-refresher">Fall Protection Refresher</a></li>
+          <li class="nw-dropdown-divider" role="separator"></li>
+          <li><a href="services-details.html?service=osha">OSHA Safety Training</a></li>
+          <li><a href="services-details.html?service=construction-safety">Construction Safety</a></li>
+          <li><a href="services-details.html?service=government-contractor">Government Contractor Training</a></li>
+          <li><a href="services-details.html?service=workplace-safety">Workplace Safety</a></li>
+          <li><a href="services-details.html?service=first-aid-cpr">First Aid &amp; CPR</a></li>
+          <li><a href="services-details.html?service=customized-safety">Customized Safety Programs</a></li>
+        </ul>
+      </li>
 
-    <!-- CONTACT INFO CARDS -->
-    <section class="nw-contact-cards">
-      <div class="nw-contact-cards-container">
-        <div class="nw-contact-info-card">
-          <div class="nw-contact-info-icon">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"
-              />
-            </svg>
-          </div>
-          <div class="nw-contact-info-label">Call Us</div>
-          <h3 class="nw-contact-info-title">Phone &amp; Fax</h3>
-          <p class="nw-contact-info-text">
-            <a href="tel:+15095551234">+1 (509) 555-1234</a><br />
-            <a href="tel:+15095555678">+1 (509) 555-5678</a> (fax)
-          </p>
-        </div>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nw-nav-btn-wrap">
+      <!-- Dynamic button: Dashboard if logged in, else Book Training -->
+      <a href="login.html" class="nw-nav-btn" id="navCtaBtn">Book Training</a>
+    </div>
+  </header>
 
-        <div class="nw-contact-info-card">
-          <div class="nw-contact-info-icon">
-            <svg viewBox="0 0 24 24">
-              <rect x="2" y="4" width="20" height="16" rx="2" />
-              <path d="m22 7-10 6L2 7" />
-            </svg>
-          </div>
-          <div class="nw-contact-info-label">Email Us</div>
-          <h3 class="nw-contact-info-title">General &amp; Training</h3>
-          <p class="nw-contact-info-text">
-            <a href="mailto:info@northwestsafety.com"
-              >info@northwestsafety.com</a
-            ><br />
-            <a href="mailto:training@northwestsafety.com"
-              >training@northwestsafety.com</a
-            >
-          </p>
-        </div>
-
-        <div class="nw-contact-info-card">
-          <div class="nw-contact-info-icon">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M12 21s-7-6.5-7-11.5A7 7 0 0 1 19 9.5C19 14.5 12 21 12 21Z"
-              />
-              <circle cx="12" cy="9.5" r="2.5" />
-            </svg>
-          </div>
-          <div class="nw-contact-info-label">Visit Us</div>
-          <h3 class="nw-contact-info-title">Office Location</h3>
-          <p class="nw-contact-info-text">
-            1420 Industry Way, Suite 200<br />
-            Spokane, WA 99201
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- MAIN CONTACT SECTION -->
-    <section class="nw-contact-main" id="contact-form">
-      <div class="nw-contact-container">
-        <div class="nw-contact-layout">
-          <!-- LEFT: Info -->
-          <div class="nw-contact-left">
-            <div class="nw-contact-eyebrow">Get In Touch</div>
-            <h2 class="nw-contact-title">
-              Let's build a <span class="accent">safer team</span> together.
-            </h2>
-            <p class="nw-contact-lede">
-              Whether you need to book a training session, ask about a specific
-              program, or explore a custom safety plan for your project — we're
-              here to help. Reach out through the form and our team will follow
-              up within one business day.
-            </p>
-
-            <ul class="nw-contact-list">
-              <li class="nw-contact-list-item">
-                <div class="nw-contact-list-icon">
-                  <svg viewBox="0 0 24 24">
-                    <path
-                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"
-                    />
-                  </svg>
-                </div>
-                <div class="nw-contact-list-body">
-                  <strong>Direct Line</strong>
-                  <a href="tel:+15095551234">+1 (509) 555-1234</a>
-                </div>
-              </li>
-              <li class="nw-contact-list-item">
-                <div class="nw-contact-list-icon">
-                  <svg viewBox="0 0 24 24">
-                    <rect x="2" y="4" width="20" height="16" rx="2" />
-                    <path d="m22 7-10 6L2 7" />
-                  </svg>
-                </div>
-                <div class="nw-contact-list-body">
-                  <strong>Email</strong>
-                  <a href="mailto:info@northwestsafety.com"
-                    >info@northwestsafety.com</a
-                  >
-                </div>
-              </li>
-              <li class="nw-contact-list-item">
-                <div class="nw-contact-list-icon">
-                  <svg viewBox="0 0 24 24">
-                    <path
-                      d="M12 21s-7-6.5-7-11.5A7 7 0 0 1 19 9.5C19 14.5 12 21 12 21Z"
-                    />
-                    <circle cx="12" cy="9.5" r="2.5" />
-                  </svg>
-                </div>
-                <div class="nw-contact-list-body">
-                  <strong>Office</strong>
-                  <span>1420 Industry Way, Suite 200, Spokane, WA 99201</span>
-                </div>
-              </li>
-              <li class="nw-contact-list-item">
-                <div class="nw-contact-list-icon">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="9" />
-                    <path d="M12 7V12L15 15" />
-                  </svg>
-                </div>
-                <div class="nw-contact-list-body">
-                  <strong>Office Hours</strong>
-                  <span>Mon – Fri · 8:00 AM – 5:00 PM (PT)</span>
-                </div>
-              </li>
-            </ul>
-
-            <div class="nw-contact-socials-label">Follow Along</div>
-            <div class="nw-contact-socials">
-              <a href="#" class="nw-contact-social" aria-label="Facebook"
-                ><svg viewBox="0 0 24 24">
-                  <path
-                    d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8v-6.93H7.9V12h2.1V9.8c0-2.07 1.23-3.22 3.12-3.22.9 0 1.85.16 1.85.16v2.04h-1.04c-1.03 0-1.35.64-1.35 1.3V12h2.3l-.37 2.87h-1.93v6.93c4.56-.93 8-4.96 8-9.8z"
-                  /></svg
-              ></a>
-              <a href="#" class="nw-contact-social" aria-label="X"
-                ><svg viewBox="0 0 24 24">
-                  <path
-                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                  /></svg
-              ></a>
-              <a href="#" class="nw-contact-social" aria-label="LinkedIn"
-                ><svg viewBox="0 0 24 24">
-                  <path
-                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                  /></svg
-              ></a>
-            </div>
-          </div>
-
-          <!-- RIGHT: Form -->
-          <div class="nw-contact-form-card">
-            <div class="nw-form-header">
-              <div class="nw-form-header-label">Send a Message</div>
-              <h3>Tell us how we can help.</h3>
-              <p>
-                Fill out the form and we'll get back to you within one business
-                day.
-              </p>
-            </div>
-
-            <!-- Success Banner -->
-            <div class="nw-form-success" id="formSuccess">
-              <div class="nw-form-success-icon">
-                <svg viewBox="0 0 24 24"><path d="M5 12L10 17L19 8" /></svg>
-              </div>
-              <div class="nw-form-success-body">
-                <h4>Message sent successfully!</h4>
-                <p>
-                  Thanks for reaching out. Our team will respond within one
-                  business day.
-                </p>
-              </div>
-            </div>
-
-            <form class="nw-contact-form-grid" id="contactForm" novalidate>
-              <div class="nw-contact-field">
-                <label for="ct-name">Full Name <span>*</span></label>
-                <input
-                  type="text"
-                  id="ct-name"
-                  name="name"
-                  placeholder="John Smith"
-                  autocomplete="name"
-                  required
-                  minlength="2"
-                  maxlength="60"
-                />
-                <svg
-                  class="nw-field-success-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M5 12L10 17L19 8" />
-                </svg>
-                <div class="nw-field-error" data-error-for="name">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="9" />
-                    <path d="M12 8V12" />
-                    <circle cx="12" cy="16" r=".5" fill="currentColor" />
-                  </svg>
-                  <span>Please enter your full name (min 2 characters).</span>
-                </div>
-              </div>
-
-              <div class="nw-contact-field">
-                <label for="ct-company">Company</label>
-                <input
-                  type="text"
-                  id="ct-company"
-                  name="company"
-                  placeholder="Company name"
-                  autocomplete="organization"
-                  maxlength="80"
-                />
-                <svg
-                  class="nw-field-success-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M5 12L10 17L19 8" />
-                </svg>
-                <div class="nw-field-error" data-error-for="company">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="9" />
-                    <path d="M12 8V12" />
-                    <circle cx="12" cy="16" r=".5" fill="currentColor" />
-                  </svg>
-                  <span>Company name is too long.</span>
-                </div>
-              </div>
-
-              <div class="nw-contact-field">
-                <label for="ct-email">Email <span>*</span></label>
-                <input
-                  type="email"
-                  id="ct-email"
-                  name="email"
-                  placeholder="you@company.com"
-                  autocomplete="email"
-                  required
-                />
-                <svg
-                  class="nw-field-success-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M5 12L10 17L19 8" />
-                </svg>
-                <div class="nw-field-error" data-error-for="email">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="9" />
-                    <path d="M12 8V12" />
-                    <circle cx="12" cy="16" r=".5" fill="currentColor" />
-                  </svg>
-                  <span>Please enter a valid email address.</span>
-                </div>
-              </div>
-
-              <div class="nw-contact-field">
-                <label for="ct-phone">Phone</label>
-                <input
-                  type="tel"
-                  id="ct-phone"
-                  name="phone"
-                  placeholder="+1 (000) 000-0000"
-                  autocomplete="tel"
-                />
-                <svg
-                  class="nw-field-success-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M5 12L10 17L19 8" />
-                </svg>
-                <div class="nw-field-error" data-error-for="phone">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="9" />
-                    <path d="M12 8V12" />
-                    <circle cx="12" cy="16" r=".5" fill="currentColor" />
-                  </svg>
-                  <span>Please enter a valid phone number.</span>
-                </div>
-              </div>
-
-              <div class="nw-contact-field full">
-                <label for="ct-subject">Subject <span>*</span></label>
-                <select id="ct-subject" name="subject" required>
-                  <option value="" selected disabled>Select a topic</option>
-                  <option>Book a Training Session</option>
-                  <option>Request a Custom Program</option>
-                  <option>Government Contractor Inquiry</option>
-                  <option>General Question</option>
-                  <option>Partnership / Vendor</option>
-                  <option>Other</option>
-                </select>
-                <div class="nw-field-error" data-error-for="subject">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="9" />
-                    <path d="M12 8V12" />
-                    <circle cx="12" cy="16" r=".5" fill="currentColor" />
-                  </svg>
-                  <span>Please select a subject.</span>
-                </div>
-              </div>
-
-              <div class="nw-contact-field full">
-                <label for="ct-message">Message <span>*</span></label>
-                <textarea
-                  id="ct-message"
-                  name="message"
-                  placeholder="Tell us about your project, team size, or any specific safety needs..."
-                  required
-                  minlength="10"
-                  maxlength="1200"
-                ></textarea>
-                <svg
-                  class="nw-field-success-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M5 12L10 17L19 8" />
-                </svg>
-                <div class="nw-field-error" data-error-for="message">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="9" />
-                    <path d="M12 8V12" />
-                    <circle cx="12" cy="16" r=".5" fill="currentColor" />
-                  </svg>
-                  <span>Message should be at least 10 characters.</span>
-                </div>
-              </div>
-
-              <div class="nw-contact-form-footer">
-                <p class="nw-contact-note">
-                  <svg viewBox="0 0 24 24">
-                    <path
-                      d="M12 3L20 7V12C20 17 16.5 20 12 22C7.5 20 4 17 4 12V7L12 3Z"
-                    />
-                    <path d="M9 12L11 14L15 10" />
-                  </svg>
-                  Your information is secure and will only be used to respond to
-                  your inquiry.
-                </p>
-                <button type="submit" class="nw-contact-submit" id="submitBtn">
-                  <span class="nw-submit-spinner"></span>
-                  Send Message
-                  <svg viewBox="0 0 24 24">
-                    <path d="M5 12H19" />
-                    <path d="M13 6L19 12L13 18" />
-                  </svg>
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ / HOURS -->
-    <section class="nw-contact-faq">
-      <div class="nw-contact-faq-container">
-        <div class="nw-contact-faq-header">
-          <div class="nw-contact-faq-eyebrow">Hours &amp; Questions</div>
-          <h2 class="nw-contact-faq-title">
-            When we're here,<br />
-            and <span class="accent">what people ask.</span>
-          </h2>
-          <p class="nw-contact-faq-desc">
-            Quick answers to the questions we hear most often. If you don't see
-            what you're looking for, just send us a message.
-          </p>
-        </div>
-
-        <div class="nw-contact-hours">
-          <div class="nw-hours-card">
-            <div class="nw-hours-day">Monday – Friday</div>
-            <div class="nw-hours-time">8:00 AM – 5:00 PM</div>
-            <div class="nw-hours-note">
-              Office open · Training sessions by appointment
-            </div>
-          </div>
-          <div class="nw-hours-card">
-            <div class="nw-hours-day">Saturday</div>
-            <div class="nw-hours-time">By Appointment</div>
-            <div class="nw-hours-note">
-              Weekend training available for larger crews
-            </div>
-          </div>
-          <div class="nw-hours-card">
-            <div class="nw-hours-day">Sunday</div>
-            <div class="nw-hours-time">Closed</div>
-            <div class="nw-hours-note">
-              Email responses resume Monday morning
-            </div>
-          </div>
-        </div>
-
-        <div class="nw-faq-list">
-          <div class="nw-faq-item">
-            <button class="nw-faq-question" type="button">
-              How quickly will I hear back after sending a message?
-              <span class="nw-faq-toggle">
-                <svg viewBox="0 0 24 24"><path d="M6 9L12 15L18 9" /></svg>
-              </span>
-            </button>
-            <div class="nw-faq-answer">
-              <div class="nw-faq-answer-inner">
-                We respond to all inquiries within one business day. If your
-                request is urgent, please call us directly at (509) 555-1234 and
-                we'll do our best to help right away.
-              </div>
-            </div>
-          </div>
-
-          <div class="nw-faq-item">
-            <button class="nw-faq-question" type="button">
-              Do you offer on-site training at our location?
-              <span class="nw-faq-toggle">
-                <svg viewBox="0 0 24 24"><path d="M6 9L12 15L18 9" /></svg>
-              </span>
-            </button>
-            <div class="nw-faq-answer">
-              <div class="nw-faq-answer-inner">
-                Yes — most of our programs can be delivered at your jobsite or
-                office. We travel throughout the Pacific Northwest and can
-                arrange sessions for crews of almost any size. Just let us know
-                your location when you reach out.
-              </div>
-            </div>
-          </div>
-
-          <div class="nw-faq-item">
-            <button class="nw-faq-question" type="button">
-              Can you build a custom training program for our company?
-              <span class="nw-faq-toggle">
-                <svg viewBox="0 0 24 24"><path d="M6 9L12 15L18 9" /></svg>
-              </span>
-            </button>
-            <div class="nw-faq-answer">
-              <div class="nw-faq-answer-inner">
-                Absolutely. Customized safety programs are one of our core
-                offerings. We start with a short discovery call to understand
-                your workforce, hazards, and project requirements — then build a
-                program around those specific needs.
-              </div>
-            </div>
-          </div>
-
-          <div class="nw-faq-item">
-            <button class="nw-faq-question" type="button">
-              What information should I include in my message?
-              <span class="nw-faq-toggle">
-                <svg viewBox="0 0 24 24"><path d="M6 9L12 15L18 9" /></svg>
-              </span>
-            </button>
-            <div class="nw-faq-answer">
-              <div class="nw-faq-answer-inner">
-                Helpful details include: the program you're interested in, your
-                team size, your preferred timeframe, and your location. The more
-                context you give us, the faster we can put together a clear
-                plan.
-              </div>
-            </div>
-          </div>
-
-          <div class="nw-faq-item">
-            <button class="nw-faq-question" type="button">
-              Do you serve government contractors?
-              <span class="nw-faq-toggle">
-                <svg viewBox="0 0 24 24"><path d="M6 9L12 15L18 9" /></svg>
-              </span>
-            </button>
-            <div class="nw-faq-answer">
-              <div class="nw-faq-answer-inner">
-                Yes — we work regularly with contractors on federal, state, and
-                municipal projects. Our training meets the documentation and
-                refresher requirements that government contracts typically
-                demand.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA BANNER -->
-    <section class="nw-contact-cta">
-      <div class="nw-contact-cta-container">
-        <div class="nw-contact-cta-left">
-          <h2>Ready to <span>book</span> your training?</h2>
-          <p>
-            Skip the back-and-forth and reserve your session today. It takes
-            less than two minutes.
-          </p>
-        </div>
-        <a href="login.html" class="nw-contact-cta-btn">
-          Book Training Now
+  <!-- CONTACT HERO -->
+  <section class="nw-contact-hero">
+    <div class="nw-contact-hero-container">
+      <h1 class="nw-contact-hero-title">Contact Us</h1>
+      <span class="nw-contact-hero-line"></span>
+      <p class="nw-contact-hero-desc">
+        Have a question about training, scheduling, or a custom program? Our
+        team is ready to help you build a safer jobsite — reach out and we'll
+        respond within one business day.
+      </p>
+      <div class="nw-contact-hero-actions">
+        <a href="index.html" class="nw-contact-hero-btn nw-contact-hero-btn-secondary">
+          <svg viewBox="0 0 24 24">
+            <path d="M19 12H5" />
+            <path d="M11 6L5 12L11 18" />
+          </svg>
+          Back to Home
+        </a>
+        <a href="contact.html#contact-form" class="nw-contact-hero-btn nw-contact-hero-btn-primary">
+          Talk with Us
           <svg viewBox="0 0 24 24">
             <path d="M5 12H19" />
             <path d="M13 6L19 12L13 18" />
           </svg>
         </a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- FOOTER -->
-    <footer class="nw-footer">
-      <div class="nw-footer-grid">
-        <div class="nw-footer-brand">
-          <div class="nw-footer-logo">
-            <img
-              src="assets/Logo/NSH Logo 01.png"
-              alt="Northwest Safety & Health"
-            />
-            <p class="nw-footer-tagline">
-              Safety Training Built for Construction &amp; Government
-              Contractors.
+  <!-- CONTACT INFO CARDS -->
+  <section class="nw-contact-cards">
+    <div class="nw-contact-cards-container">
+      <div class="nw-contact-info-card">
+        <div class="nw-contact-info-icon">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" />
+          </svg>
+        </div>
+        <div class="nw-contact-info-label">Call Us</div>
+        <h3 class="nw-contact-info-title">Phone &amp; Fax</h3>
+        <p class="nw-contact-info-text">
+          <a href="tel:+15095551234">+1 (509) 555-1234</a><br />
+          <a href="tel:+15095555678">+1 (509) 555-5678</a> (fax)
+        </p>
+      </div>
+
+      <div class="nw-contact-info-card">
+        <div class="nw-contact-info-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 7-10 6L2 7" />
+          </svg>
+        </div>
+        <div class="nw-contact-info-label">Email Us</div>
+        <h3 class="nw-contact-info-title">General &amp; Training</h3>
+        <p class="nw-contact-info-text">
+          <a href="mailto:info@northwestsafety.com">info@northwestsafety.com</a><br />
+          <a href="mailto:training@northwestsafety.com">training@northwestsafety.com</a>
+        </p>
+      </div>
+
+      <div class="nw-contact-info-card">
+        <div class="nw-contact-info-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 21s-7-6.5-7-11.5A7 7 0 0 1 19 9.5C19 14.5 12 21 12 21Z" />
+            <circle cx="12" cy="9.5" r="2.5" />
+          </svg>
+        </div>
+        <div class="nw-contact-info-label">Visit Us</div>
+        <h3 class="nw-contact-info-title">Office Location</h3>
+        <p class="nw-contact-info-text">
+          1420 Industry Way, Suite 200<br />
+          Spokane, WA 99201
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTACT SECTION -->
+  <section class="nw-contact-main" id="contact-form">
+    <div class="nw-contact-container">
+      <div class="nw-contact-layout">
+        <!-- LEFT: Info -->
+        <div class="nw-contact-left">
+          <div class="nw-contact-eyebrow">Get In Touch</div>
+          <h2 class="nw-contact-title">
+            Let's build a <span class="accent">safer team</span> together.
+          </h2>
+          <p class="nw-contact-lede">
+            Whether you need to book a training session, ask about a specific
+            program, or explore a custom safety plan for your project — we're
+            here to help. Reach out through the form and our team will follow
+            up within one business day.
+          </p>
+
+          <ul class="nw-contact-list">
+            <li class="nw-contact-list-item">
+              <div class="nw-contact-list-icon">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" />
+                </svg>
+              </div>
+              <div class="nw-contact-list-body">
+                <strong>Direct Line</strong>
+                <a href="tel:+15095551234">+1 (509) 555-1234</a>
+              </div>
+            </li>
+            <li class="nw-contact-list-item">
+              <div class="nw-contact-list-icon">
+                <svg viewBox="0 0 24 24">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-10 6L2 7" />
+                </svg>
+              </div>
+              <div class="nw-contact-list-body">
+                <strong>Email</strong>
+                <a href="mailto:info@northwestsafety.com">info@northwestsafety.com</a>
+              </div>
+            </li>
+            <li class="nw-contact-list-item">
+              <div class="nw-contact-list-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 21s-7-6.5-7-11.5A7 7 0 0 1 19 9.5C19 14.5 12 21 12 21Z" />
+                  <circle cx="12" cy="9.5" r="2.5" />
+                </svg>
+              </div>
+              <div class="nw-contact-list-body">
+                <strong>Office</strong>
+                <span>1420 Industry Way, Suite 200, Spokane, WA 99201</span>
+              </div>
+            </li>
+            <li class="nw-contact-list-item">
+              <div class="nw-contact-list-icon">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 7V12L15 15" />
+                </svg>
+              </div>
+              <div class="nw-contact-list-body">
+                <strong>Office Hours</strong>
+                <span>Mon – Fri · 8:00 AM – 5:00 PM (PT)</span>
+              </div>
+            </li>
+          </ul>
+
+          <div class="nw-contact-socials-label">Follow Along</div>
+          <div class="nw-contact-socials">
+            <a href="#" class="nw-contact-social" aria-label="Facebook"><svg viewBox="0 0 24 24">
+                <path
+                  d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8v-6.93H7.9V12h2.1V9.8c0-2.07 1.23-3.22 3.12-3.22.9 0 1.85.16 1.85.16v2.04h-1.04c-1.03 0-1.35.64-1.35 1.3V12h2.3l-.37 2.87h-1.93v6.93c4.56-.93 8-4.96 8-9.8z" />
+              </svg></a>
+            <a href="#" class="nw-contact-social" aria-label="X"><svg viewBox="0 0 24 24">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg></a>
+            <a href="#" class="nw-contact-social" aria-label="LinkedIn"><svg viewBox="0 0 24 24">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg></a>
+          </div>
+        </div>
+
+        <!-- RIGHT: Form -->
+        <div class="nw-contact-form-card">
+          <div class="nw-form-header">
+            <div class="nw-form-header-label">Send a Message</div>
+            <h3>Tell us how we can help.</h3>
+            <p>
+              Fill out the form and we'll get back to you within one business
+              day.
             </p>
           </div>
-          <div class="nw-social-links">
-            <a href="#" class="nw-social-icon" aria-label="Facebook"
-              ><svg viewBox="0 0 24 24">
-                <path
-                  d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8v-6.93H7.9V12h2.1V9.8c0-2.07 1.23-3.22 3.12-3.22.9 0 1.85.16 1.85.16v2.04h-1.04c-1.03 0-1.35.64-1.35 1.3V12h2.3l-.37 2.87h-1.93v6.93c4.56-.93 8-4.96 8-9.8z"
-                /></svg
-            ></a>
-            <a href="#" class="nw-social-icon" aria-label="X"
-              ><svg viewBox="0 0 24 24">
-                <path
-                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                /></svg
-            ></a>
-            <a href="#" class="nw-social-icon" aria-label="LinkedIn"
-              ><svg viewBox="0 0 24 24">
-                <path
-                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                /></svg
-            ></a>
+
+          <!-- Success Banner -->
+          <div class="nw-form-success" id="formSuccess">
+            <div class="nw-form-success-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M5 12L10 17L19 8" />
+              </svg>
+            </div>
+            <div class="nw-form-success-body">
+              <h4>Message sent successfully!</h4>
+              <p>
+                Thanks for reaching out. Our team will respond within one
+                business day.
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="nw-footer-col">
-          <h4>Quick Links</h4>
-          <ul class="nw-footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="courses-training.html">Courses & Training</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="nw-footer-col">
-          <h4>Training</h4>
-          <ul class="nw-footer-links">
-            <li>
-              <a href="services-details.html?service=osha"
-                >OSHA Safety Training</a
-              >
-            </li>
-            <li>
-              <a href="services-details.html?service=construction-safety"
-                >Construction Safety</a
-              >
-            </li>
-            <li>
-              <a href="services-details.html?service=Government"
-                >Government Contractor Training</a
-              >
-            </li>
-            <li>
-              <a href="services-details.html?service=Workplace"
-                >Workplace Safety</a
-              >
-            </li>
-            <li>
-              <a href="services-details.html?service=FirstAid"
-                >First Aid &amp; CPR</a
-              >
-            </li>
-            <li>
-              <a href="services-details.html?service=Customized"
-                >Customized Safety Programs</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="nw-footer-newsletter">
-          <h4>Newsletter</h4>
-          <p>
-            Stay informed with the latest safety compliance updates, government
-            contract news, and expert training tips.
-          </p>
-          <form
-            class="nw-newsletter-form"
-            onsubmit="
-              event.preventDefault();
-              alert('Subscribed!');
-            "
-          >
-            <textarea
-              class="nw-newsletter-input"
-              placeholder="Message"
-              required
-            ></textarea>
-            <button type="submit" class="nw-newsletter-btn">Subscribe</button>
+
+          <form class="nw-contact-form-grid" id="contactForm" novalidate>
+            <div class="nw-contact-field">
+              <label for="ct-name">Full Name <span>*</span></label>
+              <input type="text" id="ct-name" name="name" placeholder="John Smith" autocomplete="name" required
+                minlength="2" maxlength="60" />
+              <svg class="nw-field-success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12L10 17L19 8" />
+              </svg>
+              <div class="nw-field-error" data-error-for="name">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 8V12" />
+                  <circle cx="12" cy="16" r=".5" fill="currentColor" />
+                </svg>
+                <span>Please enter your full name (min 2 characters).</span>
+              </div>
+            </div>
+
+            <div class="nw-contact-field">
+              <label for="ct-company">Company</label>
+              <input type="text" id="ct-company" name="company" placeholder="Company name" autocomplete="organization"
+                maxlength="80" />
+              <svg class="nw-field-success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12L10 17L19 8" />
+              </svg>
+              <div class="nw-field-error" data-error-for="company">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 8V12" />
+                  <circle cx="12" cy="16" r=".5" fill="currentColor" />
+                </svg>
+                <span>Company name is too long.</span>
+              </div>
+            </div>
+
+            <div class="nw-contact-field">
+              <label for="ct-email">Email <span>*</span></label>
+              <input type="email" id="ct-email" name="email" placeholder="you@company.com" autocomplete="email"
+                required />
+              <svg class="nw-field-success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12L10 17L19 8" />
+              </svg>
+              <div class="nw-field-error" data-error-for="email">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 8V12" />
+                  <circle cx="12" cy="16" r=".5" fill="currentColor" />
+                </svg>
+                <span>Please enter a valid email address.</span>
+              </div>
+            </div>
+
+            <div class="nw-contact-field">
+              <label for="ct-phone">Phone</label>
+              <input type="tel" id="ct-phone" name="phone" placeholder="+1 (000) 000-0000" autocomplete="tel" />
+              <svg class="nw-field-success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12L10 17L19 8" />
+              </svg>
+              <div class="nw-field-error" data-error-for="phone">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 8V12" />
+                  <circle cx="12" cy="16" r=".5" fill="currentColor" />
+                </svg>
+                <span>Please enter a valid phone number.</span>
+              </div>
+            </div>
+
+            <div class="nw-contact-field full">
+              <label for="ct-subject">Subject <span>*</span></label>
+              <select id="ct-subject" name="subject" required>
+                <option value="" selected disabled>Select a topic</option>
+                <option>Book a Training Session</option>
+                <option>Request a Custom Program</option>
+                <option>Government Contractor Inquiry</option>
+                <option>General Question</option>
+                <option>Partnership / Vendor</option>
+                <option>Other</option>
+              </select>
+              <div class="nw-field-error" data-error-for="subject">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 8V12" />
+                  <circle cx="12" cy="16" r=".5" fill="currentColor" />
+                </svg>
+                <span>Please select a subject.</span>
+              </div>
+            </div>
+
+            <div class="nw-contact-field full">
+              <label for="ct-message">Message <span>*</span></label>
+              <textarea id="ct-message" name="message"
+                placeholder="Tell us about your project, team size, or any specific safety needs..." required
+                minlength="10" maxlength="1200"></textarea>
+              <svg class="nw-field-success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12L10 17L19 8" />
+              </svg>
+              <div class="nw-field-error" data-error-for="message">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 8V12" />
+                  <circle cx="12" cy="16" r=".5" fill="currentColor" />
+                </svg>
+                <span>Message should be at least 10 characters.</span>
+              </div>
+            </div>
+
+            <div class="nw-contact-form-footer">
+              <p class="nw-contact-note">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 3L20 7V12C20 17 16.5 20 12 22C7.5 20 4 17 4 12V7L12 3Z" />
+                  <path d="M9 12L11 14L15 10" />
+                </svg>
+                Your information is secure and will only be used to respond to
+                your inquiry.
+              </p>
+              <button type="submit" class="nw-contact-submit" id="submitBtn">
+                <span class="nw-submit-spinner"></span>
+                Send Message
+                <svg viewBox="0 0 24 24">
+                  <path d="M5 12H19" />
+                  <path d="M13 6L19 12L13 18" />
+                </svg>
+              </button>
+            </div>
           </form>
         </div>
       </div>
-      <div class="nw-footer-bottom">
-        <p>&copy; 2026 Northwest Safety &amp; Health. All Rights Reserved.</p>
-      </div>
-    </footer>
+    </div>
+  </section>
 
-    <script>
-      // -----------------------------------------------------
-      // DYNAMIC NAV CTA — Dashboard (logged in) vs Book Training
-      // Uses localStorage key 'isLoggedIn' (set to 'true' when logged in).
-      // If not set or 'false', shows "Book Training".
-      // -----------------------------------------------------
-      (function updateNavCTA() {
+  <!-- FAQ / HOURS -->
+  <section class="nw-contact-faq">
+    <div class="nw-contact-faq-container">
+      <div class="nw-contact-faq-header">
+        <div class="nw-contact-faq-eyebrow">Hours &amp; Questions</div>
+        <h2 class="nw-contact-faq-title">
+          When we're here,<br />
+          and <span class="accent">what people ask.</span>
+        </h2>
+        <p class="nw-contact-faq-desc">
+          Quick answers to the questions we hear most often. If you don't see
+          what you're looking for, just send us a message.
+        </p>
+      </div>
+
+      <div class="nw-contact-hours">
+        <div class="nw-hours-card">
+          <div class="nw-hours-day">Monday – Friday</div>
+          <div class="nw-hours-time">8:00 AM – 5:00 PM</div>
+          <div class="nw-hours-note">
+            Office open · Training sessions by appointment
+          </div>
+        </div>
+        <div class="nw-hours-card">
+          <div class="nw-hours-day">Saturday</div>
+          <div class="nw-hours-time">By Appointment</div>
+          <div class="nw-hours-note">
+            Weekend training available for larger crews
+          </div>
+        </div>
+        <div class="nw-hours-card">
+          <div class="nw-hours-day">Sunday</div>
+          <div class="nw-hours-time">Closed</div>
+          <div class="nw-hours-note">
+            Email responses resume Monday morning
+          </div>
+        </div>
+      </div>
+
+      <div class="nw-faq-list">
+        <div class="nw-faq-item">
+          <button class="nw-faq-question" type="button">
+            How quickly will I hear back after sending a message?
+            <span class="nw-faq-toggle">
+              <svg viewBox="0 0 24 24">
+                <path d="M6 9L12 15L18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="nw-faq-answer">
+            <div class="nw-faq-answer-inner">
+              We respond to all inquiries within one business day. If your
+              request is urgent, please call us directly at (509) 555-1234 and
+              we'll do our best to help right away.
+            </div>
+          </div>
+        </div>
+
+        <div class="nw-faq-item">
+          <button class="nw-faq-question" type="button">
+            Do you offer on-site training at our location?
+            <span class="nw-faq-toggle">
+              <svg viewBox="0 0 24 24">
+                <path d="M6 9L12 15L18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="nw-faq-answer">
+            <div class="nw-faq-answer-inner">
+              Yes — most of our programs can be delivered at your jobsite or
+              office. We travel throughout the Pacific Northwest and can
+              arrange sessions for crews of almost any size. Just let us know
+              your location when you reach out.
+            </div>
+          </div>
+        </div>
+
+        <div class="nw-faq-item">
+          <button class="nw-faq-question" type="button">
+            Can you build a custom training program for our company?
+            <span class="nw-faq-toggle">
+              <svg viewBox="0 0 24 24">
+                <path d="M6 9L12 15L18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="nw-faq-answer">
+            <div class="nw-faq-answer-inner">
+              Absolutely. Customized safety programs are one of our core
+              offerings. We start with a short discovery call to understand
+              your workforce, hazards, and project requirements — then build a
+              program around those specific needs.
+            </div>
+          </div>
+        </div>
+
+        <div class="nw-faq-item">
+          <button class="nw-faq-question" type="button">
+            What information should I include in my message?
+            <span class="nw-faq-toggle">
+              <svg viewBox="0 0 24 24">
+                <path d="M6 9L12 15L18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="nw-faq-answer">
+            <div class="nw-faq-answer-inner">
+              Helpful details include: the program you're interested in, your
+              team size, your preferred timeframe, and your location. The more
+              context you give us, the faster we can put together a clear
+              plan.
+            </div>
+          </div>
+        </div>
+
+        <div class="nw-faq-item">
+          <button class="nw-faq-question" type="button">
+            Do you serve government contractors?
+            <span class="nw-faq-toggle">
+              <svg viewBox="0 0 24 24">
+                <path d="M6 9L12 15L18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="nw-faq-answer">
+            <div class="nw-faq-answer-inner">
+              Yes — we work regularly with contractors on federal, state, and
+              municipal projects. Our training meets the documentation and
+              refresher requirements that government contracts typically
+              demand.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="nw-contact-cta">
+    <div class="nw-contact-cta-container">
+      <div class="nw-contact-cta-left">
+        <h2>Ready to <span>book</span> your training?</h2>
+        <p>
+          Skip the back-and-forth and reserve your session today. It takes
+          less than two minutes.
+        </p>
+      </div>
+      <a href="login.html" class="nw-contact-cta-btn">
+        Book Training Now
+        <svg viewBox="0 0 24 24">
+          <path d="M5 12H19" />
+          <path d="M13 6L19 12L13 18" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="nw-footer">
+    <div class="nw-footer-grid">
+      <div class="nw-footer-brand">
+        <div class="nw-footer-logo">
+          <img src="assets/Logo/NSH Logo 01.png" alt="Northwest Safety & Health" />
+          <p class="nw-footer-tagline">
+            Safety Training Built for Construction &amp; Government
+            Contractors.
+          </p>
+        </div>
+        <div class="nw-social-links">
+          <a href="#" class="nw-social-icon" aria-label="Facebook"><svg viewBox="0 0 24 24">
+              <path
+                d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8v-6.93H7.9V12h2.1V9.8c0-2.07 1.23-3.22 3.12-3.22.9 0 1.85.16 1.85.16v2.04h-1.04c-1.03 0-1.35.64-1.35 1.3V12h2.3l-.37 2.87h-1.93v6.93c4.56-.93 8-4.96 8-9.8z" />
+            </svg></a>
+          <a href="#" class="nw-social-icon" aria-label="X"><svg viewBox="0 0 24 24">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg></a>
+          <a href="#" class="nw-social-icon" aria-label="LinkedIn"><svg viewBox="0 0 24 24">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg></a>
+        </div>
+      </div>
+      <div class="nw-footer-col">
+        <h4>Quick Links</h4>
+        <ul class="nw-footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="courses-training.html">Courses & Training</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="nw-footer-col">
+        <h4>Training</h4>
+        <ul class="nw-footer-links">
+          <li>
+            <a href="services-details.html?service=osha">OSHA Safety Training</a>
+          </li>
+          <li>
+            <a href="services-details.html?service=construction-safety">Construction Safety</a>
+          </li>
+          <li>
+            <a href="services-details.html?service=Government">Government Contractor Training</a>
+          </li>
+          <li>
+            <a href="services-details.html?service=Workplace">Workplace Safety</a>
+          </li>
+          <li>
+            <a href="services-details.html?service=FirstAid">First Aid &amp; CPR</a>
+          </li>
+          <li>
+            <a href="services-details.html?service=Customized">Customized Safety Programs</a>
+          </li>
+        </ul>
+      </div>
+      <div class="nw-footer-newsletter">
+        <h4>Newsletter</h4>
+        <p>
+          Stay informed with the latest safety compliance updates, government
+          contract news, and expert training tips.
+        </p>
+        <form class="nw-newsletter-form" onsubmit="
+              event.preventDefault();
+              alert('Subscribed!');
+            ">
+          <textarea class="nw-newsletter-input" placeholder="Message" required></textarea>
+          <button type="submit" class="nw-newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="nw-footer-bottom">
+      <p>&copy; 2026 Northwest Safety &amp; Health. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // -----------------------------------------------------
+    // DYNAMIC NAV CTA — Dashboard (logged in) vs Book Training
+    // Uses localStorage key 'isLoggedIn' (set to 'true' when logged in).
+    // If not set or 'false', shows "Book Training".
+    // -----------------------------------------------------
+    (function updateNavCTA() {
+      const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+      const navBtn = document.getElementById("navCtaBtn");
+
+      if (isLoggedIn) {
+        navBtn.textContent = "Dashboard";
+        navBtn.href = "dashboard.html";
+      } else {
+        navBtn.textContent = "Book Training";
+        navBtn.href = "courses-training.html#book-appointment";
+      }
+    })();
+
+    // Listen for storage changes (if user logs in on another tab)
+    window.addEventListener("storage", function (e) {
+      if (e.key === "isLoggedIn") {
         const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
         const navBtn = document.getElementById("navCtaBtn");
 
@@ -2602,300 +2872,286 @@
           navBtn.textContent = "Book Training";
           navBtn.href = "courses-training.html#book-appointment";
         }
-      })();
+      }
+    });
 
-      // Listen for storage changes (if user logs in on another tab)
-      window.addEventListener("storage", function (e) {
-        if (e.key === "isLoggedIn") {
-          const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-          const navBtn = document.getElementById("navCtaBtn");
-
-          if (isLoggedIn) {
-            navBtn.textContent = "Dashboard";
-            navBtn.href = "dashboard.html";
-          } else {
-            navBtn.textContent = "Book Training";
-            navBtn.href = "courses-training.html#book-appointment";
-          }
-        }
-      });
-
-      // -----------------------------------------------------
-      // FAQ Accordion
-      // -----------------------------------------------------
-      document.addEventListener("DOMContentLoaded", () => {
-        const faqItems = document.querySelectorAll(".nw-faq-item");
-        faqItems.forEach((item) => {
-          const btn = item.querySelector(".nw-faq-question");
-          btn.addEventListener("click", () => {
-            const isOpen = item.classList.contains("open");
-            faqItems.forEach((i) => i.classList.remove("open"));
-            if (!isOpen) item.classList.add("open");
-          });
+    // -----------------------------------------------------
+    // FAQ Accordion
+    // -----------------------------------------------------
+    document.addEventListener("DOMContentLoaded", () => {
+      const faqItems = document.querySelectorAll(".nw-faq-item");
+      faqItems.forEach((item) => {
+        const btn = item.querySelector(".nw-faq-question");
+        btn.addEventListener("click", () => {
+          const isOpen = item.classList.contains("open");
+          faqItems.forEach((i) => i.classList.remove("open"));
+          if (!isOpen) item.classList.add("open");
         });
       });
+    });
 
-      // -----------------------------------------------------
-      // CONTACT FORM VALIDATION
-      // -----------------------------------------------------
-      (function () {
-        "use strict";
+    // -----------------------------------------------------
+    // CONTACT FORM VALIDATION
+    // -----------------------------------------------------
+    (function () {
+      "use strict";
 
-        const form = document.getElementById("contactForm");
-        if (!form) return;
+      const form = document.getElementById("contactForm");
+      if (!form) return;
 
-        const successBanner = document.getElementById("formSuccess");
-        const submitBtn = document.getElementById("submitBtn");
+      const successBanner = document.getElementById("formSuccess");
+      const submitBtn = document.getElementById("submitBtn");
 
-        // Field configs — rules per field
-        const fields = {
-          name: {
-            el: document.getElementById("ct-name"),
-            validate: (v) => {
-              const trimmed = v.trim();
-              if (!trimmed) return "Please enter your full name.";
-              if (trimmed.length < 2)
-                return "Name must be at least 2 characters.";
-              if (trimmed.length > 60)
-                return "Name is too long (max 60 characters).";
-              if (!/^[a-zA-Z\s'\-\.]+$/.test(trimmed))
-                return "Name can only contain letters, spaces, and hyphens.";
-              return "";
-            },
+      // Field configs — rules per field
+      const fields = {
+        name: {
+          el: document.getElementById("ct-name"),
+          validate: (v) => {
+            const trimmed = v.trim();
+            if (!trimmed) return "Please enter your full name.";
+            if (trimmed.length < 2)
+              return "Name must be at least 2 characters.";
+            if (trimmed.length > 60)
+              return "Name is too long (max 60 characters).";
+            if (!/^[a-zA-Z\s'\-\.]+$/.test(trimmed))
+              return "Name can only contain letters, spaces, and hyphens.";
+            return "";
           },
-          company: {
-            el: document.getElementById("ct-company"),
-            validate: (v) => {
-              const trimmed = v.trim();
-              if (!trimmed) return ""; // optional
-              if (trimmed.length > 80)
-                return "Company name is too long (max 80 characters).";
-              return "";
-            },
+        },
+        company: {
+          el: document.getElementById("ct-company"),
+          validate: (v) => {
+            const trimmed = v.trim();
+            if (!trimmed) return ""; // optional
+            if (trimmed.length > 80)
+              return "Company name is too long (max 80 characters).";
+            return "";
           },
-          email: {
-            el: document.getElementById("ct-email"),
-            validate: (v) => {
-              const trimmed = v.trim();
-              if (!trimmed) return "Please enter your email address.";
-              // RFC-ish email pattern
-              const re = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
-              if (!re.test(trimmed))
-                return "Please enter a valid email address.";
-              return "";
-            },
+        },
+        email: {
+          el: document.getElementById("ct-email"),
+          validate: (v) => {
+            const trimmed = v.trim();
+            if (!trimmed) return "Please enter your email address.";
+            // RFC-ish email pattern
+            const re = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
+            if (!re.test(trimmed))
+              return "Please enter a valid email address.";
+            return "";
           },
-          phone: {
-            el: document.getElementById("ct-phone"),
-            validate: (v) => {
-              const trimmed = v.trim();
-              if (!trimmed) return ""; // optional
-              // Allow digits, spaces, +, -, (), .
-              if (!/^[\d\s+\-().]{7,20}$/.test(trimmed))
-                return "Please enter a valid phone number.";
-              const digits = trimmed.replace(/\D/g, "");
-              if (digits.length < 7) return "Phone number is too short.";
-              if (digits.length > 15) return "Phone number is too long.";
-              return "";
-            },
+        },
+        phone: {
+          el: document.getElementById("ct-phone"),
+          validate: (v) => {
+            const trimmed = v.trim();
+            if (!trimmed) return ""; // optional
+            // Allow digits, spaces, +, -, (), .
+            if (!/^[\d\s+\-().]{7,20}$/.test(trimmed))
+              return "Please enter a valid phone number.";
+            const digits = trimmed.replace(/\D/g, "");
+            if (digits.length < 7) return "Phone number is too short.";
+            if (digits.length > 15) return "Phone number is too long.";
+            return "";
           },
-          subject: {
-            el: document.getElementById("ct-subject"),
-            validate: (v) => {
-              if (!v) return "Please select a subject.";
-              return "";
-            },
+        },
+        subject: {
+          el: document.getElementById("ct-subject"),
+          validate: (v) => {
+            if (!v) return "Please select a subject.";
+            return "";
           },
-          message: {
-            el: document.getElementById("ct-message"),
-            validate: (v) => {
-              const trimmed = v.trim();
-              if (!trimmed) return "Please enter your message.";
-              if (trimmed.length < 10)
-                return "Message must be at least 10 characters.";
-              if (trimmed.length > 1200)
-                return "Message is too long (max 1200 characters).";
-              return "";
-            },
+        },
+        message: {
+          el: document.getElementById("ct-message"),
+          validate: (v) => {
+            const trimmed = v.trim();
+            if (!trimmed) return "Please enter your message.";
+            if (trimmed.length < 10)
+              return "Message must be at least 10 characters.";
+            if (trimmed.length > 1200)
+              return "Message is too long (max 1200 characters).";
+            return "";
           },
-        };
+        },
+      };
 
-        // Get the wrapping .nw-contact-field element
-        function getFieldWrap(el) {
-          return el.closest(".nw-contact-field");
+      // Get the wrapping .nw-contact-field element
+      function getFieldWrap(el) {
+        return el.closest(".nw-contact-field");
+      }
+
+      // Set error state for a field
+      function setFieldError(key, message) {
+        const f = fields[key];
+        if (!f) return;
+        const wrap = getFieldWrap(f.el);
+        const errEl = wrap.querySelector(".nw-field-error span");
+        if (message) {
+          wrap.classList.add("has-error");
+          wrap.classList.remove("has-success");
+          if (errEl) errEl.textContent = message;
+        } else {
+          wrap.classList.remove("has-error");
         }
+      }
 
-        // Set error state for a field
-        function setFieldError(key, message) {
-          const f = fields[key];
-          if (!f) return;
-          const wrap = getFieldWrap(f.el);
-          const errEl = wrap.querySelector(".nw-field-error span");
-          if (message) {
-            wrap.classList.add("has-error");
-            wrap.classList.remove("has-success");
-            if (errEl) errEl.textContent = message;
-          } else {
-            wrap.classList.remove("has-error");
-          }
+      // Set success state
+      function setFieldSuccess(key) {
+        const f = fields[key];
+        if (!f) return;
+        const wrap = getFieldWrap(f.el);
+        const val = f.el.value.trim();
+        if (val && !wrap.classList.contains("has-error")) {
+          wrap.classList.add("has-success");
+        } else {
+          wrap.classList.remove("has-success");
         }
+      }
 
-        // Set success state
-        function setFieldSuccess(key) {
-          const f = fields[key];
-          if (!f) return;
-          const wrap = getFieldWrap(f.el);
-          const val = f.el.value.trim();
-          if (val && !wrap.classList.contains("has-error")) {
-            wrap.classList.add("has-success");
-          } else {
-            wrap.classList.remove("has-success");
-          }
+      // Validate a single field
+      function validateField(key, showError = false) {
+        const f = fields[key];
+        if (!f) return true;
+        const message = f.validate(f.el.value);
+        if (message) {
+          if (showError) setFieldError(key, message);
+          return false;
+        } else {
+          setFieldError(key, "");
+          return true;
         }
+      }
 
-        // Validate a single field
-        function validateField(key, showError = false) {
-          const f = fields[key];
-          if (!f) return true;
+      // Validate all fields
+      function validateAll() {
+        let ok = true;
+        Object.keys(fields).forEach((key) => {
+          if (!validateField(key, true)) ok = false;
+        });
+        return ok;
+      }
+
+      // Live validation on blur & input
+      Object.keys(fields).forEach((key) => {
+        const f = fields[key];
+        const wrap = getFieldWrap(f.el);
+
+        f.el.addEventListener("blur", () => {
           const message = f.validate(f.el.value);
           if (message) {
-            if (showError) setFieldError(key, message);
-            return false;
+            setFieldError(key, message);
           } else {
             setFieldError(key, "");
-            return true;
+            setFieldSuccess(key);
           }
-        }
+        });
 
-        // Validate all fields
-        function validateAll() {
-          let ok = true;
-          Object.keys(fields).forEach((key) => {
-            if (!validateField(key, true)) ok = false;
-          });
-          return ok;
-        }
-
-        // Live validation on blur & input
-        Object.keys(fields).forEach((key) => {
-          const f = fields[key];
-          const wrap = getFieldWrap(f.el);
-
-          f.el.addEventListener("blur", () => {
+        f.el.addEventListener("input", () => {
+          // Clear error as user types; re-check on blur
+          if (wrap.classList.contains("has-error")) {
             const message = f.validate(f.el.value);
-            if (message) {
-              setFieldError(key, message);
+            if (!message) {
+              setFieldError(key, "");
+              setFieldSuccess(key);
             } else {
+              // update the error message text live
+              const errEl = wrap.querySelector(".nw-field-error span");
+              if (errEl) errEl.textContent = message;
+            }
+          } else {
+            // Quietly evaluate success indicator
+            const message = f.validate(f.el.value);
+            if (!message && f.el.value.trim()) setFieldSuccess(key);
+            else wrap.classList.remove("has-success");
+          }
+        });
+
+        // For select, validate on change
+        if (f.el.tagName === "SELECT") {
+          f.el.addEventListener("change", () => {
+            const message = f.validate(f.el.value);
+            if (message) setFieldError(key, message);
+            else {
               setFieldError(key, "");
               setFieldSuccess(key);
             }
           });
+        }
+      });
 
-          f.el.addEventListener("input", () => {
-            // Clear error as user types; re-check on blur
-            if (wrap.classList.contains("has-error")) {
-              const message = f.validate(f.el.value);
-              if (!message) {
-                setFieldError(key, "");
-                setFieldSuccess(key);
-              } else {
-                // update the error message text live
-                const errEl = wrap.querySelector(".nw-field-error span");
-                if (errEl) errEl.textContent = message;
-              }
-            } else {
-              // Quietly evaluate success indicator
-              const message = f.validate(f.el.value);
-              if (!message && f.el.value.trim()) setFieldSuccess(key);
-              else wrap.classList.remove("has-success");
-            }
+      // Submit handler
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Hide any previous success banner
+        successBanner.classList.remove("show");
+
+        // Validate all
+        const ok = validateAll();
+        if (!ok) {
+          // Focus first error field
+          const firstError = form.querySelector(
+            ".nw-contact-field.has-error input, .nw-contact-field.has-error select, .nw-contact-field.has-error textarea",
+          );
+          if (firstError) {
+            firstError.focus({ preventScroll: true });
+            const top =
+              firstError.getBoundingClientRect().top + window.scrollY - 120;
+            window.scrollTo({ top, behavior: "smooth" });
+          }
+          return;
+        }
+
+        // Simulate async submission
+        submitBtn.classList.add("loading");
+        submitBtn.disabled = true;
+
+        setTimeout(() => {
+          submitBtn.classList.remove("loading");
+          submitBtn.disabled = false;
+
+          // Show success banner
+          successBanner.classList.add("show");
+          successBanner.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
           });
 
-          // For select, validate on change
-          if (f.el.tagName === "SELECT") {
-            f.el.addEventListener("change", () => {
-              const message = f.validate(f.el.value);
-              if (message) setFieldError(key, message);
-              else {
-                setFieldError(key, "");
-                setFieldSuccess(key);
-              }
-            });
-          }
-        });
+          // Reset form
+          form.reset();
 
-        // Submit handler
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
+          // Clear all success/error states
+          Object.keys(fields).forEach((key) => {
+            const wrap = getFieldWrap(fields[key].el);
+            wrap.classList.remove("has-error", "has-success");
+          });
 
-          // Hide any previous success banner
-          successBanner.classList.remove("show");
-
-          // Validate all
-          const ok = validateAll();
-          if (!ok) {
-            // Focus first error field
-            const firstError = form.querySelector(
-              ".nw-contact-field.has-error input, .nw-contact-field.has-error select, .nw-contact-field.has-error textarea",
-            );
-            if (firstError) {
-              firstError.focus({ preventScroll: true });
-              const top =
-                firstError.getBoundingClientRect().top + window.scrollY - 120;
-              window.scrollTo({ top, behavior: "smooth" });
-            }
-            return;
-          }
-
-          // Simulate async submission
-          submitBtn.classList.add("loading");
-          submitBtn.disabled = true;
-
+          // Auto-hide success banner after 8s
           setTimeout(() => {
-            submitBtn.classList.remove("loading");
-            submitBtn.disabled = false;
+            successBanner.classList.remove("show");
+          }, 8000);
+        }, 1100);
+      });
 
-            // Show success banner
-            successBanner.classList.add("show");
-            successBanner.scrollIntoView({
-              behavior: "smooth",
-              block: "center",
-            });
+      // Prevent pasting over-length content
+      ["ct-name", "ct-company", "ct-email", "ct-phone", "ct-message"].forEach(
+        (id) => {
+          const el = document.getElementById(id);
+          if (!el) return;
+          el.addEventListener("paste", function (e) {
+            const text = (e.clipboardData || window.clipboardData).getData(
+              "text",
+            );
+            const max = parseInt(el.getAttribute("maxlength") || "99999", 10);
+            if (text.length > max) {
+              e.preventDefault();
+              el.value = text.slice(0, max);
+            }
+          });
+        },
+      );
+    })();
+  </script>
+</body>
 
-            // Reset form
-            form.reset();
-
-            // Clear all success/error states
-            Object.keys(fields).forEach((key) => {
-              const wrap = getFieldWrap(fields[key].el);
-              wrap.classList.remove("has-error", "has-success");
-            });
-
-            // Auto-hide success banner after 8s
-            setTimeout(() => {
-              successBanner.classList.remove("show");
-            }, 8000);
-          }, 1100);
-        });
-
-        // Prevent pasting over-length content
-        ["ct-name", "ct-company", "ct-email", "ct-phone", "ct-message"].forEach(
-          (id) => {
-            const el = document.getElementById(id);
-            if (!el) return;
-            el.addEventListener("paste", function (e) {
-              const text = (e.clipboardData || window.clipboardData).getData(
-                "text",
-              );
-              const max = parseInt(el.getAttribute("maxlength") || "99999", 10);
-              if (text.length > max) {
-                e.preventDefault();
-                el.value = text.slice(0, max);
-              }
-            });
-          },
-        );
-      })();
-    </script>
-  </body>
 </html>
